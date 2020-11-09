@@ -59,12 +59,9 @@ namespace APCPOS.Forms
                     crystalReportViewer1.PrintReport();
                     break;
                 case "ProdNearExpr":
-                    //Text = "Receipt Preview"();
                     path = (@"..\Reports\ProductsnearExpr.rpt");
                     Mreport.Load(path);
-                    // new TableLogOnInfos();
                     crConnectionInfo = new ConnectionInfo();
-
                     crConnectionInfo.ServerName = "APC_POS";
                     crConnectionInfo.DatabaseName = "DBAPC_POS";
                     crConnectionInfo.UserID = "sa";

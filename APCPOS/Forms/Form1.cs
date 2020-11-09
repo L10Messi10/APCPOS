@@ -12,9 +12,10 @@ using APCPOS.Properties;
 using APCPOS.UserControl;
 using Bunifu.DataViz.WinForms;
 using Bunifu.UI.WinForms;
-using DevExpress.CodeParser;
-using DevExpress.Utils.FormShadow;
+using System.Net.NetworkInformation;
+using System.Reflection;
 using static APCPOS.Includes.SqlConfig;
+using static System.DateTime;
 
 namespace APCPOS
 {
@@ -28,19 +29,141 @@ namespace APCPOS
         private string log3;
         private string log4;
         private string log5;
-        int sec,mins, mins1=0;
+        int sec,mins, mins1 = 0;
         public static bool XRetrieveDebt;
         bool recentcalled = false;
 
         public Form1()
         {
             InitializeComponent();
-        }
 
+            #region DoubleBuffered
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel1, new object[] { true });
 
-        protected override void OnGotFocus(EventArgs e)
-        {
-            base.OnGotFocus(e);
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel18, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                paneldashboard, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel14, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel20, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel32, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel3, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel34, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel21, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel56, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel15, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel57, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel16, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel58, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel17, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel59, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel24, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel60, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel23, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel45, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel29, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel37, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel27, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                bunifuDataViz2, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                bunifuDataViz1, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel36, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel31, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel22, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                flowpaneltopselling, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel33, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel30, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                flowpanelcriticalproducts, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                flowpanelnearexpire, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel35, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel31, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel54, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel55, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel23, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                bunifuSeparator14, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel9, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel65, new object[] { true });
+
+            #endregion
         }
 
         #region Debts
@@ -119,7 +242,30 @@ namespace APCPOS
 
         #endregion
         #region Dashboard
-        //Relative time
+
+        private async Task XLoadNearExpiration()
+        {
+            await Conopen();
+            Sqlcmd.Parameters.Clear();
+            Strsql = "Select * from V_TobeExp_Prods ORDER BY prod_exp_date DESC";
+            Sqlcmd.CommandText = Strsql;
+            Sqlcmd.Connection = Cnn;
+            Sqladapter.SelectCommand = Sqlcmd;
+            Sqlreader = Sqlcmd.ExecuteReader();
+            flowpanelnearexpire.Rows.Clear();
+            while (Sqlreader.Read())
+            {
+                var a = Sqlreader.GetValue(2).ToString();
+                flowpanelnearexpire.Rows.Add(a);
+            }
+            Sqlcmd.Dispose();
+            Sqlreader.Close();
+            Cnn.Close();
+            Strsql = "";
+
+            //((date1.Year - date2.Year) * 12) + date1.Month - date2.Month
+            //var month = (endDate - StartDate).TotalMonths;
+        }
         private async Task XLoadRecentActivities()
         {
             await Conopen();
@@ -286,20 +432,18 @@ namespace APCPOS
 
         private async Task XLoadRevenue()
         {
+            var c = DateTime.Today.ToString("Y");
             await Conopen();
             Sqlcmd.Parameters.Clear();
-            Strsql = $"Select sum(inv_total) as reve from V_Revenue where num_date ='{DateTime.Today:Y}'";
+            Strsql = "Select * from V_Revenue where num_date like '%" + c +"%'";
             Sqlcmd.CommandText = Strsql;
             Sqlcmd.Connection = Cnn;
             Sqladapter.SelectCommand = Sqlcmd;
             Sqlreader = Sqlcmd.ExecuteReader();
-            if (!Sqlreader.Read())
+            if (Sqlreader.Read())
             {
-                lblrevenue.Text = @"0";
-            }
-            else
-            {
-                var a = Convert.ToInt32(Sqlreader.GetValue(0));
+                var dd = Sqlreader.GetValue(1).ToString();
+                var a = Convert.ToInt32(Sqlreader.GetValue(1));
                 if (a >= 100000000)
                 {
                     lblrevenue.Text = (a / 1000000D).ToString("0.#M");
@@ -316,6 +460,19 @@ namespace APCPOS
                 {
                     lblrevenue.Text = (a / 1000D).ToString("0.##K");
                 }
+                if (a >= 1000)
+                {
+                    lblrevenue.Text = (a / 1000D).ToString("0.#K");
+                }
+                if (a < 1000)
+                {
+                    lblrevenue.Text = (a).ToString("N");
+                }
+
+            }
+            else
+            {
+                lblrevenue.Text = @"0";
             }
             Sqlcmd.Dispose();
             Sqlreader.Close();
@@ -353,7 +510,7 @@ namespace APCPOS
             var canvas = new Canvas();
             var datapoint = new DataPoint(BunifuDataViz._type.Bunifu_spline);
             bunifuDataViz1.Theme = BunifuDataViz._theme.theme2;
-            bunifuDataViz1.colorSet.Add(Color.FromArgb(243, 53, 158));
+            bunifuDataViz1.colorSet.Add(Color.FromArgb(218, 243, 53));
             bunifuDataViz1.ForeColor = Color.Snow;
             await Conopen();
             Sqlcmd.Parameters.Clear();
@@ -365,7 +522,7 @@ namespace APCPOS
             while (Sqlreader.Read())
             {
                 var x = (DateTime)Sqlreader.GetValue(0);
-                datapoint.addLabely(x.ToString("M"), y: Sqlreader.GetValue(1).ToString());
+                datapoint.addLabely(x.ToString("MMM-d"), y: Sqlreader.GetValue(1).ToString());
             }
             canvas.addData(datapoint);
             bunifuDataViz1.Render(canvas);
@@ -386,22 +543,13 @@ namespace APCPOS
             Sqlcmd.Connection = Cnn;
             Sqladapter.SelectCommand = Sqlcmd;
             Sqlreader = Sqlcmd.ExecuteReader();
-            flowpaneltopselling.Controls.Clear();
-            var dt = new DataTable();
-            dt.Load(Sqlreader);
-            for (int i = 0; i < dt.Rows.Count; i++)
+            flowpaneltopselling.Rows.Clear();
+            while (Sqlreader.Read())
             {
-                ListProdTopSelling a = new ListProdTopSelling();
-                var converter = new ImageConverter();
-                byte[] img = (byte[])(dt.Rows[i]["Prod_img"]);
-                if (img.Length != 0)
-                {
-                    a.prodpic.Image = converter.ConvertFrom(img) as Image;
-                }
-                a.lblprodname.Text = dt.Rows[i]["Prod_Name"].ToString();
-                var ts = Convert.ToSingle(dt.Rows[i]["Total_Sales"]);
-                a.lbltotalsales.Text = ts.ToString("N");
-                flowpaneltopselling.Controls.Add(a);
+                var a = Sqlreader.GetValue(0).ToString();
+                var b = Convert.ToDouble(Sqlreader.GetValue(1));
+                var c = b.ToString("N");
+                flowpaneltopselling.Rows.Add(a, c);
             }
             Sqlcmd.Dispose();
             Sqlreader.Close();
@@ -414,29 +562,19 @@ namespace APCPOS
         {
             await Conopen();
             Sqlcmd.Parameters.Clear();
-            Strsql = "Select top 20 * from tbl_Products ORDER BY Prod_Stock ASC";
+            Strsql = "Select * from V_Products_Critical ORDER BY Prod_Stock";
             Sqlcmd.CommandText = Strsql;
             Sqlcmd.Connection = Cnn;
             Sqladapter.SelectCommand = Sqlcmd;
             Sqlreader = Sqlcmd.ExecuteReader();
             flowpanelcriticalproducts.Controls.Clear();
-            var dt = new DataTable();
-            dt.Load(Sqlreader);
-            for (int i = 0; i < dt.Rows.Count; i++)
+            while (Sqlreader.Read())
             {
-                ListProdTopSelling a = new ListProdTopSelling();
-                byte[] img = (byte[])(dt.Rows[i]["prod_img"]);
-                if (img.Length != 0)
-                {
-                    MemoryStream ms = new MemoryStream(img);
-                    a.prodpic.Image = Image.FromStream(ms);
-                }
-                a.lblprodname.Text = dt.Rows[i]["Prod_Name"].ToString();
-                var ts = Convert.ToSingle(dt.Rows[i]["Prod_Stock"]);
-                a.lbltotalsales.Text = ts.ToString("## 'R. Stocks'");
-                flowpanelcriticalproducts.Controls.Add(a);
+                var a = Sqlreader.GetValue(2).ToString();
+                var b = Sqlreader.GetValue(3).ToString();
+                var c = "R. Stocks " + b;
+                    flowpanelcriticalproducts.Rows.Add(a, c);
             }
-            bunifuVScrollBar1.Maximum = flowpanelcriticalproducts.VerticalScroll.Maximum;
             //bunifuHScrollBar1.BindTo(flowpanelcriticalproducts);
             Sqlcmd.Dispose();
             Sqlreader.Close();
@@ -472,7 +610,7 @@ namespace APCPOS
         {
             await Conopen();
             Sqlcmd.Parameters.Clear();
-            Strsql = "Select * from tbl_Users";
+            Strsql = "Select TOP "+ Settings.Default.data_display + " * from tbl_Users";
             Sqlcmd.CommandText = Strsql;
             Sqlcmd.Connection = Cnn;
             Sqladapter.SelectCommand = Sqlcmd;
@@ -577,7 +715,7 @@ namespace APCPOS
             bunifuTextBox1.Text = "";
             await Conopen();
             Sqlcmd.Parameters.Clear();
-            Strsql = "Select TOP 50 * from V_Products";
+            Strsql = "Select TOP "+ Settings.Default.data_display + " * from V_Products";
             Sqlcmd.CommandText = Strsql;
             Sqlcmd.Connection = Cnn;
             Sqladapter.SelectCommand = Sqlcmd;
@@ -631,7 +769,7 @@ namespace APCPOS
             bunifuTextBox1.Text = "";
             await Conopen();
             Sqlcmd.Parameters.Clear();
-            Strsql = "Select TOP 50 * from tbl_Products";
+            Strsql = "Select TOP " + Settings.Default.data_display + " * from tbl_Products";
             Sqlcmd.CommandText = Strsql;
             Sqlcmd.Connection = Cnn;
             Sqladapter.SelectCommand = Sqlcmd;
@@ -854,14 +992,36 @@ namespace APCPOS
             }
             UseWaitCursor = false;
         }
+        private async Task XLoadNotification()
+        {
+            await Conopen();
+            Sqlcmd.Parameters.Clear();
+            Strsql = "Select count(not_num) as totcount from tbl_notification";
+            Sqlcmd.CommandText = Strsql;
+            Sqlcmd.Connection = Cnn;
+            Sqladapter.SelectCommand = Sqlcmd;
+            Sqlreader = Sqlcmd.ExecuteReader();
+            lblnotifcount.Text = Sqlreader.Read() ? Sqlreader.GetValue(0).ToString() : @"0";
+            Sqlcmd.Dispose();
+            Sqlreader.Close();
+            Cnn.Close();
+            Strsql = "";
+            Focus();
+            lblnotifcount.BackColor = Convert.ToInt32(lblnotifcount.Text) >= 1 ? Color.FromArgb(255, 227, 0) : Color.Gray;
+            lblnotifcount.Visible = true;
+            //lblnotcount.Text = flowLayoutPanel1.Controls.Count + @" total";
+        }
 
         #endregion
 
 
         private async void Form1_Load(object sender, EventArgs e)
         {
+            
+            
             //bunifuFormFadeTransition1.ShowAsyc(this);
             splashScreenManager1.ShowWaitForm();
+            bunifuDatepicker1.Value = Now;
             UseWaitCursor = true;
             await FillProducts();
             //await FillStock();
@@ -878,15 +1038,35 @@ namespace APCPOS
             await XLoadRecentActivities();
             await XloadUserTransOvrvw();
             await XLoadWeeklylySales();
+            await XLoadNotification();
+            await XLoadNearExpiration();
             UseWaitCursor = false;
+            switch (Settings.Default.bg)
+            {
+                case @"BG1":
+                    panel18.BackgroundImage = Resources.dashbgbg;
+                    break;
+                case @"BG2":
+                    panel18.BackgroundImage = Resources.dashbgbg1;
+                    break;
+                case @"BG3":
+                    panel18.BackgroundImage = Resources.dashbgbg2;
+                    break;
+                case @"BG4":
+                    panel18.BackgroundImage = Resources.dashbgbg3;
+                    break;
+                case @"None":
+                    panel18.BackgroundImage = null;
+                    panel18.BackColor = Color.FromArgb(44, 48, 57);
+                    break;
+            }
             splashScreenManager1.CloseWaitForm();
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            T_Dashboard a = new T_Dashboard();
-            FrmProductAe b= new FrmProductAe();
-            b.lbltitle.Text = @"Product Registration";
+            var a = new T_Dashboard();
+            var b = new FrmProductAe {lbltitle = {Text = @"Product Registration"}};
             a.Show(this);
             b._PAdd = true;
             b.ShowDialog();
@@ -926,6 +1106,7 @@ namespace APCPOS
 
         private void btndashboard_Click(object sender, EventArgs e)
         {
+            lbltitle.Text = @"Dashboard";
             indicator.Top = btndashboard.Top;
             indicator.Visible = false;
             bunifuTransition2.ShowSync(indicator);
@@ -938,7 +1119,7 @@ namespace APCPOS
 
         private void btn_product_Click(object sender, EventArgs e)
         {
-            
+            lbltitle.Text = @"Products";
             indicator.Top = btn_product.Top;
             indicator.Visible = false;
             bunifuTransition2.ShowSync(indicator);
@@ -951,6 +1132,7 @@ namespace APCPOS
 
         private void btn_stock_Click(object sender, EventArgs e)
         {
+            lbltitle.Text = @"Stocks";
             indicator.Top = btn_stock.Top;
             indicator.Visible = false;
             bunifuTransition2.ShowSync(indicator);
@@ -1044,6 +1226,7 @@ namespace APCPOS
 
         private async void btnreports_Click(object sender, EventArgs e)
         {
+            lbltitle.Text = @"Reports (Debts)";
             splashScreenManager1.ShowWaitForm();
             await XLoadDebts();
             indicator.Top = btnreports.Top;
@@ -1069,13 +1252,34 @@ namespace APCPOS
             await XloadUserTransOvrvw();
             await XLoadCollectables();
             await XCountVoided();
+            await XLoadNotification();
+            await XLoadNearExpiration();
             UseWaitCursor = false;
             splashScreenManager1.CloseWaitForm();
         }
 
         private void bunifuImageButton10_Click(object sender, EventArgs e)
         {
-            metroContextMenu1.Show(bunifuImageButton10, 0, bunifuImageButton10.Height);
+            try
+            {
+                var a = new FrmProfileDialog {Location = panelaccnt.Location, 
+                    Top = bunifuImageButton10.Top,};
+                a.Top += 30;
+                a.Left += 180;
+                if (Application.OpenForms["Form1"] as FrmProfileDialog != null)
+                {
+                    //Form is already open
+                }
+                else
+                {
+                    a.Show();
+                }
+
+            }
+            catch
+            {
+                //ignored
+            }
         }
 
         private void bunifuImageButton22_Click(object sender, EventArgs e)
@@ -1146,30 +1350,53 @@ namespace APCPOS
 
         }
 
-        private void flowpanelcriticalproducts_Scroll(object sender, ScrollEventArgs e)
-        {
-            //flowpanelcriticalproducts.HorizontalScroll(bunifuHScrollBar1);
-        }
-
         private void Form1_Shown(object sender, EventArgs e)
         {
         }
-
-        private void bunifuVScrollBar1_Scroll(object sender, BunifuVScrollBar.ScrollEventArgs e)
-        {
-            flowpanelcriticalproducts.AutoScrollPosition = new Point(flowpanelcriticalproducts.AutoScrollPosition.X, e.Value);
-        }
-
         #region Logs
+
+        private void XPingServer()
+        {
+            try
+            {
+                var p = new Ping();
+                var s = IP_Add;
+                var r = p.Send(s);
+                networkimg.Image = r != null && r.Status == IPStatus.Success ? Resources.wifi_on : Resources.wifi_off;
+                if (r != null && r.Status == IPStatus.Success)
+                {
+                    //btnnetworkstatus.Text = @"Response delay = " + r.RoundtripTime + @" ms";
+                }
+            }
+            catch
+            {
+                Connected = false;
+                networkimg.Image = Resources.wifi_off;
+                Cnn.Close();
+                //btnnetworkstatus.Text = @"Server unreachable.";
+                timer1.Stop();
+                var tr = new T_Dashboard();
+                var svr = new FrmServerSettings();
+                tr.Show(this);
+                svr.ShowDialog();
+                tr.Dispose();
+                Focus();
+            }
+            
+        }
 
         private async void timer1_Tick(object sender, EventArgs e)
         {
-            
-            await XLog1();
+            lbldate.Text = Now.ToString("D");
+            lbltime.Text = Now.ToString("h:mm:ss tt");
+            XPingServer();
+            if (networkimg.Image == Resources.wifi_off) return;
+            XLog1();
             XLog2();
             XLog3();
             XLog4();
             XLog5();
+            
             sec++;
             label15.Text = sec.ToString();
             label22.Text = mins.ToString();
@@ -1198,6 +1425,8 @@ namespace APCPOS
                             await XloadUserTransOvrvw();
                             await XLoadCollectables();
                             await XCountVoided();
+                            await XLoadNotification();
+                            await XLoadNearExpiration();
                             UseWaitCursor = false;
                             splashScreenManager1.CloseWaitForm();
                             sec = 0;
@@ -1220,7 +1449,7 @@ namespace APCPOS
                 
             }
         }
-        private async Task XLog1()
+        private void XLog1()
         {
             const int second = 1;
             const int minute = 60 * second;
@@ -1230,12 +1459,6 @@ namespace APCPOS
             var aDateTime = Convert.ToDateTime(log1);
             var ts = new TimeSpan(DateTime.Now.Ticks - aDateTime.Ticks);
             var delta = Math.Abs(ts.TotalSeconds);
-            var mins = ts.Minutes;
-            if (mins == 5)
-            {
-                await XLoadRecentActivities();
-                return;
-            }
             if (delta < 1 * minute)
             {
                 bunifuFlatButton4.Text = ts.Seconds == 1 ? " one second ago" : ts.Seconds + " seconds ago";
@@ -1292,7 +1515,6 @@ namespace APCPOS
             var aDateTime = Convert.ToDateTime(log2);
             var ts = new TimeSpan(DateTime.Now.Ticks - aDateTime.Ticks);
             var delta = Math.Abs(ts.TotalSeconds);
-
             if (delta < 1 * minute)
             {
                 bunifuFlatButton5.Text = ts.Seconds == 1 ? " one second ago" : ts.Seconds + " seconds ago";
@@ -1416,7 +1638,7 @@ namespace APCPOS
                 xfullname = (string)bunifuDataGridView1.SelectedRows[0].Cells[1].Value;
                 await XShowDebtInfo();
             }
-            catch (Exception exception)
+            catch
             {
                 //ignored
             }
@@ -1430,7 +1652,7 @@ namespace APCPOS
                 xfullname = (string)bunifuDataGridView1.SelectedRows[0].Cells[1].Value;
                 await XShowDebtInfo();
             }
-            catch (Exception exception)
+            catch
             {
                 //ignored
             }
@@ -1444,7 +1666,7 @@ namespace APCPOS
                 xfullname = (string)bunifuDataGridView1.SelectedRows[0].Cells[1].Value;
                 await XShowDebtInfo();
             }
-            catch (Exception exception)
+            catch
             {
                 //ignored
             }
@@ -1483,7 +1705,7 @@ namespace APCPOS
                     bunifuDataGridView2.Rows.Clear();
                     lbldebtfullname.Text = "";
                     bunifuPictureBox1.Image = null;
-                    label38.Text = "0";
+                    label38.Text = @"0";
                     splashScreenManager1.CloseWaitForm();
                     break;
                 default:
@@ -1492,7 +1714,7 @@ namespace APCPOS
             }
         }
 
-        private async void bunifuDropdown2_DropDownClosed(object sender, EventArgs e)
+        private void bunifuDropdown2_DropDownClosed(object sender, EventArgs e)
         {
             
         }
@@ -1509,11 +1731,11 @@ namespace APCPOS
                     canvas = new Canvas();
                     datapoint = new DataPoint(BunifuDataViz._type.Bunifu_spline);
                     bunifuDataViz1.Theme = BunifuDataViz._theme.theme2;
-                    bunifuDataViz1.colorSet.Add(Color.FromArgb(243, 53, 158));
+                    bunifuDataViz1.colorSet.Add(Color.FromArgb(218, 243, 53));
                     bunifuDataViz1.ForeColor = Color.Snow;
                     await Conopen();
                     Sqlcmd.Parameters.Clear();
-                    Strsql = $"Select * from V_Chart_Sales_Custom where Inv_date <= '{DateTime.Today:yyyy-MM-dd}' AND Inv_date >= '{dtealt:yyyy-MM-dd}' order by Inv_date desc";
+                    Strsql = $"Select * from V_Chart_Sales_Custom where Inv_date <= '{Today:yyyy-MM-dd}' AND Inv_date >= '{dtealt:yyyy-MM-dd}' order by Inv_date desc";
                     Sqlcmd.CommandText = Strsql;
                     Sqlcmd.Connection = Cnn;
                     Sqladapter.SelectCommand = Sqlcmd;
@@ -1537,7 +1759,7 @@ namespace APCPOS
                     canvas = new Canvas();
                     datapoint = new DataPoint(BunifuDataViz._type.Bunifu_spline);
                     bunifuDataViz1.Theme = BunifuDataViz._theme.theme2;
-                    bunifuDataViz1.colorSet.Add(Color.FromArgb(243, 53, 158));
+                    bunifuDataViz1.colorSet.Add(Color.FromArgb(218, 243, 53));
                     bunifuDataViz1.ForeColor = Color.Snow;
                     await Conopen();
                     Sqlcmd.Parameters.Clear();
@@ -1564,7 +1786,7 @@ namespace APCPOS
                     canvas = new Canvas();
                     datapoint = new DataPoint(BunifuDataViz._type.Bunifu_spline);
                     bunifuDataViz1.Theme = BunifuDataViz._theme.theme2;
-                    bunifuDataViz1.colorSet.Add(Color.FromArgb(243, 53, 158));
+                    bunifuDataViz1.colorSet.Add(Color.FromArgb(218, 243, 53));
                     bunifuDataViz1.ForeColor = Color.Snow;
                     await Conopen();
                     Sqlcmd.Parameters.Clear();
@@ -1591,7 +1813,7 @@ namespace APCPOS
                     canvas = new Canvas();
                     datapoint = new DataPoint(BunifuDataViz._type.Bunifu_spline);
                     bunifuDataViz1.Theme = BunifuDataViz._theme.theme2;
-                    bunifuDataViz1.colorSet.Add(Color.FromArgb(243, 53, 158));
+                    bunifuDataViz1.colorSet.Add(Color.FromArgb(218, 243, 53));
                     bunifuDataViz1.ForeColor = Color.Snow;
                     await Conopen();
                     Sqlcmd.Parameters.Clear();
@@ -1617,7 +1839,7 @@ namespace APCPOS
                     canvas = new Canvas();
                     datapoint = new DataPoint(BunifuDataViz._type.Bunifu_spline);
                     bunifuDataViz1.Theme = BunifuDataViz._theme.theme2;
-                    bunifuDataViz1.colorSet.Add(Color.FromArgb(243, 53, 158));
+                    bunifuDataViz1.colorSet.Add(Color.FromArgb(218, 243, 53));
                     bunifuDataViz1.ForeColor = Color.Snow;
                     await Conopen();
                     Sqlcmd.Parameters.Clear();
@@ -1665,8 +1887,6 @@ namespace APCPOS
                     Sqlreader = Sqlcmd.ExecuteReader();
                     while (Sqlreader.Read())
                     {
-                        var a = Sqlreader.GetValue(0).ToString();
-                        var b = Sqlreader.GetValue(1).ToString();
                         datapoint.addLabely(Sqlreader.GetValue(0).ToString(), Sqlreader.GetValue(1).ToString());
                         //bunifuDataViz1.ser
                     }
@@ -1693,8 +1913,6 @@ namespace APCPOS
                     Sqlreader = Sqlcmd.ExecuteReader();
                     while (Sqlreader.Read())
                     {
-                        var a = Sqlreader.GetValue(0).ToString();
-                        var b = Sqlreader.GetValue(1).ToString();
                         datapoint.addLabely(Sqlreader.GetValue(0).ToString(), Sqlreader.GetValue(1).ToString());
                         //bunifuDataViz1.ser
                     }
@@ -1732,7 +1950,6 @@ namespace APCPOS
                     Strsql = "";
                     break;
                 case "This Month":
-                    dtealt = (DateTime.Now.Subtract(TimeSpan.FromDays(7)));
                     canvas = new Canvas();
                     datapoint = new DataPoint(BunifuDataViz._type.Bunifu_bar);
                     bunifuDataViz2.colorSet.Add(Color.FromArgb(218, 243, 53));
@@ -1768,12 +1985,305 @@ namespace APCPOS
                 a.Location = panelaccnt.Location;
                 a.Top = bunifuImageButton2.Top;
                 a.Top += 30;
-                a.ShowDialog();
+                if (Application.OpenForms["Form1"] as FrmNotification != null)
+                {
+                    //Form is already open
+                }
+                else
+                {
+                    lblnotifcount.Visible = false;
+                    a.Show();
+                }
+                
             }
             catch
             {
                 //ignored
             }
+        }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+            var a = new FrmNotification();
+            a.Dispose();
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            //btnipadd.Text = Settings.Default.ip_add;
+            if (Connected)
+            {
+                timer1.Start();
+            }
+            else
+            {
+                Cnn.Close();
+                timer1.Stop();
+                var tr = new T_Dashboard();
+                var svr = new FrmServerSettings();
+                tr.Show(this);
+                svr.ShowDialog();
+                tr.Dispose();
+                Focus();
+            }
+        }
+
+        private void networkimg_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var a = new FrmServerStatus {Location = panelaccnt.Location, Top = networkimg.Top};
+                a.Top += 30;
+                if (Application.OpenForms["Form1"] is FrmServerStatus)
+                {
+                    //Form is already open
+                }
+                else
+                {
+                    a.Show();
+                }
+
+            }
+            catch
+            {
+                //ignored
+            }
+        }
+
+        private void bunifuImageButton28_Click(object sender, EventArgs e)
+        {
+            var frmReports = new FrmReports { StrReport = "ProdNearExpr"};
+            frmReports.ShowDialog();
+            frmReports.Close();
+        }
+
+        private async void bunifuTextBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                await Conopen();
+                Strsql = "Select * from V_Products where prod_name+prod_barcode+unit_desc like '%" + bunifuTextBox2.Text + "%'";
+                Sqlcmd.CommandText = Strsql;
+                Sqlcmd.Connection = Cnn;
+                Sqladapter.SelectCommand = Sqlcmd;
+                Sqlreader = Sqlcmd.ExecuteReader();
+                flowLayoutPanel2.Controls.Clear();
+                DataTable dt = new DataTable();
+                dt.Load(Sqlreader);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ListStock a = new ListStock();
+                    byte[] img = (byte[])(dt.Rows[i]["Prod_Img"]);
+                    if (img.Length != 0)
+                    {
+                        MemoryStream ms = new MemoryStream(img);
+                        a.bunifuPictureBox1.Image = Image.FromStream(ms);
+                    }
+                    a.lblID.Text = dt.Rows[i]["Prod_Number"].ToString();
+                    a.lblprodname.Text = dt.Rows[i]["Prod_Name"].ToString();
+                    var fs = dt.Rows[i]["prod_fs"].ToString();
+                    if (fs != "1")
+                    {
+                        a.lblprodname.ForeColor = Color.FromArgb(255, 227, 0);
+                    }
+                    a.lblstock.Text = dt.Rows[i]["tot_stock"].ToString();
+                    var currStock = Convert.ToInt32(dt.Rows[i]["Prod_Stock"].ToString());
+                    if (currStock <= _criticalprod)
+                    {
+                        a.label6.Text = @"Critical";
+                        a.label6.BackColor = Color.FromArgb(232, 76, 61);
+                    }
+                    else
+                    {
+                        a.label6.Text = @"Not Critical";
+                        a.label6.BackColor = Color.FromArgb(16, 124, 16);
+                    }
+                    flowLayoutPanel2.Controls.Add(a);
+                }
+                Sqlcmd.Dispose();
+                Sqlreader.Close();
+                Cnn.Close();
+                Strsql = "";
+                //w.Hide();
+                UseWaitCursor = false;
+            }
+        }
+
+        private void bunifuImageButton27_Click(object sender, EventArgs e)
+        {
+            var frmReports = new FrmReports { StrReport = "ProdCritical" };
+            frmReports.ShowDialog();
+            frmReports.Close();
+        }
+
+        private void bunifuDropdown5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (bunifuDropdown5.Text)
+            {
+                case @"BG1":
+                    panel18.BackgroundImage = Resources.dashbgbg;
+                    Settings.Default.bg = "BG1";
+                    Settings.Default.Save();
+                    break;
+                case @"BG2":
+                    panel18.BackgroundImage = Resources.dashbgbg1;
+                    Settings.Default.bg = "BG2";
+                    Settings.Default.Save();
+                    break;
+                case @"BG3":
+                    panel18.BackgroundImage = Resources.dashbgbg2;
+                    Settings.Default.bg = "BG3";
+                    Settings.Default.Save();
+                    break;
+                case @"BG4":
+                    panel18.BackgroundImage = Resources.dashbgbg3;
+                    Settings.Default.bg = "BG4";
+                    Settings.Default.Save();
+                    break;
+                case @"None":
+                    panel18.BackgroundImage = null;
+                    Settings.Default.bg = "None";
+                    Settings.Default.Save();
+                    break;
+            }
+        }
+
+        private async void bunifuFlatButton9_Click(object sender, EventArgs e)
+        {
+            await LoadNearExpireproducts();
+            lbltitle.Text = @"Reports (Expired Products)";
+            indicator2.Location = bunifuFlatButton9.Location;
+            panelexpiredproducts.Visible = true;
+            paneldebts.Visible = false;
+            indicator2.Visible = false;
+            panelreportcharts.Visible = false;
+            bunifuTransition3.ShowSync(indicator2);
+        }
+        private async Task LoadNearExpireproducts()
+        {
+            splashScreenManager1.ShowWaitForm();
+            UseWaitCursor = true;
+            await Conopen();
+            Sqlcmd.Parameters.Clear();
+            Strsql = "Select * from V_TobeExp_Prods ORDER BY prod_exp_date DESC";
+            Sqlcmd.CommandText = Strsql;
+            Sqlcmd.Connection = Cnn;
+            Sqladapter.SelectCommand = Sqlcmd;
+            Sqlreader = Sqlcmd.ExecuteReader();
+            bunifuCustomDataGrid1.Controls.Clear();
+            while (Sqlreader.Read())
+            {
+                var a = Sqlreader.GetValue(0).ToString();
+                var b = Sqlreader.GetValue(2).ToString();
+                var c = Sqlreader.GetValue(3).ToString();
+                var d = Sqlreader.GetValue(6).ToString();
+                var e = Sqlreader.GetValue(7).ToString();
+                var f = Sqlreader.GetValue(9).ToString();
+                bunifuCustomDataGrid1.Rows.Add(a, b, c, d, e, f);
+            }
+            Sqlcmd.Dispose();
+            Sqlreader.Close();
+            Cnn.Close();
+            Strsql = "";
+            UseWaitCursor=false;
+            splashScreenManager1.CloseWaitForm();
+
+            //((date1.Year - date2.Year) * 12) + date1.Month - date2.Month
+            //var month = (endDate - StartDate).TotalMonths;
+        }
+
+        private void bunifuFlatButton3_Click(object sender, EventArgs e)
+        {
+            lbltitle.Text = @"Reports (Debts)";
+            indicator2.Location = bunifuFlatButton3.Location;
+            panelexpiredproducts.Visible = false;
+            paneldebts.Visible = true;
+            indicator2.Visible = false;
+            panelreportcharts.Visible = false;
+            bunifuTransition3.ShowSync(indicator2);
+        }
+
+        private void bunifuImageButton32_Click(object sender, EventArgs e)
+        {
+            var frmReports = new FrmReports { StrReport = "ProdNearExpr" };
+            frmReports.ShowDialog();
+            frmReports.Close();
+        }
+
+        private async void bunifuFlatButton10_Click(object sender, EventArgs e)
+        {
+            await XCat_sales();
+            lbltitle.Text = @"Reports (Charts)";
+            indicator2.Location = bunifuFlatButton10.Location;
+            panelexpiredproducts.Visible = false;
+            paneldebts.Visible = false;
+            indicator2.Visible = false;
+            panelreportcharts.Visible = true;
+            bunifuTransition3.ShowSync(indicator2);
+        }
+
+        private async Task XCat_sales()
+        {
+            var canvas = new Canvas();
+            var datapoint = new DataPoint(BunifuDataViz._type.Bunifu_pie);
+            //bunifuDataViz3.colorSet.Add(Color.FromArgb(165, 70, 113));
+            bunifuDataViz3.ForeColor = Color.Snow;
+            //bunifuDataViz3.Font.FontFamily=;
+            await Conopen();
+            Sqlcmd.Parameters.Clear();
+            Strsql = $"Select * from V_Category_sales";
+            Sqlcmd.CommandText = Strsql;
+            Sqlcmd.Connection = Cnn;
+            Sqladapter.SelectCommand = Sqlcmd;
+            Sqlreader = Sqlcmd.ExecuteReader();
+            while (Sqlreader.Read())
+            {
+                datapoint.addLabely(Sqlreader.GetValue(0).ToString(), Sqlreader.GetValue(1).ToString());
+                //datapoint.
+            }
+            canvas.addData(datapoint);
+            bunifuDataViz3.Render(canvas);
+            Sqlcmd.Dispose();
+            Sqlreader.Close();
+            Cnn.Close();
+            Strsql = "";
+        }
+
+        private void bunifuImageButton9_Click(object sender, EventArgs e)
+        {
+            var set = new FrmSystemSettings();
+            var tr = new T_Dashboard();
+            tr.Show(this);
+            set.ShowDialog();
+            tr.Dispose();
+            Focus();
+        }
+
+        private async void bunifuImageButton39_Click(object sender, EventArgs e)
+        {
+            var canvas = new Canvas();
+            var datapoint = new DataPoint(BunifuDataViz._type.Bunifu_spline);
+            //bunifuDataViz3.colorSet.Add(Color.FromArgb(165, 70, 113));
+            bunifuDataViz3.ForeColor = Color.Snow;
+            //bunifuDataViz3.Font.FontFamily=;
+            await Conopen();
+            Sqlcmd.Parameters.Clear();
+            Strsql = $"Select * from V_Transact_Summary WHERE inv_date = '{bunifuDatepicker1.Value}' and CAST(inv_time AS TIME) BETWEEN '{dateTimePicker1.Value}' and '{dateTimePicker2.Value}'";
+            Sqlcmd.CommandText = Strsql;
+            Sqlcmd.Connection = Cnn;
+            Sqladapter.SelectCommand = Sqlcmd;
+            Sqlreader = Sqlcmd.ExecuteReader();
+            while (Sqlreader.Read())
+            {
+                datapoint.addLabely(Sqlreader.GetValue(2).ToString(), Sqlreader.GetValue(3).ToString());
+                //datapoint.
+            }
+            canvas.addData(datapoint);
+            bunifuDataViz5.Render(canvas);
+            Sqlcmd.Dispose();
+            Sqlreader.Close();
+            Cnn.Close();
+            Strsql = "";
         }
 
         private void Form1_Enter(object sender, EventArgs e)

@@ -71,7 +71,7 @@ namespace APCPOS.UserControl
             this.lblprodname.BackColor = System.Drawing.Color.Transparent;
             this.lblprodname.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblprodname.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblprodname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.lblprodname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(186)))), ((int)(((byte)(94)))));
             this.lblprodname.Location = new System.Drawing.Point(0, 99);
             this.lblprodname.Name = "lblprodname";
             this.lblprodname.Size = new System.Drawing.Size(173, 18);
@@ -203,6 +203,7 @@ namespace APCPOS.UserControl
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblstock);
             this.Controls.Add(this.bunifuPictureBox1);
+            this.DoubleBuffered = true;
             this.Name = "ListStock";
             this.Size = new System.Drawing.Size(173, 152);
             this.bunifuToolTip1.SetToolTip(this, "");

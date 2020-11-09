@@ -49,6 +49,7 @@ namespace APCPOS.Forms
             this.label22 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.userpic = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.bunifuSeparator2 = new Bunifu.Framework.UI.BunifuSeparator();
             this.label28 = new System.Windows.Forms.Label();
             this.lblinvoice = new System.Windows.Forms.Label();
@@ -99,6 +100,7 @@ namespace APCPOS.Forms
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userpic)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -115,23 +117,25 @@ namespace APCPOS.Forms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1369, 49);
+            this.panel1.Size = new System.Drawing.Size(1503, 49);
             this.panel1.TabIndex = 0;
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Roboto Lt", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.label1.Location = new System.Drawing.Point(317, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1052, 49);
+            this.label1.Size = new System.Drawing.Size(1186, 49);
             this.label1.TabIndex = 10;
             this.label1.Text = "Payments";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
             this.panel2.Controls.Add(this.bunifuImageButton9);
             this.panel2.Controls.Add(this.lbltitle);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -173,16 +177,17 @@ namespace APCPOS.Forms
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 49);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(403, 743);
+            this.panel3.Size = new System.Drawing.Size(403, 838);
             this.panel3.TabIndex = 1;
             // 
             // metroTile12
             // 
             this.metroTile12.ActiveControl = null;
-            this.metroTile12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            this.metroTile12.Location = new System.Drawing.Point(12, 548);
+            this.metroTile12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
+            this.metroTile12.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.metroTile12.Location = new System.Drawing.Point(0, 749);
             this.metroTile12.Name = "metroTile12";
-            this.metroTile12.Size = new System.Drawing.Size(380, 89);
+            this.metroTile12.Size = new System.Drawing.Size(403, 89);
             this.metroTile12.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTile12.TabIndex = 38;
             this.metroTile12.Text = "Ctrl+S";
@@ -201,7 +206,7 @@ namespace APCPOS.Forms
             this.panel7.Controls.Add(this.label22);
             this.panel7.Controls.Add(this.label24);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(0, 453);
+            this.panel7.Location = new System.Drawing.Point(0, 573);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(403, 89);
             this.panel7.TabIndex = 37;
@@ -219,8 +224,8 @@ namespace APCPOS.Forms
             // lblchange
             // 
             this.lblchange.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblchange.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblchange.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.lblchange.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblchange.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(187)))), ((int)(((byte)(0)))));
             this.lblchange.Location = new System.Drawing.Point(0, 29);
             this.lblchange.Name = "lblchange";
             this.lblchange.Size = new System.Drawing.Size(279, 29);
@@ -231,7 +236,7 @@ namespace APCPOS.Forms
             // lblpayment
             // 
             this.lblpayment.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblpayment.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblpayment.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblpayment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.lblpayment.Location = new System.Drawing.Point(0, 0);
             this.lblpayment.Name = "lblpayment";
@@ -245,7 +250,7 @@ namespace APCPOS.Forms
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.label22.Location = new System.Drawing.Point(15, 5);
+            this.label22.Location = new System.Drawing.Point(15, 8);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(86, 18);
             this.label22.TabIndex = 35;
@@ -256,7 +261,7 @@ namespace APCPOS.Forms
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.label24.Location = new System.Drawing.Point(13, 34);
+            this.label24.Location = new System.Drawing.Point(13, 36);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(66, 18);
             this.label24.TabIndex = 36;
@@ -264,6 +269,7 @@ namespace APCPOS.Forms
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.userpic);
             this.panel4.Controls.Add(this.bunifuSeparator2);
             this.panel4.Controls.Add(this.label28);
             this.panel4.Controls.Add(this.lblinvoice);
@@ -276,8 +282,23 @@ namespace APCPOS.Forms
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(403, 453);
+            this.panel4.Size = new System.Drawing.Size(403, 573);
             this.panel4.TabIndex = 2;
+            // 
+            // userpic
+            // 
+            this.userpic.AllowFocused = false;
+            this.userpic.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.userpic.BorderRadius = 60;
+            this.userpic.Image = ((System.Drawing.Image)(resources.GetObject("userpic.Image")));
+            this.userpic.IsCircle = true;
+            this.userpic.Location = new System.Drawing.Point(124, 168);
+            this.userpic.Name = "userpic";
+            this.userpic.Size = new System.Drawing.Size(120, 120);
+            this.userpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.userpic.TabIndex = 23;
+            this.userpic.TabStop = false;
+            this.userpic.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Square;
             // 
             // bunifuSeparator2
             // 
@@ -321,7 +342,7 @@ namespace APCPOS.Forms
             this.panel5.Controls.Add(this.label17);
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 184);
+            this.panel5.Location = new System.Drawing.Point(0, 304);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(403, 269);
             this.panel5.TabIndex = 16;
@@ -342,7 +363,7 @@ namespace APCPOS.Forms
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.label15.Location = new System.Drawing.Point(12, 239);
+            this.label15.Location = new System.Drawing.Point(12, 241);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(102, 18);
             this.label15.TabIndex = 20;
@@ -457,7 +478,7 @@ namespace APCPOS.Forms
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
             this.label5.Location = new System.Drawing.Point(12, 123);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(109, 23);
@@ -479,7 +500,7 @@ namespace APCPOS.Forms
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
             this.label3.Location = new System.Drawing.Point(11, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 23);
@@ -499,7 +520,7 @@ namespace APCPOS.Forms
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(403, 49);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(966, 122);
+            this.panel9.Size = new System.Drawing.Size(1100, 122);
             this.panel9.TabIndex = 2;
             // 
             // label6
@@ -510,7 +531,7 @@ namespace APCPOS.Forms
             this.label6.ForeColor = System.Drawing.Color.Snow;
             this.label6.Location = new System.Drawing.Point(0, 76);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(966, 22);
+            this.label6.Size = new System.Drawing.Size(1100, 22);
             this.label6.TabIndex = 2;
             this.label6.Text = "Insufficient  amount";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -524,7 +545,7 @@ namespace APCPOS.Forms
             this.numericUpDown1.ForeColor = System.Drawing.Color.Snow;
             this.numericUpDown1.Location = new System.Drawing.Point(0, 0);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(966, 76);
+            this.numericUpDown1.Size = new System.Drawing.Size(1100, 76);
             this.numericUpDown1.TabIndex = 1;
             this.numericUpDown1.Text = "0";
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -540,7 +561,7 @@ namespace APCPOS.Forms
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(403, 171);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(966, 621);
+            this.panel10.Size = new System.Drawing.Size(1100, 716);
             this.panel10.TabIndex = 3;
             // 
             // panel14
@@ -561,7 +582,7 @@ namespace APCPOS.Forms
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel14.Location = new System.Drawing.Point(273, 36);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(578, 585);
+            this.panel14.Size = new System.Drawing.Size(712, 680);
             this.panel14.TabIndex = 7;
             // 
             // bunifuFlatButton13
@@ -1002,16 +1023,16 @@ namespace APCPOS.Forms
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(273, 0);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(578, 36);
+            this.panel13.Size = new System.Drawing.Size(712, 36);
             this.panel13.TabIndex = 6;
             // 
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
             this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel12.Location = new System.Drawing.Point(851, 0);
+            this.panel12.Location = new System.Drawing.Point(985, 0);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(115, 621);
+            this.panel12.Size = new System.Drawing.Size(115, 716);
             this.panel12.TabIndex = 5;
             // 
             // panel11
@@ -1020,7 +1041,7 @@ namespace APCPOS.Forms
             this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel11.Location = new System.Drawing.Point(0, 0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(273, 621);
+            this.panel11.Size = new System.Drawing.Size(273, 716);
             this.panel11.TabIndex = 4;
             // 
             // menuStrip1
@@ -1067,12 +1088,13 @@ namespace APCPOS.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
-            this.ClientSize = new System.Drawing.Size(1369, 792);
+            this.ClientSize = new System.Drawing.Size(1503, 887);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmPayments";
@@ -1093,6 +1115,7 @@ namespace APCPOS.Forms
             this.panel8.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userpic)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -1166,5 +1189,6 @@ namespace APCPOS.Forms
         private ToolStripMenuItem printReceiptToolStripMenuItem;
         private MetroTile metroTile12;
         private Tulpep.NotificationWindow.PopupNotifier popup;
+        public Bunifu.UI.WinForms.BunifuPictureBox userpic;
     }
 }

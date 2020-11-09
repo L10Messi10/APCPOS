@@ -2,17 +2,22 @@
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Net.NetworkInformation;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using APCPOS.Form_Transparent;
 using APCPOS.Messageboxes;
+using APCPOS.Properties;
 using APCPOS.UserControl;
 using static APCPOS.Includes.SqlConfig;
+using static System.DateTime;
 
 namespace APCPOS.Forms
 {
     public partial class FrmPOSTransaction : Form
     {
+        bool debtOpened;
         public static string TranNum;
         private float _linediscounts;
         private static float _subtotal;
@@ -24,27 +29,32 @@ namespace APCPOS.Forms
         private bool _xProductsLoaded;
         public static bool XCustomerLoaded;
         public static bool CustomerRetrieve;
+        public static bool Hascustomer;
         public static string CustomerId;
         private int _totQty;
         private static string _prdid;
         public static string XSelectedProdId;
         private static int _prdqty;
-        public static string prod_id; 
+        public static string ProdId; 
 
         public FrmPOSTransaction()
         {
 
             InitializeComponent();
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                flowpanelproductsearch, new object[] { true });
         }
 
         private async void FrmPOSTransaction_Load(object sender, EventArgs e)
         {
+            bunifuDropdown2.Text = Settings.Default.data_display;
             splashScreenManager1.ShowWaitForm();
             timer1.Start();
             await XLoadUser();
-            await XFillProducts();
             await XFillCustomer();
             XGetSettings();
+            await XFillProducts();
             splashScreenManager1.CloseWaitForm();
         }
 
@@ -52,18 +62,18 @@ namespace APCPOS.Forms
 
         private void XGetSettings()
         {
-            bunifuiOSSwitch1.Value = Properties.Settings.Default.en_vat;
-            bunifuiOSSwitch2.Value = Properties.Settings.Default.en_debt;
-            bunifuiOSSwitch3.Value = Properties.Settings.Default.direct_print;
-            bunifuiOSSwitch4.Value = Properties.Settings.Default.hor_flow;
-            bunifuiOSSwitch5.Value = Properties.Settings.Default.dir_search;
+            bunifuiOSSwitch1.Value = Settings.Default.en_vat;
+            bunifuiOSSwitch2.Value = Settings.Default.en_debt;
+            bunifuiOSSwitch3.Value = Settings.Default.direct_print;
+            bunifuiOSSwitch4.Value = Settings.Default.hor_flow;
+            bunifuiOSSwitch5.Value = Settings.Default.dir_search;
         }
         private async Task XLoadUser()
         {
             UseWaitCursor = true;
             await Conopen();
             Sqlcmd.Parameters.Clear();
-            Strsql = "Select * from tbl_Users where u_name='" + username + "'";
+            Strsql = "Select TOP "+ Settings.Default.data_display + " * from tbl_Users where u_name='" + username + "'";
             Sqlcmd.CommandText = Strsql;
             Sqlcmd.Connection = Cnn;
             Sqladapter.SelectCommand = Sqlcmd;
@@ -95,7 +105,8 @@ namespace APCPOS.Forms
                 lbltotaltax = {Text = _totVat.ToString("N")},
                 AmountDue = _amntdue,
                 Totitems = Convert.ToInt32(quantity.Text),
-                lblamntdue = {Text = @"Php. " + _amntdue.ToString("N")}
+                lblamntdue = {Text = @"Php. " + _amntdue.ToString("N")},
+                userpic = {Image = userpic.Image}
             };
             payments.ShowDialog();
             Focus();
@@ -124,13 +135,13 @@ namespace APCPOS.Forms
             CustomerId = null;
             CustomerRetrieve = false;
             ms.Show(this);
-            ok.OkDescription = "Success";
-            ok.titletxt.Text = @"Success";
+            ok.OkDescription = "Error";
+            ok.titletxt.Text = @"Void";
             ok.msgtxt.Text = @"Transaction cancelled!";
             ok.ShowDialog();
             ms.Close();
             popup.TitleText = @"Information";
-            popup.Image = Properties.Resources.information;
+            popup.Image = Resources.information;
             popup.ContentText = @"The last transaction was not successful!";
             popup.Popup();
             UseWaitCursor = false;
@@ -142,9 +153,9 @@ namespace APCPOS.Forms
             {
                 UseWaitCursor = true;
                 await Conopen();
-                flowpanelproducts.FlowDirection = Properties.Settings.Default.hor_flow ? FlowDirection.TopDown : FlowDirection.LeftToRight;
+                flowpanelproducts.FlowDirection = Settings.Default.hor_flow ? FlowDirection.TopDown : FlowDirection.LeftToRight;
                 Sqlcmd.Parameters.Clear();
-                Strsql = "Select TOP 50 * from V_Products where prod_fs = '" + "1" + "'";
+                Strsql = "Select TOP " + Settings.Default.data_display + " * from V_Products where prod_fs = '" + "1" + "' AND prod_stock >= 1";
                 Sqlcmd.CommandText = Strsql;
                 Sqlcmd.Connection = Cnn;
                 Sqladapter.SelectCommand = Sqlcmd;
@@ -177,6 +188,7 @@ namespace APCPOS.Forms
                 flowpanelproductsearch.Visible = false;
                 _xProductsLoaded = true;
                 UseWaitCursor = false;
+                bunifuTextBox1.Focus();
             }
         }
 
@@ -184,11 +196,11 @@ namespace APCPOS.Forms
         {
             if (!XCustomerLoaded)
             {
-                flowpanelcustomer.FlowDirection = Properties.Settings.Default.hor_flow ? FlowDirection.TopDown : FlowDirection.LeftToRight;
+                flowpanelcustomer.FlowDirection = Settings.Default.hor_flow ? FlowDirection.TopDown : FlowDirection.LeftToRight;
                 UseWaitCursor = true;
                 await Conopen();
                 Sqlcmd.Parameters.Clear();
-                Strsql = "Select TOP 50 * from v_Customer";
+                Strsql = "Select TOP "+ Settings.Default.data_display + " * from v_Customer";
                 Sqlcmd.CommandText = Strsql;
                 Sqlcmd.Connection = Cnn;
                 Sqladapter.SelectCommand = Sqlcmd;
@@ -227,6 +239,7 @@ namespace APCPOS.Forms
             UseWaitCursor = true;
             _subtotal = 0;
             _totQty = 0;
+            _linediscounts = 0;
             await Conopen();
             Strsql = "Select * from V_Receipt where Inv_Num='" + lblinvoice.Text + "'";
             Sqlcmd.CommandText = Strsql;
@@ -238,7 +251,8 @@ namespace APCPOS.Forms
             {
                 var qty = Convert.ToInt32(Sqlreader.GetValue(3).ToString());
                 _totQty += qty;
-                _linediscounts = Convert.ToSingle(Sqlreader.GetValue(4).ToString());
+                var disc = Convert.ToSingle(Sqlreader.GetValue(4).ToString());
+                _linediscounts += disc;
                 var subTot = Convert.ToSingle(Sqlreader.GetValue(6).ToString());
                 _subtotal += subTot;
                 //*********************
@@ -270,7 +284,7 @@ namespace APCPOS.Forms
                 metroTile11.Enabled = true;
             }
             //******************Retrieve VAT****************
-            if (Properties.Settings.Default.en_vat)
+            if (Settings.Default.en_vat)
             {
                 await Conopen();
                 Strsql = "Select * from tbl_vat";
@@ -301,66 +315,145 @@ namespace APCPOS.Forms
             amntdue.Text = @"Php. " + _amntdue.ToString("N");
             FillCart = false;
             UseWaitCursor = false;
+            bunifuTextBox1.Text = "";
+            bunifuTextBox1.Focus();
 
         }
 
         private async Task XSearchProducts()
         {
-            flowpanelproducts.FlowDirection = Properties.Settings.Default.hor_flow ? FlowDirection.TopDown : FlowDirection.LeftToRight;
+            flowpanelproducts.FlowDirection = Settings.Default.hor_flow ? FlowDirection.TopDown : FlowDirection.LeftToRight;
             UseWaitCursor = true;
             await Conopen();
+            int rescount;
             Sqlcmd.Parameters.Clear();
-            Strsql = "Select * from V_Products where Prod_Number+Prod_Barcode+Prod_Name+cat_desc like '%" + bunifuTextBox1.Text + "%' and prod_fs = '" + "1" + "'";
+            Strsql = "Select * from V_Products where Prod_Number+Prod_Barcode+Prod_Name+cat_desc like '%" + bunifuTextBox1.Text + "%' and prod_fs = '" + "1" + "' AND prod_stock >= 1";
             Sqlcmd.CommandText = Strsql;
             Sqlcmd.Connection = Cnn;
             Sqladapter.SelectCommand = Sqlcmd;
             Sqlreader = Sqlcmd.ExecuteReader();
             var dt = new DataTable();
             dt.Load(Sqlreader);
+            rescount = dt.Rows.Count;
             if (dt.Rows.Count != 0)
             {
-                _xProductsLoaded = false;
-                flowpanelproducts.Controls.Clear();
-                for (var i = 0; i < dt.Rows.Count; i++)
+                if (dt.Rows.Count != 1)
                 {
-                    var a = new ListTransacProd();
-                    byte[] img = (byte[])(dt.Rows[i]["Prod_Img"]);
-                    if (img.Length != 0)
+                    _xProductsLoaded = false;
+                    flowpanelproducts.Controls.Clear();
+                    for (var i = 0; i < dt.Rows.Count; i++)
                     {
-                        MemoryStream ms = new MemoryStream(img);
-                        a.bunifuPictureBox1.Image = Image.FromStream(ms);
+                        var a = new ListTransacProd();
+                        byte[] img = (byte[])(dt.Rows[i]["Prod_Img"]);
+                        if (img.Length != 0)
+                        {
+                            MemoryStream ms = new MemoryStream(img);
+                            a.bunifuPictureBox1.Image = Image.FromStream(ms);
+                        }
+
+                        ProdId = dt.Rows[i]["Prod_Number"].ToString();
+                        a.label2.Text = dt.Rows[i]["Prod_Number"].ToString();
+                        a.lblprodname.Text = dt.Rows[i]["Prod_Name"].ToString();
+                        a.label1.Text = dt.Rows[i]["Prod_Stock"].ToString();
+                        a.label6.Text = @"Php. " + dt.Rows[i]["Prod_Price"];
+                        flowpanelproducts.Controls.Add(a);
                     }
-                    prod_id = dt.Rows[i]["Prod_Number"].ToString();
-                    a.label2.Text = dt.Rows[i]["Prod_Number"].ToString();
-                    a.lblprodname.Text = dt.Rows[i]["Prod_Name"].ToString();
-                    a.label1.Text = dt.Rows[i]["Prod_Stock"].ToString();
-                    a.label6.Text = @"Php. " + dt.Rows[i]["Prod_Price"];
-                    flowpanelproducts.Controls.Add(a);
                 }
+                else
+                {
+                    for (var i = 0; i < dt.Rows.Count; i++)
+                    {
+                        ProdId = dt.Rows[i]["Prod_Number"].ToString();
+                    }
+                }
+                
             }
             else
             {
                 _xProductsLoaded = true;
                 popup.TitleText = @"Warning";
-                popup.Image = Properties.Resources.warning;
+                popup.Image = Resources.warning;
                 popup.ContentText = @"No products found on your query, please try searching again!";
                 popup.Popup();
+                bunifuTextBox1.Text = "";
                 bunifuTextBox1.Focus();
             }
-            
+
             Sqlcmd.Dispose();
             Sqlreader.Close();
             Cnn.Close();
             Strsql = "";
             UseWaitCursor = false;
+            if (rescount == 1)
+            {
+                if (TranNum != null)
+                {
+                    Sqlcmd.Parameters.Clear();
+                    await Conopen();
+                    Strsql = "Select * from tbl_Transaction_Detail where Inv_Num='" + TranNum + "' AND Prod_Number = '" + ProdId + "'";
+                    Sqlcmd.CommandText = Strsql;
+                    Sqlcmd.Connection = Cnn;
+                    Sqladapter.SelectCommand = Sqlcmd;
+                    Sqlreader = Sqlcmd.ExecuteReader();
+                    //metroComboBox1.Items.Clear();
+                    if (Sqlreader.Read())
+                    {
+                        var ms = new T_Message();
+                        var ok = new Frm_OK();
+                        ms.Show(this);
+                        ok.OkDescription = "Warn";
+                        ok.titletxt.Text = @"Warning";
+                        ok.msgtxt.Text = @"This product is already in the cart. Are you trying to modify it's quantity? If so, please select set quantity option in the cart panel.";
+                        ok.ShowDialog();
+                        ms.Close();
+                        ProdId = null;
+                        bunifuTextBox1.Text = "";
+                        bunifuTextBox1.Focus();
+                    }
+                    else
+                    {
+                        var b = new T_Transaction();
+                        var a = new FrmAddToCart();
+                        a.lblprodID.Text = ProdId;
+                        b.Show(this);
+                        a.ShowDialog();
+                        //c.lblinvoice.Text = a.inv_num;
+                        b.Dispose();
+                        a.Dispose();
+                        Focus();
+                        bunifuTextBox1.Text = "";
+                        bunifuTextBox1.Focus();
+                    }
+
+                    Sqlcmd.Dispose();
+                    Sqlreader.Close();
+                    Cnn.Close();
+                    Strsql = "";
+                }
+                else
+                {
+                    var b = new T_Transaction();
+                    var a = new FrmAddToCart();
+                    a.lblprodID.Text = ProdId;
+                    b.Show(this);
+                    a.ShowDialog();
+                    //c.lblinvoice.Text = a.inv_num;
+                    b.Dispose();
+                    a.Dispose();
+                    Focus();
+                    bunifuTextBox1.Text = "";
+                    bunifuTextBox1.Focus();
+                }
+            }
         }
+
         private async Task XSearchProductsFlyout()
         {
             var openpanel = false;
             UseWaitCursor = true;
             await Conopen();
             Sqlcmd.Parameters.Clear();
-            Strsql = "Select * from V_Products where Prod_Number+Prod_Barcode+Prod_Name+cat_desc like '%" + bunifuTextBox1.Text + "%' and prod_fs = '" + "1" + "'";
+            Strsql = "Select * from V_Products where Prod_Number+Prod_Barcode+Prod_Name+cat_desc like '%" + bunifuTextBox1.Text + "%' and prod_fs = '" + "1" + "' AND prod_stock >= 1";
             Sqlcmd.CommandText = Strsql;
             Sqlcmd.Connection = Cnn;
             Sqladapter.SelectCommand = Sqlcmd;
@@ -382,7 +475,7 @@ namespace APCPOS.Forms
                         var ms = new MemoryStream(img);
                         a.bunifuPictureBox1.Image = Image.FromStream(ms);
                     }
-                    prod_id = dt.Rows[i]["Prod_Number"].ToString();
+                    ProdId = dt.Rows[i]["Prod_Number"].ToString();
                     a.label2.Text = dt.Rows[i]["Prod_Number"].ToString();
                     a.lblprodname.Text = dt.Rows[i]["Prod_Name"].ToString();
                     a.label1.Text = dt.Rows[i]["Prod_Stock"].ToString();
@@ -393,11 +486,10 @@ namespace APCPOS.Forms
             else
             {
                 flowpanelproductsearch.Controls.Clear();
-                openpanel = false;
                 _xProductsLoaded = true;
-                prod_id = null;
+                ProdId = null;
                 popup.TitleText = @"Warning";
-                popup.Image = Properties.Resources.warning;
+                popup.Image = Resources.warning;
                 popup.ContentText = @"No products found on your query, please try searching again!";
                 popup.Popup();
                 bunifuTextBox1.Text = "";
@@ -408,7 +500,7 @@ namespace APCPOS.Forms
             Cnn.Close();
             Strsql = "";
             UseWaitCursor = false;
-            if (Properties.Settings.Default.dir_search == false)
+            if (Settings.Default.dir_search == false)
             {
                 flowpanelproductsearch.Top = bunifuTextBox1.Top;
                 flowpanelproductsearch.Location = panel23.Location;
@@ -420,15 +512,64 @@ namespace APCPOS.Forms
             {
                 if (flowpanelproductsearch.Controls.Count == 1)
                 {
-                    var b = new T_Transaction();
-                    var a = new FrmAddToCart {lblprodID = {Text = prod_id}};
-                    b.Show(this);
-                    a.ShowDialog();
-                    b.Dispose();
-                    a.Dispose();
-                    _xProductsLoaded = false;
-                    bunifuTextBox1.Text = "";
-                    Focus();
+                    if (TranNum != null)
+                    {
+                        Sqlcmd.Parameters.Clear();
+                        await Conopen();
+                        Strsql = "Select * from tbl_Transaction_Detail where Inv_Num='" + TranNum + "' AND Prod_Number = '" + ProdId + "'";
+                        Sqlcmd.CommandText = Strsql;
+                        Sqlcmd.Connection = Cnn;
+                        Sqladapter.SelectCommand = Sqlcmd;
+                        Sqlreader = Sqlcmd.ExecuteReader();
+                        //metroComboBox1.Items.Clear();
+                        if (Sqlreader.Read())
+                        {
+                            var ms = new T_Message();
+                            var ok = new Frm_OK();
+                            ms.Show(this);
+                            ok.OkDescription = "Warn";
+                            ok.titletxt.Text = @"Warning";
+                            ok.msgtxt.Text = @"This product is already in the cart. Are you trying to modify it's quantity? If so, please select set quantity option in the cart panel.";
+                            ok.ShowDialog();
+                            ms.Close();
+                            ProdId = null;
+                            bunifuTextBox1.Text = "";
+                            bunifuTextBox1.Focus();
+                        }
+                        else
+                        {
+                            var b = new T_Transaction();
+                            var a = new FrmAddToCart();
+                            a.lblprodID.Text = ProdId;
+                            b.Show(this);
+                            a.ShowDialog();
+                            //c.lblinvoice.Text = a.inv_num;
+                            b.Dispose();
+                            a.Dispose();
+                            Focus();
+                            bunifuTextBox1.Text = "";
+                            bunifuTextBox1.Focus();
+                        }
+                        Sqlcmd.Dispose();
+                        Sqlreader.Close();
+                        Cnn.Close();
+                        Strsql = "";
+                    }
+                    else
+                    {
+                        var b = new T_Transaction();
+                        var a = new FrmAddToCart();
+                        a.lblprodID.Text = ProdId;
+                        b.Show(this);
+                        a.ShowDialog();
+                        //c.lblinvoice.Text = a.inv_num;
+                        b.Dispose();
+                        a.Dispose();
+                        Focus();
+                        bunifuTextBox1.Text = "";
+                        bunifuTextBox1.Focus();
+                    }
+                    //
                 }
                 else
                 {
@@ -492,6 +633,7 @@ namespace APCPOS.Forms
             Sqlreader.Close();
             Cnn.Close();
             Strsql = "";
+            //CustomerRetrieve = false;
         }
         private static async Task XretriveProduct()
         {
@@ -547,7 +689,7 @@ namespace APCPOS.Forms
         }
         private async Task XSearchCustomer()
         {
-            flowpanelcustomer.FlowDirection = Properties.Settings.Default.hor_flow ? FlowDirection.TopDown : FlowDirection.LeftToRight;
+            flowpanelcustomer.FlowDirection = Settings.Default.hor_flow ? FlowDirection.TopDown : FlowDirection.LeftToRight;
             await Conopen();
             Sqlcmd.Parameters.Clear();
             Strsql = "Select TOP 50 * from v_Customer where cus_id+cus_fullname+cus_address+cus_mobile+cus_email like '%" + bunifuTextBox1.Text + "%' order by cus_lname";
@@ -582,7 +724,7 @@ namespace APCPOS.Forms
             XCustomerLoaded = false;
         }
         #endregion
-        protected override bool ProcessCmdKey(ref Message _message, Keys keyData)
+        protected override bool ProcessCmdKey(ref Message message, Keys keyData)
         {
             // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
             switch (keyData)
@@ -603,6 +745,7 @@ namespace APCPOS.Forms
                 case Keys.F4:
                     break;
                 case Keys.F5:
+                    bunifuTextBox1_OnIconRightClick(null,null);
                     break;
                 case Keys.F6:
                     break;
@@ -654,6 +797,7 @@ namespace APCPOS.Forms
                         if (ques.DialogResult == DialogResult.Yes)
                         {
                             tQues.Close();
+                            XSaveToNotif();
                             XVoid();
                             flowpanelcart.Visible = false;
                             flowpanelproducts.Visible = true;
@@ -684,6 +828,7 @@ namespace APCPOS.Forms
         private void btnaction_Click(object sender, EventArgs e)
         {
             label20.Visible = false;
+            flowpaneldebt.Visible = false;
             panelvatsettings.Visible = false;
             flowpanelcart.Visible = true;
             flowpanelproducts.Visible = false;
@@ -701,6 +846,7 @@ namespace APCPOS.Forms
         private void btnorder_Click(object sender, EventArgs e)
         {
             label20.Visible = false;
+            flowpaneldebt.Visible = false;
             panelvatsettings.Visible = false;
             flowpanelcart.Visible = false;
             flowpanelproducts.Visible = true;
@@ -719,6 +865,7 @@ namespace APCPOS.Forms
         {
             if (flowpanelcart.RowCount == 0)
             {
+                flowpaneldebt.Visible = false;
                 label20.Visible = true;
                 panelvatsettings.Visible = true;
                 flowpanelcart.Visible = false;
@@ -735,7 +882,7 @@ namespace APCPOS.Forms
             else
             {
                 popup.TitleText = @"Error";
-                popup.Image = Properties.Resources.error;
+                popup.Image = Resources.error;
                 popup.ContentText = @"Cannot open settings when there's a Pending transaction!";
                 popup.Popup();
             }
@@ -744,46 +891,62 @@ namespace APCPOS.Forms
 
         private async void FrmPOSTransaction_Activated(object sender, EventArgs e)
         {
-            lblinvoice.Text = TranNum;
-            label1.Text = CustomerId;
-            if (NewTrans)
+            if (Connected)
             {
-                lblinvoice.Text = "";
-                TranNum = null;
-                NewTrans = false;
-                _totQty = 0;
-                btnorder_Click(null, null);
-                bunifuTextBox1.Focus();
-                if (bunifuTextBox1.Text != "")
+                timer1.Start();
+                lblinvoice.Text = TranNum;
+                label1.Text = CustomerId;
+                if (NewTrans)
                 {
-                    _xProductsLoaded = false;
-                    splashScreenManager1.ShowWaitForm();
-                    await XFillProducts();
-                    splashScreenManager1.CloseWaitForm();
+                    lblinvoice.Text = "";
+                    TranNum = null;
+                    NewTrans = false;
+                    _totQty = 0;
+                    btnorder_Click(null, null);
+                    bunifuTextBox1.Focus();
+                    if (bunifuTextBox1.Text != "")
+                    {
+                        _xProductsLoaded = false;
+                        splashScreenManager1.ShowWaitForm();
+                        await XFillProducts();
+                        splashScreenManager1.CloseWaitForm();
+                    }
+
+                    Focus();
+                    Refresh();
                 }
 
-                Focus();
-                Refresh();
-            }
-
-            if (FillCart)
-            {
-                await XFillCart();
-            }
-            if (CustomerRetrieve)
-            {
-                await XRetrieveCustomerinfo();
-                Refresh();
+                if (FillCart)
+                {
+                    await XFillCart();
+                }
+                if (CustomerRetrieve)
+                {
+                    await XRetrieveCustomerinfo();
+                    Refresh();
+                }
+                else
+                {
+                    CustomerId = null;
+                    label1.Text = "";
+                    label2.Text = "";
+                    bunifuPictureBox1.Image = null;
+                    label3.Text = "";
+                    label4.Text = "";
+                }
             }
             else
             {
-                CustomerId = null;
-                label1.Text = "";
-                label2.Text = "";
-                bunifuPictureBox1.Image = null;
-                label3.Text = "";
-                label4.Text = "";
+                Cnn.Close();
+                timer1.Stop();
+                var tr = new T_Dashboard();
+                var svr = new FrmServerSettings();
+                tr.Show(this);
+                svr.ShowDialog();
+                tr.Dispose();
+                Focus();
             }
+            
 
         }
 
@@ -801,31 +964,6 @@ namespace APCPOS.Forms
                 {
                     await XSearchProducts();
                     //_xProductsLoaded = false;
-                    if (Properties.Settings.Default.dir_search == false)
-                    {
-
-                        flowpanelproductsearch.Top = bunifuTextBox1.Top;
-                        flowpanelproductsearch.Location = panel23.Location;
-                        flowpanelproductsearch.Top += 50;
-                        bunifuTransition1.ShowSync(flowpanelproductsearch);
-                        bunifuTextBox1.Focus();
-                    }
-                    else
-                    {
-                        if (flowpanelproducts.Controls.Count == 1)
-                        {
-                            var b = new T_Transaction();
-                            var a = new FrmAddToCart();
-                            a.lblprodID.Text = prod_id;
-                            b.Show(this);
-                            a.ShowDialog();
-                            //c.lblinvoice.Text = a.inv_num;
-                            _xProductsLoaded = false;
-                            b.Dispose();
-                            a.Dispose();
-                            Focus();
-                        }
-                    }
                 }
                 else if (flowpanelcustomer.Visible && flowpanelcart.Visible == false && flowpanelproducts.Visible == false)
                 {
@@ -837,27 +975,29 @@ namespace APCPOS.Forms
 
         private async void bunifuTextBox1_OnIconRightClick(object sender, EventArgs e)
         {
-            if (bunifuTextBox1.Text != "")
+            if (bunifuTextBox1.Text == "") return;
+            if (flowpanelproducts.Visible)
             {
-                if (flowpanelproducts.Visible)
-                {
-                    bunifuTextBox1.Text = "";
-                    splashScreenManager1.ShowWaitForm();
-                    await XFillProducts();
-                    splashScreenManager1.CloseWaitForm();
-                }
-                else if (flowpanelcustomer.Visible)
-                {
-                    bunifuTextBox1.Text = "";
-                    splashScreenManager1.ShowWaitForm();
-                    await XFillCustomer();
-                    splashScreenManager1.CloseWaitForm();
-                }
-                else if (flowpanelcart.Visible)
-                {
-                    bunifuTextBox1.Text = "";
-                    bunifuTransition1.HideSync(flowpanelproductsearch);
-                }
+                bunifuTextBox1.Text = "";
+                splashScreenManager1.ShowWaitForm();
+                await XFillProducts();
+                splashScreenManager1.CloseWaitForm();
+            }
+            else if (flowpanelcustomer.Visible)
+            {
+                bunifuTextBox1.Text = "";
+                splashScreenManager1.ShowWaitForm();
+                await XFillCustomer();
+                splashScreenManager1.CloseWaitForm();
+            }
+            else if (flowpanelcart.Visible)
+            {
+                bunifuTextBox1.Text = "";
+                bunifuTransition1.HideSync(flowpanelproductsearch);
+            }
+            else if (label20.Visible)
+            {
+                bunifuTextBox1.Text = "";
             }
         }
 
@@ -867,6 +1007,7 @@ namespace APCPOS.Forms
             label20.Visible = false;
             panelvatsettings.Visible = false;
             flowpanelcart.Visible = false;
+            flowpaneldebt.Visible = false;
             flowpanelproducts.Visible = false;
             flowpanelcustomer.Visible = true;
             panelaction.Visible = false;
@@ -899,7 +1040,7 @@ namespace APCPOS.Forms
 
         }
 
-        private void metroTile11_Click(object sender, EventArgs e)
+        private  void metroTile11_Click(object sender, EventArgs e)
         {
             var ques = new Frm_Question();
             var tQues = new T_Question();
@@ -911,7 +1052,9 @@ namespace APCPOS.Forms
             if (ques.DialogResult == DialogResult.Yes)
             {
                 tQues.Dispose();
+                XSaveToNotif();
                 XVoid();
+                flowpaneldebt.Visible = false;
                 flowpanelcart.Visible = false;
                 flowpanelproducts.Visible = true;
                 flowpanelcustomer.Visible = false;
@@ -920,6 +1063,7 @@ namespace APCPOS.Forms
                 panelcustomer.Visible = false;
                 indicator.Top = btnorder.Top;
                 indicator.Visible = false;
+                Hascustomer = false;
                 lbltitle.Text = @"POS Transaction(Products)";
                 bunifuTransition1.ShowSync(indicator);
                 //NewTrans = true;
@@ -931,6 +1075,28 @@ namespace APCPOS.Forms
             {
                 tQues.Dispose();
             }
+        }
+
+        private async void XSaveToNotif()
+        {
+            logaction = username + " has voided a transaction with the transaction number " + lblinvoice.Text +".";
+            Sqlcmd.Parameters.Clear();
+            await Conopen();
+            Strsql =
+                "Insert into tbl_notification(not_title, not_desc, not_date) " +
+                "Values(@not_title, @not_desc, @not_date)";
+            Sqlcmd.Parameters.AddWithValue("@not_title",
+                "Voided Transaction");
+            Sqlcmd.Parameters.AddWithValue("@not_desc",
+                logaction);
+            Sqlcmd.Parameters.AddWithValue("@not_date",
+                Now.ToString("G"));
+            Sqlcmd.Connection = Cnn;
+            Sqlcmd.CommandText = Strsql;
+            Sqlcmd.ExecuteNonQuery();
+            Sqlcmd.Dispose();
+            Cnn.Close();
+            Strsql = string.Empty;
         }
 
         private void FrmPOSTransaction_Resize(object sender, EventArgs e)
@@ -954,7 +1120,7 @@ namespace APCPOS.Forms
 
         private async void metroTile14_Click(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.en_debt)
+            if (Settings.Default.en_debt)
             {
                 if (lblinvoice.Text != "")
                 {
@@ -963,9 +1129,7 @@ namespace APCPOS.Forms
                         var msg = new T_Message();
                         var tQuestion = new T_Question();
                         var ok = new Frm_OK();
-                        var question = new Frm_Question();
-                        question.titletxt.Text = @"Confirmation";
-                        question.msgtxt.Text = @"This action will save this transaction. Do you want to continue this transaction?";
+                        var question = new Frm_Question {titletxt = {Text = @"Confirmation"}, msgtxt = {Text = @"This action will save this transaction. Do you want to continue this transaction?"}};
                         tQuestion.Show(this);
                         question.ShowDialog();
                         tQuestion.Close();
@@ -1002,6 +1166,7 @@ namespace APCPOS.Forms
                         ok.msgtxt.Text = @"Transaction successful! Click OK to send an email report and make sure that this PC has an internet connection.";
                         msg.Show(this);
                         ok.ShowDialog();
+                        //Need to send an email
                         NewTrans = true;
                         FillCart = true;
                         CustomerRetrieve = false;
@@ -1025,7 +1190,7 @@ namespace APCPOS.Forms
                     else
                     {
                         popup.TitleText = "Warning";
-                        popup.Image = Properties.Resources.warning;
+                        popup.Image = Resources.warning;
                         popup.ContentText = "Can't add to debt. Please select first a customer to add this transaction to it's debt!";
                         popup.Popup();
                         Focus();
@@ -1034,7 +1199,7 @@ namespace APCPOS.Forms
                 else
                 {
                     popup.TitleText = "Warning";
-                    popup.Image = Properties.Resources.warning;
+                    popup.Image = Resources.warning;
                     popup.ContentText = "Please Add a product and select a customer first to continue with this transaction!";
                     popup.Popup();
                     Focus();
@@ -1043,7 +1208,7 @@ namespace APCPOS.Forms
             else
             {
                 popup.TitleText = "Warning";
-                popup.Image = Properties.Resources.warning;
+                popup.Image = Resources.warning;
                 popup.ContentText = "Debt is Temporarily disabled, Please try again later.";
                 popup.Popup();
             }
@@ -1051,8 +1216,6 @@ namespace APCPOS.Forms
 
         private void metroTile15_Click(object sender, EventArgs e)
         {
-            var ms = new T_Message();
-            var ok = new Frm_OK();
             var ques = new Frm_Question();
             var tQues = new T_Question();
             if (label1.Text == "") return;
@@ -1065,7 +1228,7 @@ namespace APCPOS.Forms
                 
                 CustomerRetrieve = false;
                 CustomerId = null;
-                
+                Hascustomer = false;
                 tQues.Dispose();
                 Focus();
             }
@@ -1082,7 +1245,8 @@ namespace APCPOS.Forms
             if (flowpanelproductsearch.Visible)
             {
                 bunifuTextBox1.Text = "";
-                bunifuTransition1.HideSync(flowpanelproductsearch);
+                flowpanelproductsearch.Visible = false;
+                //bunifuTransition1.HideSync(flowpanelproductsearch);
             }
         }
 
@@ -1105,30 +1269,30 @@ namespace APCPOS.Forms
         {
             if (bunifuiOSSwitch3.Value)
             {
-                Properties.Settings.Default.direct_print = true;
-                Properties.Settings.Default.Save();
+                Settings.Default.direct_print = true;
+                Settings.Default.Save();
             }
-            else Properties.Settings.Default.direct_print = false;
-            Properties.Settings.Default.Save();
+            else Settings.Default.direct_print = false;
+            Settings.Default.Save();
         }
 
         private void bunifuiOSSwitch2_OnValueChange(object sender, EventArgs e)
         {
             if (bunifuiOSSwitch2.Value)
             {
-                Properties.Settings.Default.en_debt = true;
-                Properties.Settings.Default.Save();
+                Settings.Default.en_debt = true;
+                Settings.Default.Save();
             }
-            else Properties.Settings.Default.en_debt = false;
-            Properties.Settings.Default.Save();
+            else Settings.Default.en_debt = false;
+            Settings.Default.Save();
         }
 
         private async void bunifuiOSSwitch1_OnValueChange(object sender, EventArgs e)
         {
             if (bunifuiOSSwitch1.Value)
             {
-                Properties.Settings.Default.en_vat = true;
-                Properties.Settings.Default.Save();
+                Settings.Default.en_vat = true;
+                Settings.Default.Save();
                 await Conopen();
                 Strsql = "Select * from tbl_vat";
                 Sqlcmd.CommandText = Strsql;
@@ -1145,8 +1309,8 @@ namespace APCPOS.Forms
                 Cnn.Close();
                 Strsql = "";
             }
-            else Properties.Settings.Default.en_vat = false;
-            Properties.Settings.Default.Save();
+            else Settings.Default.en_vat = false;
+            Settings.Default.Save();
             _vat = 0;
             VAT.Text = _vat.ToString("N");
         }
@@ -1158,8 +1322,8 @@ namespace APCPOS.Forms
 
         private void bunifuiOSSwitch4_OnValueChange(object sender, EventArgs e)
         {
-            Properties.Settings.Default.hor_flow = bunifuiOSSwitch4.Value;
-            Properties.Settings.Default.Save();
+            Settings.Default.hor_flow = bunifuiOSSwitch4.Value;
+            Settings.Default.Save();
         }
 
         private async void metroTile8_Click(object sender, EventArgs e)
@@ -1176,6 +1340,7 @@ namespace APCPOS.Forms
                     ques.ShowDialog();
                     if (ques.DialogResult != DialogResult.Yes) return;
                     await Conopen();
+                    Sqlcmd.Parameters.Clear();
                     Strsql =
                         "Delete from tbl_Transaction_Detail where inv_num='" + lblinvoice.Text +"' and prod_number='" + XSelectedProdId +"'";
                     Sqlcmd.Connection = Cnn;
@@ -1223,7 +1388,7 @@ namespace APCPOS.Forms
             }
             else
             {
-                popup.Image = Properties.Resources.error;
+                popup.Image = Resources.error;
                 popup.TitleText = @"Information";
                 popup.ContentText = @"There are no lines to remove. No transaction has been made yet.";
                 popup.Popup();
@@ -1273,14 +1438,38 @@ namespace APCPOS.Forms
 
         private void bunifuiOSSwitch5_OnValueChange(object sender, EventArgs e)
         {
-            Properties.Settings.Default.dir_search = bunifuiOSSwitch5.Value;
-            Properties.Settings.Default.Save();
+            Settings.Default.dir_search = bunifuiOSSwitch5.Value;
+            Settings.Default.Save();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lbldate.Text = DateTime.Now.ToString("D");
-            lbltime.Text = DateTime.Now.ToString("h:mm:ss tt");
+            lbldate.Text = Now.ToString("D");
+            lbltime.Text = Now.ToString("h:mm:ss tt");
+            XPingServer();
+        }
+        private void XPingServer()
+        {
+            try
+            {
+                var p = new Ping();
+                var s = IP_Add;
+                var r = p.Send(s);
+                networkimg.Image = r != null && r.Status == IPStatus.Success ? Resources.wifi_on : Resources.wifi_off;
+            }
+            catch
+            {
+                networkimg.Image = Resources.wifi_off;
+                Cnn.Close();
+                timer1.Stop();
+                var tr = new T_Transaction();
+                var svr = new FrmServerSettings();
+                tr.Show(this);
+                svr.ShowDialog();
+                tr.Dispose();
+                Focus();
+            }
+
         }
 
         private void userpic_Click(object sender, EventArgs e)
@@ -1297,6 +1486,104 @@ namespace APCPOS.Forms
         {
             metroContextMenu1.Show(lbldesignation, 0, lbldesignation.Height);
         }
+
+        private void metroTile7_Click(object sender, EventArgs e)
+        {
+            if (flowpanelcart.RowCount != 0)
+            {
+                if (XSelectedProdId != null)
+                {
+                    var t = new T_Transaction();
+                    var dis = new FrmSetLineDiscount();
+                    t.Show(this);
+                    dis.lblprodname.Text = (string)flowpanelcart.SelectedRows[0].Cells[1].Value;
+                    dis.proid = XSelectedProdId;
+                    dis.inv_num = lblinvoice.Text;
+                    dis.ShowDialog();
+                    t.Dispose();
+                    XSelectedProdId = null;
+                    Focus();
+                }
+                else
+                {
+                    popup.Image = Resources.error;
+                    popup.TitleText = @"Information";
+                    popup.ContentText = @"Please Select a Line and set the discount!";
+                    popup.Popup();
+                }
+            }
+            else
+            {
+                popup.Image = Resources.error;
+                popup.TitleText = @"Information";
+                popup.ContentText = @"There are no lines. No transaction has been made yet.";
+                popup.Popup();
+            }
+        }
+
+        private void bunifuTextBox1_Enter(object sender, EventArgs e)
+        {
+            bunifuTextBox1.IconRight = bunifuTextBox1.Text != "" ? Resources.cancel1 : Resources.search;
+        }
+
+        private void bunifuTextBox1_TextChange(object sender, EventArgs e)
+        {
+            bunifuTextBox1.IconRight = bunifuTextBox1.Text != "" ? Resources.cancel1 : Resources.search;
+        }
+
+        private void bunifuDropdown2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Settings.Default.data_display = bunifuDropdown2.Text;
+            Settings.Default.Save();
+        }
+
+        private void metroTile18_Click(object sender, EventArgs e)
+        {
+            
+            if (debtOpened == false)
+            {
+                if (CustomerId != null)
+                {
+                    label20.Visible = false;
+                    panelvatsettings.Visible = false;
+                    flowpanelcart.Visible = false;
+                    flowpaneldebt.Visible = true;
+                    flowpanelproducts.Visible = false;
+                    flowpanelcustomer.Visible = false;
+                    panelaction.Visible = false;
+                    panelorder.Visible = false;
+                    panelcustomer.Visible = true;
+                    indicator.Top = btncustomers.Top;
+                    lbltitle.Text = @"POS Transaction(Customers - Debt)";
+                    debtOpened = true;
+                }
+                else
+                {
+                    popup.Image = Resources.error;
+                    popup.TitleText = @"Customer";
+                    popup.ContentText = @"Please select a customer first!";
+                    popup.Popup();
+                }
+            }
+            else
+            {
+                flowpaneldebt.Visible = false;
+                flowpanelcustomer.Visible = true;
+                debtOpened = false;
+            }
+            
+        }
+
+        private void flowpaneldebt_Leave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void flowpaneldebt_MouseLeave(object sender, EventArgs e)
+        {
+            flowpaneldebt.Visible = false;
+            flowpanelcustomer.Visible = true;
+        }
     }
 }
 
@@ -1310,7 +1597,7 @@ namespace APCPOS.Forms
 //// Output value will be 12 
 //Console.WriteLine("Rounded value of " + dx1 +  
 //" is " + Math.Round(dx1)); 
-  
+
 //// Case-2 
 //// A double value whose fractional part is  
 //// greater than the halfway between two  
@@ -1320,3 +1607,10 @@ namespace APCPOS.Forms
 //// Output value will be 13 
 //Console.WriteLine("Rounded value of " + dx2 +  
 //" is " + Math.Round(dx2)); 
+
+//Percentage computation
+//double number = 0.1234;
+//Console.WriteLine("The percent format is as : " + number.ToString("P", CultureInfo.InvariantCulture));  
+//double no = 0.05;
+//Console.WriteLine("The percent format is as : " + no.ToString("P", CultureInfo.InvariantCulture));  
+

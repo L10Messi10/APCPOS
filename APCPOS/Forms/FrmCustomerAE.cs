@@ -19,7 +19,7 @@ namespace APCPOS.Forms
 {
     public partial class FrmCustomerAE : Form
     {
-        private static FrmCustomerAE f;
+        private static FrmCustomerAE _f;
         private string _mailmsg;
         private string _subject;
         private string _mymail;
@@ -29,102 +29,29 @@ namespace APCPOS.Forms
         public FrmCustomerAE()
         {
             InitializeComponent();
-            f = this;
+            _f = this;
         }
-
-        private async void bunifuFlatButton2_Click(object sender, EventArgs e)
+        protected override CreateParams CreateParams
         {
-            var a = new T_Message();
-            if (txtfname.Text == "")
+            get
             {
-                var frmok = new Frm_OK
-                {
-                    titletxt = { Text = @"Warning" },
-                    OkDescription = "Warn",
-                    msgtxt = { Text = @"Please enter customer's first name!" }
-                };
-                a.Show(this);
-                frmok.ShowDialog();
-                a.Dispose();
-                Focus();
-                txtfname.Focus();
+                const int CS_DROPSHADOW = 0x20000;
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
             }
-            else if (txtlname.Text == "")
+        }
+        protected override bool ProcessCmdKey(ref Message message, Keys keyData)
+        {
+            // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
+            switch (keyData)
             {
-                var frmok = new Frm_OK
-                {
-                    titletxt = { Text = @"Warning" },
-                    OkDescription = "Warn",
-                    msgtxt = { Text = @"Please enter customer's last name!" }
-                };
-                a.Show(this);
-                frmok.ShowDialog();
-                a.Dispose();
-                Focus();
-                txtlname.Focus();
+                case Keys.Escape:
+                    Dispose();
+                    //
+                    break;
             }
-            else if (cmbprefix.Text == "")
-            {
-                var frmok = new Frm_OK
-                {
-                    titletxt = { Text = @"Warning" },
-                    OkDescription = "Warn",
-                    msgtxt = { Text = @"Please select customer's preferred prefix!" }
-                };
-                a.Show(this);
-                frmok.ShowDialog();
-                a.Dispose();
-                Focus();
-                cmbprefix.Focus();
-            }
-            else if (txtaddress.Text == "")
-            {
-                var frmok = new Frm_OK
-                {
-                    titletxt = { Text = @"Warning" },
-                    OkDescription = "Warn",
-                    msgtxt = { Text = @"Please enter customer's address!" }
-                };
-                a.Show(this);
-                frmok.ShowDialog();
-                a.Dispose();
-                Focus();
-                txtaddress.Focus();
-            }
-            else if (txtmobilephone.Text == "")
-            {
-                var frmok = new Frm_OK
-                {
-                    titletxt = { Text = @"Warning" },
-                    OkDescription = "Warn",
-                    msgtxt = { Text = @"Please enter customer's mobile number!" }
-                };
-                a.Show(this);
-                frmok.ShowDialog();
-                a.Dispose();
-                Focus();
-                txtmobilephone.Focus();
-            }
-            else if (txtemail.Text == "")
-            {
-                var frmok = new Frm_OK
-                {
-                    titletxt = { Text = @"Warning" },
-                    OkDescription = "Warn",
-                    msgtxt = { Text = @"Please enter customer's valid e-mail address!" }
-                };
-                a.Show(this);
-                frmok.ShowDialog();
-                a.Dispose();
-                Focus();
-                txtemail.Focus();
-            }
-            else
-            {
-                await XGen_ID();
-                await XAddCustomer();
-                XSendEmail();
-            }
+            return false;
         }
         private async Task XGen_ID()
         {
@@ -257,6 +184,136 @@ namespace APCPOS.Forms
             Strsql = "";
         }
 
+        private async void FrmCustomerAE_Load(object sender, EventArgs e)
+        {
+            await XLoadMailinfo();
+        }
+
+        private async void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            var a = new T_Message();
+            if (txtfname.Text == "")
+            {
+                var frmok = new Frm_OK
+                {
+                    titletxt = { Text = @"Warning" },
+                    OkDescription = "Warn",
+                    msgtxt = { Text = @"Please enter customer's first name!" }
+                };
+                a.Show(this);
+                frmok.ShowDialog();
+                a.Dispose();
+                Focus();
+                txtfname.Focus();
+            }
+            else if (txtlname.Text == "")
+            {
+                var frmok = new Frm_OK
+                {
+                    titletxt = { Text = @"Warning" },
+                    OkDescription = "Warn",
+                    msgtxt = { Text = @"Please enter customer's last name!" }
+                };
+                a.Show(this);
+                frmok.ShowDialog();
+                a.Dispose();
+                Focus();
+                txtlname.Focus();
+            }
+            else if (cmbprefix.Text == "")
+            {
+                var frmok = new Frm_OK
+                {
+                    titletxt = { Text = @"Warning" },
+                    OkDescription = "Warn",
+                    msgtxt = { Text = @"Please select customer's preferred prefix!" }
+                };
+                a.Show(this);
+                frmok.ShowDialog();
+                a.Dispose();
+                Focus();
+                cmbprefix.Focus();
+            }
+            else if (txtaddress.Text == "")
+            {
+                var frmok = new Frm_OK
+                {
+                    titletxt = { Text = @"Warning" },
+                    OkDescription = "Warn",
+                    msgtxt = { Text = @"Please enter customer's address!" }
+                };
+                a.Show(this);
+                frmok.ShowDialog();
+                a.Dispose();
+                Focus();
+                txtaddress.Focus();
+            }
+            else if (txtmobilephone.Text == "")
+            {
+                var frmok = new Frm_OK
+                {
+                    titletxt = { Text = @"Warning" },
+                    OkDescription = "Warn",
+                    msgtxt = { Text = @"Please enter customer's mobile number!" }
+                };
+                a.Show(this);
+                frmok.ShowDialog();
+                a.Dispose();
+                Focus();
+                txtmobilephone.Focus();
+            }
+            else if (txtemail.Text == "")
+            {
+                var frmok = new Frm_OK
+                {
+                    titletxt = { Text = @"Warning" },
+                    OkDescription = "Warn",
+                    msgtxt = { Text = @"Please enter customer's valid e-mail address!" }
+                };
+                a.Show(this);
+                frmok.ShowDialog();
+                a.Dispose();
+                Focus();
+                txtemail.Focus();
+            }
+            else
+            {
+                await XGen_ID();
+                await XAddCustomer();
+                XSendEmail();
+            }
+        }
+
+        private void bunifuFlatButton3_Click(object sender, EventArgs e)
+        {
+            // open file dialog   
+            OpenFileDialog open = new OpenFileDialog
+            {
+                // image filters  
+                Filter = @"Image Files(*.jpg; *.jpeg; *.png; *.bmp)|*.jpg; *.jpeg; *.png; *.bmp"
+            };
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                // display image in picture box  
+                var size = new FileInfo(open.FileName).Length;
+                if (size > 3145728)
+                {
+                    var a = new Frm_OK();
+                    a.OkDescription = "Error";
+                    a.titletxt.Text = @"Error";
+                    a.msgtxt.Text =
+                        @"Please select an image less than or equal to 3MB. this is to ensure Database effeciency!";
+                    a.ShowDialog();
+                    Focus();
+                }
+                else
+                {
+                    bunifuPictureBox1.Image = new Bitmap(open.FileName);
+                }
+
+            }
+        }
+
         private void txtemail_Leave(object sender, EventArgs e)
         {
             string pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
@@ -270,49 +327,14 @@ namespace APCPOS.Forms
             }
         }
 
-        private async void FrmCustomerAE_Load(object sender, EventArgs e)
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            await XLoadMailinfo();
+            Dispose();
         }
 
         private void bunifuImageButton2_Click(object sender, EventArgs e)
         {
-            Close();
-        }
-
-        private void bunifuFlatButton1_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void bunifuFlatButton3_Click(object sender, EventArgs e)
-        {
-            // open file dialog   
-            OpenFileDialog open = new OpenFileDialog
-            {
-                // image filters  
-                Filter = "Image Files(*.jpg; *.jpeg; *.png; *.bmp)|*.jpg; *.jpeg; *.png; *.bmp"
-            };
-            if (open.ShowDialog() == DialogResult.OK)
-            {
-                // display image in picture box  
-                var size = new FileInfo(open.FileName).Length;
-                if (size > 3145728)
-                {
-                    var a = new Frm_OK();
-                    a.OkDescription = "Error";
-                    a.titletxt.Text = "Error";
-                    a.msgtxt.Text =
-                        "Please select an image less than or equal to 3MB. this is to ensure Database effeciency!";
-                    a.ShowDialog();
-                    Focus();
-                }
-                else
-                {
-                    bunifuPictureBox1.Image = new Bitmap(open.FileName);
-                }
-
-            }
+            Dispose();
         }
     }
 }

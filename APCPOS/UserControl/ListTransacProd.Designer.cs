@@ -52,10 +52,10 @@ namespace APCPOS.UserControl
             this.lblprodname.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblprodname.BackColor = System.Drawing.Color.Transparent;
             this.lblprodname.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblprodname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            this.lblprodname.Location = new System.Drawing.Point(23, 123);
+            this.lblprodname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(186)))), ((int)(((byte)(94)))));
+            this.lblprodname.Location = new System.Drawing.Point(0, 123);
             this.lblprodname.Name = "lblprodname";
-            this.lblprodname.Size = new System.Drawing.Size(174, 28);
+            this.lblprodname.Size = new System.Drawing.Size(210, 28);
             this.lblprodname.TabIndex = 42;
             this.lblprodname.Text = "No Data Available";
             this.lblprodname.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -111,8 +111,8 @@ namespace APCPOS.UserControl
             // bunifuFlatButton2
             // 
             this.bunifuFlatButton2.Active = false;
-            this.bunifuFlatButton2.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(16)))));
-            this.bunifuFlatButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(16)))));
+            this.bunifuFlatButton2.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.bunifuFlatButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
             this.bunifuFlatButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuFlatButton2.BorderRadius = 0;
             this.bunifuFlatButton2.ButtonText = "Add to cart";
@@ -120,7 +120,7 @@ namespace APCPOS.UserControl
             this.bunifuFlatButton2.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bunifuFlatButton2.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton2.Iconimage = null;
+            this.bunifuFlatButton2.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton2.Iconimage")));
             this.bunifuFlatButton2.Iconimage_right = null;
             this.bunifuFlatButton2.Iconimage_right_Selected = null;
             this.bunifuFlatButton2.Iconimage_Selected = null;
@@ -129,12 +129,12 @@ namespace APCPOS.UserControl
             this.bunifuFlatButton2.IconRightVisible = true;
             this.bunifuFlatButton2.IconRightZoom = 0D;
             this.bunifuFlatButton2.IconVisible = true;
-            this.bunifuFlatButton2.IconZoom = 90D;
+            this.bunifuFlatButton2.IconZoom = 60D;
             this.bunifuFlatButton2.IsTab = false;
             this.bunifuFlatButton2.Location = new System.Drawing.Point(0, 153);
             this.bunifuFlatButton2.Name = "bunifuFlatButton2";
-            this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(16)))));
-            this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(167)))), ((int)(((byte)(95)))));
+            this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(164)))), ((int)(((byte)(120)))));
             this.bunifuFlatButton2.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton2.selected = false;
             this.bunifuFlatButton2.Size = new System.Drawing.Size(210, 36);
@@ -208,6 +208,7 @@ namespace APCPOS.UserControl
             this.Controls.Add(this.label6);
             this.Controls.Add(this.bunifuPictureBox1);
             this.Controls.Add(this.bunifuFlatButton2);
+            this.DoubleBuffered = true;
             this.Name = "ListTransacProd";
             this.Size = new System.Drawing.Size(210, 189);
             this.Load += new System.EventHandler(this.ListTransacProd_Load);

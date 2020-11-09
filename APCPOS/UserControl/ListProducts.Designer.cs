@@ -97,7 +97,7 @@ namespace APCPOS.UserControl
             this.lblprodname.AutoSize = true;
             this.lblprodname.BackColor = System.Drawing.Color.Transparent;
             this.lblprodname.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblprodname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.lblprodname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(186)))), ((int)(((byte)(94)))));
             this.lblprodname.Location = new System.Drawing.Point(2, 8);
             this.lblprodname.Name = "lblprodname";
             this.lblprodname.Size = new System.Drawing.Size(109, 15);
@@ -310,6 +310,7 @@ namespace APCPOS.UserControl
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblprice);
             this.Controls.Add(this.bunifuPictureBox1);
+            this.DoubleBuffered = true;
             this.Name = "ListProducts";
             this.Size = new System.Drawing.Size(218, 126);
             this.Load += new System.EventHandler(this.ListProducts_Load);

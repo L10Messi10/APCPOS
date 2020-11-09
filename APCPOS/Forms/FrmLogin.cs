@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Net.NetworkInformation;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using APCPOS.Form_Transparent;
@@ -17,6 +19,25 @@ namespace APCPOS.Forms
         public FrmLogin()
         {
             InitializeComponent();
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel1, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel2, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                                                         | BindingFlags.Instance | BindingFlags.NonPublic, null,
+                panel3, new object[] { true });
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                const int CS_DROPSHADOW = 0x20000;
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
+            }
         }
 
         private async void bunifuFlatButton1_Click(object sender, EventArgs e)
@@ -261,7 +282,7 @@ namespace APCPOS.Forms
                 Image temp = new Bitmap(bunifuPictureBox2.Image);
                 MemoryStream strm = new MemoryStream();
                 temp.Save(strm, ImageFormat.Jpeg);
-                byte[] _imagebytearray = strm.ToArray();
+                byte[] imagebytearray = strm.ToArray();
                 await Conopen();
                 Strsql =
                     "Insert into tbl_Users(u_Fname, u_address, u_c_num, u_name, u_pass, Desig_Desc, u_img) " +
@@ -272,7 +293,7 @@ namespace APCPOS.Forms
                 Sqlcmd.Parameters.AddWithValue("@u_name", bunifuTextBox4.Text);
                 Sqlcmd.Parameters.AddWithValue("@u_pass", bunifuTextBox3.Text);
                 Sqlcmd.Parameters.AddWithValue("@Desig_Desc", cmbodesig.Text);
-                Sqlcmd.Parameters.AddWithValue("@u_img", _imagebytearray);
+                Sqlcmd.Parameters.AddWithValue("@u_img", imagebytearray);
                 Sqlcmd.Connection = Cnn;
                 //sqlcmd.CommandType = CommandType.Text;
                 Sqlcmd.CommandText = Strsql;
@@ -312,8 +333,68 @@ namespace APCPOS.Forms
 
         private async void FrmLogin_Load(object sender, EventArgs e)
         {
-            await XFilldesignation();
-            GetSettings();
+            try
+            {
+                if (Properties.Settings.Default.ip_add != "")
+                {
+                    IP_Add = Properties.Settings.Default.ip_add;
+                    user_id = Properties.Settings.Default.user_id;
+                    user_pass = Properties.Settings.Default.user_pass;
+                    var p = new Ping();
+                    var s = IP_Add;
+                    var r = p.Send(s);
+                    if (r != null && r.Status == IPStatus.Success)
+                    {
+                        await TestConnection();
+                        if (Connected)
+                        {
+                            await XFilldesignation();
+                            GetSettings();
+                        }
+                        else
+                        {
+                            var tr = new T_Dashboard();
+                            var svr = new FrmServerSettings();
+                            tr.Show(this);
+                            svr.ShowDialog();
+                            tr.Dispose();
+                            Focus();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"Server has not been set-up. Please set-up server first!", @"Server setting", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        var tr = new T_Dashboard();
+                        var svr = new FrmServerSettings();
+                        tr.Show(this);
+                        svr.ShowDialog();
+                        tr.Dispose();
+                        Focus();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show(@"Server has not been set-up. Please set-up server first!", @"Server setting", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    var tr = new T_Dashboard();
+                    var svr = new FrmServerSettings();
+                    tr.Show(this);
+                    svr.ShowDialog();
+                    tr.Dispose();
+                    Focus();
+                }
+            }
+            catch
+            {
+                MessageBox.Show(@"Server has not been set-up. Please set-up server first!", @"Server setting", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                var tr = new T_Dashboard();
+                var svr = new FrmServerSettings();
+                tr.Show(this);
+                svr.ShowDialog();
+                tr.Dispose();
+                Focus();
+            }
+            
         }
         private void GetSettings()
         {
@@ -356,6 +437,16 @@ namespace APCPOS.Forms
             Hide();
             var scan=new FrmScanner();
             scan.ShowDialog();
+        }
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            var tr = new T_Dashboard();
+            var svr = new FrmServerSettings();
+            tr.Show(this);
+            svr.ShowDialog();
+            tr.Dispose();
+            Focus();
         }
     }
 }

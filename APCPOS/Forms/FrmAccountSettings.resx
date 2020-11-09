@@ -231,6 +231,60 @@
         gg==
 </value>
   </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>For security reasons, configuring your settings is logged so the administrator is
+notified on your info and security changes. You can also see these logs under 
+the Logs section. Your password is not visible to administrators.</value>
+  </data>
+  <data name="bunifuImageButton4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <metadata name="bunifuTransition1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>177, 17</value>
+  </metadata>
   <data name="bunifuImageButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAACOVJREFUeF7t
@@ -374,57 +428,6 @@
         BMA5AuAcAXCOADhHAJwjAM4RAOcIgHMEwDkC4BwBcI4AOEcAnCMAzhEA5wiAcwTAOQLgHAFwjgA4RwCc
         IwDOEQDnCIBzBMA5AuAcAXCOADhHAJwjAM4RAOcIgHMEwDkC4BwBcI4AOEcAnCMAzgULQJ8+/wLcsCN4
         fyerrQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="label25.Text" xml:space="preserve">
-    <value>For security reasons, configuring your settings is logged so the administrator is
-notified on your info and security changes. You can also see these logs under 
-the Logs section. Your password is not visible to administrators.</value>
-  </data>
-  <data name="bunifuImageButton4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
 </value>
   </data>
   <data name="bunifuImageButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

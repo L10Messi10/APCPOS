@@ -264,7 +264,7 @@
             // 
             this.approvedToolStripMenuItem.CheckOnClick = true;
             this.approvedToolStripMenuItem.Name = "approvedToolStripMenuItem";
-            this.approvedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.approvedToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.approvedToolStripMenuItem.Text = "Approved";
             this.approvedToolStripMenuItem.Click += new System.EventHandler(this.approvedToolStripMenuItem_Click);
             // 
@@ -272,7 +272,7 @@
             // 
             this.blockedToolStripMenuItem.CheckOnClick = true;
             this.blockedToolStripMenuItem.Name = "blockedToolStripMenuItem";
-            this.blockedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.blockedToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.blockedToolStripMenuItem.Text = "Blocked";
             this.blockedToolStripMenuItem.Click += new System.EventHandler(this.blockedToolStripMenuItem_Click);
             // 
@@ -280,7 +280,7 @@
             // 
             this.temporaryBlockedToolStripMenuItem.CheckOnClick = true;
             this.temporaryBlockedToolStripMenuItem.Name = "temporaryBlockedToolStripMenuItem";
-            this.temporaryBlockedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.temporaryBlockedToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.temporaryBlockedToolStripMenuItem.Text = "Temporary Blocked";
             this.temporaryBlockedToolStripMenuItem.Click += new System.EventHandler(this.temporaryBlockedToolStripMenuItem_Click);
             // 
@@ -305,6 +305,7 @@
             this.Controls.Add(this.lblmobile);
             this.Controls.Add(this.lbladd);
             this.Controls.Add(this.userpic);
+            this.DoubleBuffered = true;
             this.Name = "ListUsers";
             this.Size = new System.Drawing.Size(288, 154);
             this.panel1.ResumeLayout(false);

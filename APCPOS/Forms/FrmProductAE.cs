@@ -22,7 +22,28 @@ namespace APCPOS.Forms
         {
             InitializeComponent();
         }
-
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                const int CS_DROPSHADOW = 0x20000;
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
+            }
+        }
+        protected override bool ProcessCmdKey(ref Message _message, Keys keyData)
+        {
+            // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
+            switch (keyData)
+            {
+                case Keys.Escape:
+                    Dispose();
+                    //
+                    break;
+            }
+            return false;
+        }
         private void bunifuImageButton2_Click(object sender, EventArgs e)
         {
             Close();
@@ -36,7 +57,7 @@ namespace APCPOS.Forms
         private async void FrmProductAe_Load(object sender, EventArgs e)
         {
             await XFillUnit();
-            bunifuFormFadeTransition1.ShowAsyc(this);
+            //bunifuFormFadeTransition1.ShowAsyc(this);
 
         }
 
@@ -143,7 +164,15 @@ namespace APCPOS.Forms
                 {
                     try
                     {
-                        await Xaddmode();
+                        if (bunifuCheckBox2.Checked)
+                        {
+                            await Xaddmode();
+                        }
+                        else
+                        {
+                            await Xaddmode1();
+                        }
+                       
                     }
                     catch (Exception ex)
                     {
@@ -159,8 +188,7 @@ namespace APCPOS.Forms
                 }
             }
         }
-
-        private async Task Xaddmode()
+        private async Task Xaddmode1()
         {
             Sqlcmd.Parameters.Clear();
             Image temp = new Bitmap(bunifuPictureBox1.Image);
@@ -194,6 +222,7 @@ namespace APCPOS.Forms
                 txtdesciption.Text);
             Sqlcmd.Parameters.AddWithValue("@prod_FS",
                 prodFS);
+
             Sqlcmd.Connection = Cnn;
             //sqlcmd.CommandType = CommandType.Text;
             Sqlcmd.CommandText = Strsql;
@@ -201,9 +230,64 @@ namespace APCPOS.Forms
             var a = new T_Message();
             var frmok = new Frm_OK();
             a.Show(this);
-            frmok.titletxt.Text = "Success";
+            frmok.titletxt.Text = @"Success";
             frmok.msgtxt.Text =
-                "Record has been successfully Added! Please refresh the products data to see modified changes.";
+                @"Record has been successfully Added! Please refresh the products data to see modified changes.";
+            frmok.OkDescription = "Success";
+            frmok.ShowDialog(this);
+            a.Hide();
+            Sqlcmd.Dispose();
+            Strsql = "";
+            Cnn.Close();
+            Close();
+        }
+
+        private async Task Xaddmode()
+        {
+            Sqlcmd.Parameters.Clear();
+            Image temp = new Bitmap(bunifuPictureBox1.Image);
+            var strm = new MemoryStream();
+            temp.Save(strm,
+                ImageFormat.Jpeg);
+            _imagebytearray = strm.ToArray();
+            await Conopen();
+            Strsql =
+                "Insert into tbl_Products(Prod_Barcode, Prod_Name, Prod_Stock, Unit_Desc, Prod_Price,Prod_Img,production_Strt_date,cost_sale,cat_desc,prod_description,prod_FS,prod_exp_date) " +
+                "Values(@Prod_Barcode, @Prod_Name, @Prod_Stock, @Unit_Desc, @Prod_Price, @Prod_Img,@production_Strt_date,@cost_sale,@cat_desc,@prod_description,@prod_FS,@prod_exp_date)";
+            Sqlcmd.Parameters.AddWithValue("@Prod_Barcode",
+                bunifuTextBox2.Text);
+            Sqlcmd.Parameters.AddWithValue("@Prod_Name",
+                bunifuTextBox1.Text);
+            Sqlcmd.Parameters.AddWithValue("@Prod_Stock",
+                bunifuTextBox3.Text);
+            Sqlcmd.Parameters.AddWithValue("@Unit_Desc",
+                cmbounit.Text);
+            Sqlcmd.Parameters.AddWithValue("@Prod_Price",
+                bunifuTextBox4.Value);
+            Sqlcmd.Parameters.AddWithValue("@Prod_Img",
+                _imagebytearray);
+            Sqlcmd.Parameters.AddWithValue("@production_Strt_date",
+                psdstartdate.Value);
+            Sqlcmd.Parameters.AddWithValue("@cost_sale",
+                cost.Value);
+            Sqlcmd.Parameters.AddWithValue("@cat_desc",
+                category.Text);
+            Sqlcmd.Parameters.AddWithValue("@prod_description",
+                txtdesciption.Text);
+            Sqlcmd.Parameters.AddWithValue("@prod_FS",
+                prodFS);
+            Sqlcmd.Parameters.AddWithValue("@prod_exp_date",
+                    dateTimePicker1.Value);
+            Sqlcmd.Connection = Cnn;
+            //sqlcmd.CommandType = CommandType.Text;
+            Sqlcmd.CommandText = Strsql;
+            Sqlcmd.ExecuteNonQuery();
+            var a = new T_Message();
+            var frmok = new Frm_OK();
+            a.Show(this);
+            frmok.titletxt.Text = @"Success";
+            frmok.msgtxt.Text =
+                @"Record has been successfully Added! Please refresh the products data to see modified changes.";
             frmok.OkDescription = "Success";
             frmok.ShowDialog(this);
             a.Hide();
@@ -245,14 +329,12 @@ namespace APCPOS.Forms
 
         private void bunifuCheckBox1_CheckedChanged(object sender, BunifuCheckBox.CheckedChangedEventArgs e)
         {
-            if (bunifuCheckBox1.Checked)
-            {
-                prodFS = "1";
-            }
-            else
-            {
-                prodFS = "0";
-            }
+            prodFS = bunifuCheckBox1.Checked ? "1" : "0";
+        }
+
+        private void bunifuCheckBox2_CheckedChanged(object sender, BunifuCheckBox.CheckedChangedEventArgs e)
+        {
+            dateTimePicker1.Visible = bunifuCheckBox2.Checked;
         }
     }
 }

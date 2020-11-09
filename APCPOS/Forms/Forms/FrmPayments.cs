@@ -87,7 +87,7 @@ namespace APCPOS.Forms
 
         private void FrmPayments_Load(object sender, EventArgs e)
         {
-            
+            label5.Text = userfullname;
             numericUpDown1.Focus();
         }
         
@@ -129,10 +129,7 @@ namespace APCPOS.Forms
             }
             else
             {
-                UseWaitCursor = true;
-                var msg = new T_Message();
                 var tQuestion=new T_Question();
-                var ok = new Frm_OK();
                 var question=new Frm_Question();
                 question.titletxt.Text = @"Confirmation";
                 question.msgtxt.Text = @"This action will save this transaction. Do you want to continue this transaction?";
@@ -141,50 +138,104 @@ namespace APCPOS.Forms
                 tQuestion.Close();
                 Focus();
                 if (question.DialogResult != DialogResult.Yes) return;
-                Sqlcmd.Parameters.Clear();
-                await Conopen();
-                Strsql =
-                    "Update tbl_Transaction set inv_amnt_due=@inv_amnt_due, inv_tax=@inv_tax,inv_tax_tot=@inv_tax_tot,Inv_Money_Render=@Inv_Money_Render, Inv_Change=@Inv_Change, Inv_total=@Inv_total, Inv_Num_of_items=@Inv_Num_of_items, tran_stat=@tran_stat Where Inv_Num=@Inv_Num";
-                Sqlcmd.Parameters.AddWithValue("@inv_amnt_due",
-                    Convert.ToSingle(lblsubtotal.Text));
-                Sqlcmd.Parameters.AddWithValue("@inv_tax",
-                    Convert.ToSingle(lbltax.Text));
-                Sqlcmd.Parameters.AddWithValue("@inv_tax_tot",
-                    Convert.ToSingle(lbltotaltax.Text));
-                Sqlcmd.Parameters.AddWithValue("@Inv_Money_Render",
-                    Convert.ToSingle(numericUpDown1.Text));
-                Sqlcmd.Parameters.AddWithValue("@Inv_Change",
-                    Convert.ToSingle(lblchange.Text));
-                Sqlcmd.Parameters.AddWithValue("@Inv_total",
-                    Convert.ToSingle(AmountDue));
-                Sqlcmd.Parameters.AddWithValue("@Inv_Num_of_items",
-                    Convert.ToInt32(Totitems));
-                Sqlcmd.Parameters.AddWithValue("@Inv_Num",
-                    lblinvoice.Text);
-                Sqlcmd.Parameters.AddWithValue("@tran_stat",
-                    "Cash");
-                Sqlcmd.Connection = Cnn;
-                Sqlcmd.CommandText = Strsql;
-                Sqlcmd.ExecuteNonQuery();
-                Sqlcmd.Dispose();
-                Strsql = "";
-                Cnn.Close();
-                //*********retrieve product sold to deduct to products table
-                await XretriveProduct();
-                popup.TitleText = @"Success";
-                popup.ContentText = @"Transaction successful!";
-                popup.Popup();
                 //*******Print receipt********************
-                var frmReports = new FrmReports {StrReport = "Receipt", PrintWhere = ("{V_Receipt.Inv_Num} ='" + lblinvoice.Text + "'")};
-                frmReports.ShowDialog();
-                frmReports.Close();
-                timer1.Stop();
-                NewTrans = true;
-                FillCart = true;
-                CustomerRetrieve = false;
-                CustomerId = null;
-                Dispose();
-                UseWaitCursor = false;
+                UseWaitCursor = true;
+                if (!Hascustomer)
+                {
+                    Sqlcmd.Parameters.Clear();
+                    await Conopen();
+                    Strsql =
+                        "Update tbl_Transaction set inv_amnt_due=@inv_amnt_due, inv_tax=@inv_tax,inv_tax_tot=@inv_tax_tot,Inv_Money_Render=@Inv_Money_Render, Inv_Change=@Inv_Change, Inv_total=@Inv_total, Inv_Num_of_items=@Inv_Num_of_items, tran_stat=@tran_stat Where Inv_Num=@Inv_Num";
+                    Sqlcmd.Parameters.AddWithValue("@inv_amnt_due",
+                        Convert.ToSingle(lblsubtotal.Text));
+                    Sqlcmd.Parameters.AddWithValue("@inv_tax",
+                        Convert.ToSingle(lbltax.Text));
+                    Sqlcmd.Parameters.AddWithValue("@inv_tax_tot",
+                        Convert.ToSingle(lbltotaltax.Text));
+                    Sqlcmd.Parameters.AddWithValue("@Inv_Money_Render",
+                        Convert.ToSingle(numericUpDown1.Text));
+                    Sqlcmd.Parameters.AddWithValue("@Inv_Change",
+                        Convert.ToSingle(lblchange.Text));
+                    Sqlcmd.Parameters.AddWithValue("@Inv_total",
+                        Convert.ToSingle(AmountDue));
+                    Sqlcmd.Parameters.AddWithValue("@Inv_Num_of_items",
+                        Convert.ToInt32(Totitems));
+                    Sqlcmd.Parameters.AddWithValue("@Inv_Num",
+                        lblinvoice.Text);
+                    Sqlcmd.Parameters.AddWithValue("@tran_stat",
+                        "Cash");
+                    Sqlcmd.Connection = Cnn;
+                    Sqlcmd.CommandText = Strsql;
+                    Sqlcmd.ExecuteNonQuery();
+                    Sqlcmd.Dispose();
+                    Strsql = "";
+                    Cnn.Close();
+                    //*********retrieve product sold to deduct to products table
+                    await XretriveProduct();
+                    popup.TitleText = @"Success";
+                    popup.ContentText = @"Transaction successful!";
+                    popup.Popup();
+                    var frmReports = new FrmReports { StrReport = "Receipt", PrintWhere = ("{V_Receipt.Inv_Num} ='" + lblinvoice.Text + "'") };
+                    frmReports.ShowDialog();
+                    frmReports.Close();
+                    timer1.Stop();
+                    NewTrans = true;
+                    FillCart = true;
+                    CustomerRetrieve = false;
+                    CustomerId = null;
+                    Hascustomer = false;
+                    UseWaitCursor = false;
+                    Dispose();
+                }
+                else
+                {
+                    Sqlcmd.Parameters.Clear();
+                    await Conopen();
+                    Strsql =
+                        "Update tbl_Transaction set inv_amnt_due=@inv_amnt_due, inv_tax=@inv_tax,inv_tax_tot=@inv_tax_tot,Inv_Money_Render=@Inv_Money_Render, Inv_Change=@Inv_Change, Inv_total=@Inv_total, Inv_Num_of_items=@Inv_Num_of_items, tran_stat=@tran_stat, cus_ID=@cus_ID Where Inv_Num=@Inv_Num";
+                    Sqlcmd.Parameters.AddWithValue("@inv_amnt_due",
+                        Convert.ToSingle(lblsubtotal.Text));
+                    Sqlcmd.Parameters.AddWithValue("@inv_tax",
+                        Convert.ToSingle(lbltax.Text));
+                    Sqlcmd.Parameters.AddWithValue("@inv_tax_tot",
+                        Convert.ToSingle(lbltotaltax.Text));
+                    Sqlcmd.Parameters.AddWithValue("@Inv_Money_Render",
+                        Convert.ToSingle(numericUpDown1.Text));
+                    Sqlcmd.Parameters.AddWithValue("@Inv_Change",
+                        Convert.ToSingle(lblchange.Text));
+                    Sqlcmd.Parameters.AddWithValue("@Inv_total",
+                        Convert.ToSingle(AmountDue));
+                    Sqlcmd.Parameters.AddWithValue("@Inv_Num_of_items",
+                        Convert.ToInt32(Totitems));
+                    Sqlcmd.Parameters.AddWithValue("@Inv_Num",
+                        lblinvoice.Text);
+                    Sqlcmd.Parameters.AddWithValue("@tran_stat",
+                        "Cash");
+                    Sqlcmd.Parameters.AddWithValue("@cus_ID",
+                        CustomerId);
+                    Sqlcmd.Connection = Cnn;
+                    Sqlcmd.CommandText = Strsql;
+                    Sqlcmd.ExecuteNonQuery();
+                    Sqlcmd.Dispose();
+                    Strsql = "";
+                    Cnn.Close();
+                    //*********retrieve product sold to deduct to products table
+                    await XretriveProduct();
+                    popup.TitleText = @"Success";
+                    popup.ContentText = @"Transaction successful!";
+                    popup.Popup();
+                    var frmReports = new FrmReports { StrReport = "Receipt_Customer", PrintWhere = ("{V_Receipt_Customer.Inv_Num} ='" + lblinvoice.Text + "'") };
+                    frmReports.ShowDialog();
+                    frmReports.Close();
+                    timer1.Stop();
+                    NewTrans = true;
+                    FillCart = true;
+                    CustomerRetrieve = false;
+                    CustomerId = null;
+                    Hascustomer = false;
+                    UseWaitCursor = false;
+                    Dispose();
+                }
             }
         }
 

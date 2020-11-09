@@ -105,6 +105,7 @@ namespace APCPOS.UserControl
             this.Controls.Add(this.folderopen);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbltitle);
+            this.DoubleBuffered = true;
             this.Name = "ListProdCategory";
             this.Size = new System.Drawing.Size(175, 117);
             this.Load += new System.EventHandler(this.ListProdCategory_Load);

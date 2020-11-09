@@ -61,8 +61,11 @@ namespace APCPOS.Forms
             this.bunifuTextBox4 = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.bunifuSeparator3 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.bunifuDatepicker1 = new Bunifu.Framework.UI.BunifuDatepicker();
+            this.bunifuSeparator4 = new Bunifu.Framework.UI.BunifuSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
@@ -76,7 +79,7 @@ namespace APCPOS.Forms
             this.lblprodname.AutoSize = true;
             this.lblprodname.BackColor = System.Drawing.Color.Transparent;
             this.lblprodname.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblprodname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.lblprodname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
             this.lblprodname.Location = new System.Drawing.Point(184, 78);
             this.lblprodname.Name = "lblprodname";
             this.lblprodname.Size = new System.Drawing.Size(129, 18);
@@ -155,7 +158,7 @@ namespace APCPOS.Forms
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
             this.label2.Location = new System.Drawing.Point(25, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(111, 18);
@@ -168,10 +171,10 @@ namespace APCPOS.Forms
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.BackColor = System.Drawing.Color.White;
+            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
             this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.numericUpDown1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericUpDown1.ForeColor = System.Drawing.Color.White;
             this.numericUpDown1.Location = new System.Drawing.Point(187, 110);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1000,
@@ -180,7 +183,7 @@ namespace APCPOS.Forms
             0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.ReadOnly = true;
-            this.numericUpDown1.Size = new System.Drawing.Size(160, 19);
+            this.numericUpDown1.Size = new System.Drawing.Size(222, 19);
             this.numericUpDown1.TabIndex = 1;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown1.ThousandsSeparator = true;
@@ -271,8 +274,8 @@ namespace APCPOS.Forms
             // bunifuFlatButton2
             // 
             this.bunifuFlatButton2.Active = true;
-            this.bunifuFlatButton2.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            this.bunifuFlatButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.bunifuFlatButton2.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
+            this.bunifuFlatButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
             this.bunifuFlatButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuFlatButton2.BorderRadius = 3;
             this.bunifuFlatButton2.ButtonText = "Save";
@@ -290,13 +293,13 @@ namespace APCPOS.Forms
             this.bunifuFlatButton2.IconVisible = true;
             this.bunifuFlatButton2.IconZoom = 90D;
             this.bunifuFlatButton2.IsTab = false;
-            this.bunifuFlatButton2.Location = new System.Drawing.Point(133, 279);
+            this.bunifuFlatButton2.Location = new System.Drawing.Point(187, 337);
             this.bunifuFlatButton2.Name = "bunifuFlatButton2";
-            this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(164)))), ((int)(((byte)(120)))));
+            this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
+            this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(186)))), ((int)(((byte)(94)))));
             this.bunifuFlatButton2.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton2.selected = true;
-            this.bunifuFlatButton2.Size = new System.Drawing.Size(104, 37);
+            this.bunifuFlatButton2.Size = new System.Drawing.Size(222, 37);
             this.bunifuFlatButton2.TabIndex = 54;
             this.bunifuFlatButton2.Text = "Save";
             this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -314,7 +317,7 @@ namespace APCPOS.Forms
             this.bunifuSeparator1.LineThickness = 1;
             this.bunifuSeparator1.Location = new System.Drawing.Point(25, 99);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Size = new System.Drawing.Size(322, 8);
+            this.bunifuSeparator1.Size = new System.Drawing.Size(384, 8);
             this.bunifuSeparator1.TabIndex = 55;
             this.bunifuToolTip1.SetToolTip(this.bunifuSeparator1, "");
             this.bunifuToolTip1.SetToolTipIcon(this.bunifuSeparator1, null);
@@ -346,7 +349,7 @@ namespace APCPOS.Forms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(366, 24);
+            this.panel1.Size = new System.Drawing.Size(420, 24);
             this.panel1.TabIndex = 57;
             this.bunifuToolTip1.SetToolTip(this.panel1, "");
             this.bunifuToolTip1.SetToolTipIcon(this.panel1, null);
@@ -356,7 +359,7 @@ namespace APCPOS.Forms
             // 
             this.bunifuImageButton2.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton2.Image")));
             this.bunifuImageButton2.ImageActive = null;
-            this.bunifuImageButton2.Location = new System.Drawing.Point(343, 3);
+            this.bunifuImageButton2.Location = new System.Drawing.Point(397, 2);
             this.bunifuImageButton2.Name = "bunifuImageButton2";
             this.bunifuImageButton2.Size = new System.Drawing.Size(20, 18);
             this.bunifuImageButton2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -389,7 +392,7 @@ namespace APCPOS.Forms
             this.bunifuSeparator2.LineThickness = 1;
             this.bunifuSeparator2.Location = new System.Drawing.Point(25, 179);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
-            this.bunifuSeparator2.Size = new System.Drawing.Size(322, 8);
+            this.bunifuSeparator2.Size = new System.Drawing.Size(384, 8);
             this.bunifuSeparator2.TabIndex = 58;
             this.bunifuToolTip1.SetToolTip(this.bunifuSeparator2, "");
             this.bunifuToolTip1.SetToolTipIcon(this.bunifuSeparator2, null);
@@ -431,10 +434,10 @@ namespace APCPOS.Forms
             this.bunifuCheckBox1.Location = new System.Drawing.Point(187, 187);
             this.bunifuCheckBox1.MinimumSize = new System.Drawing.Size(17, 17);
             this.bunifuCheckBox1.Name = "bunifuCheckBox1";
-            this.bunifuCheckBox1.OnCheck.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.bunifuCheckBox1.OnCheck.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
             this.bunifuCheckBox1.OnCheck.BorderRadius = 2;
             this.bunifuCheckBox1.OnCheck.BorderThickness = 2;
-            this.bunifuCheckBox1.OnCheck.CheckBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.bunifuCheckBox1.OnCheck.CheckBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
             this.bunifuCheckBox1.OnCheck.CheckmarkColor = System.Drawing.Color.White;
             this.bunifuCheckBox1.OnCheck.CheckmarkThickness = 2;
             this.bunifuCheckBox1.OnDisable.BorderColor = System.Drawing.Color.LightGray;
@@ -443,17 +446,17 @@ namespace APCPOS.Forms
             this.bunifuCheckBox1.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent;
             this.bunifuCheckBox1.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray;
             this.bunifuCheckBox1.OnDisable.CheckmarkThickness = 2;
-            this.bunifuCheckBox1.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(164)))), ((int)(((byte)(120)))));
+            this.bunifuCheckBox1.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(186)))), ((int)(((byte)(94)))));
             this.bunifuCheckBox1.OnHoverChecked.BorderRadius = 2;
             this.bunifuCheckBox1.OnHoverChecked.BorderThickness = 2;
-            this.bunifuCheckBox1.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(164)))), ((int)(((byte)(120)))));
+            this.bunifuCheckBox1.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(186)))), ((int)(((byte)(94)))));
             this.bunifuCheckBox1.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White;
             this.bunifuCheckBox1.OnHoverChecked.CheckmarkThickness = 2;
-            this.bunifuCheckBox1.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(164)))), ((int)(((byte)(120)))));
+            this.bunifuCheckBox1.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(186)))), ((int)(((byte)(94)))));
             this.bunifuCheckBox1.OnHoverUnchecked.BorderRadius = 2;
             this.bunifuCheckBox1.OnHoverUnchecked.BorderThickness = 2;
             this.bunifuCheckBox1.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent;
-            this.bunifuCheckBox1.OnUncheck.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(164)))), ((int)(((byte)(120)))));
+            this.bunifuCheckBox1.OnUncheck.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(186)))), ((int)(((byte)(94)))));
             this.bunifuCheckBox1.OnUncheck.BorderRadius = 2;
             this.bunifuCheckBox1.OnUncheck.BorderThickness = 2;
             this.bunifuCheckBox1.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent;
@@ -469,17 +472,19 @@ namespace APCPOS.Forms
             // 
             // cost
             // 
+            this.cost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
             this.cost.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.cost.DecimalPlaces = 2;
             this.cost.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cost.Location = new System.Drawing.Point(187, 214);
+            this.cost.ForeColor = System.Drawing.Color.White;
+            this.cost.Location = new System.Drawing.Point(187, 272);
             this.cost.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.cost.Name = "cost";
-            this.cost.Size = new System.Drawing.Size(160, 19);
+            this.cost.Size = new System.Drawing.Size(222, 19);
             this.cost.TabIndex = 64;
             this.cost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.cost.ThousandsSeparator = true;
@@ -492,7 +497,7 @@ namespace APCPOS.Forms
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label11.Location = new System.Drawing.Point(25, 215);
+            this.label11.Location = new System.Drawing.Point(25, 273);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(43, 18);
             this.label11.TabIndex = 63;
@@ -504,17 +509,19 @@ namespace APCPOS.Forms
             // 
             // bunifuTextBox4
             // 
+            this.bunifuTextBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
             this.bunifuTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.bunifuTextBox4.DecimalPlaces = 2;
             this.bunifuTextBox4.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTextBox4.Location = new System.Drawing.Point(187, 240);
+            this.bunifuTextBox4.ForeColor = System.Drawing.Color.White;
+            this.bunifuTextBox4.Location = new System.Drawing.Point(187, 298);
             this.bunifuTextBox4.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.bunifuTextBox4.Name = "bunifuTextBox4";
-            this.bunifuTextBox4.Size = new System.Drawing.Size(160, 19);
+            this.bunifuTextBox4.Size = new System.Drawing.Size(222, 19);
             this.bunifuTextBox4.TabIndex = 62;
             this.bunifuTextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.bunifuTextBox4.ThousandsSeparator = true;
@@ -527,7 +534,7 @@ namespace APCPOS.Forms
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label10.Location = new System.Drawing.Point(25, 241);
+            this.label10.Location = new System.Drawing.Point(25, 299);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 18);
             this.label10.TabIndex = 61;
@@ -542,9 +549,9 @@ namespace APCPOS.Forms
             this.bunifuSeparator3.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator3.LineThickness = 1;
-            this.bunifuSeparator3.Location = new System.Drawing.Point(25, 265);
+            this.bunifuSeparator3.Location = new System.Drawing.Point(25, 323);
             this.bunifuSeparator3.Name = "bunifuSeparator3";
-            this.bunifuSeparator3.Size = new System.Drawing.Size(322, 8);
+            this.bunifuSeparator3.Size = new System.Drawing.Size(384, 8);
             this.bunifuSeparator3.TabIndex = 65;
             this.bunifuToolTip1.SetToolTip(this.bunifuSeparator3, "");
             this.bunifuToolTip1.SetToolTipIcon(this.bunifuSeparator3, null);
@@ -552,50 +559,14 @@ namespace APCPOS.Forms
             this.bunifuSeparator3.Transparency = 255;
             this.bunifuSeparator3.Vertical = false;
             // 
-            // bunifuFlatButton1
-            // 
-            this.bunifuFlatButton1.Active = true;
-            this.bunifuFlatButton1.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            this.bunifuFlatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            this.bunifuFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuFlatButton1.BorderRadius = 3;
-            this.bunifuFlatButton1.ButtonText = "Cancel";
-            this.bunifuFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton1.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuFlatButton1.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton1.Iconimage = null;
-            this.bunifuFlatButton1.Iconimage_right = null;
-            this.bunifuFlatButton1.Iconimage_right_Selected = null;
-            this.bunifuFlatButton1.Iconimage_Selected = null;
-            this.bunifuFlatButton1.IconMarginLeft = 0;
-            this.bunifuFlatButton1.IconMarginRight = 0;
-            this.bunifuFlatButton1.IconRightVisible = true;
-            this.bunifuFlatButton1.IconRightZoom = 0D;
-            this.bunifuFlatButton1.IconVisible = true;
-            this.bunifuFlatButton1.IconZoom = 90D;
-            this.bunifuFlatButton1.IsTab = false;
-            this.bunifuFlatButton1.Location = new System.Drawing.Point(243, 279);
-            this.bunifuFlatButton1.Name = "bunifuFlatButton1";
-            this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(164)))), ((int)(((byte)(120)))));
-            this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton1.selected = true;
-            this.bunifuFlatButton1.Size = new System.Drawing.Size(104, 37);
-            this.bunifuFlatButton1.TabIndex = 66;
-            this.bunifuFlatButton1.Text = "Cancel";
-            this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuToolTip1.SetToolTip(this.bunifuFlatButton1, "");
-            this.bunifuToolTip1.SetToolTipIcon(this.bunifuFlatButton1, null);
-            this.bunifuToolTip1.SetToolTipTitle(this.bunifuFlatButton1, "");
-            this.bunifuFlatButton1.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.bunifuDatepicker1);
+            this.panel2.Controls.Add(this.bunifuSeparator4);
             this.panel2.Controls.Add(this.panel1);
-            this.panel2.Controls.Add(this.bunifuFlatButton1);
             this.panel2.Controls.Add(this.lblID);
             this.panel2.Controls.Add(this.bunifuSeparator3);
             this.panel2.Controls.Add(this.lblstock);
@@ -618,18 +589,79 @@ namespace APCPOS.Forms
             this.panel2.Controls.Add(this.bunifuSeparator1);
             this.panel2.Location = new System.Drawing.Point(1, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(366, 329);
+            this.panel2.Size = new System.Drawing.Size(420, 380);
             this.panel2.TabIndex = 67;
             this.bunifuToolTip1.SetToolTip(this.panel2, "");
             this.bunifuToolTip1.SetToolTipIcon(this.panel2, null);
             this.bunifuToolTip1.SetToolTipTitle(this.panel2, "");
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label9.Location = new System.Drawing.Point(186, 222);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(135, 18);
+            this.label9.TabIndex = 70;
+            this.label9.Text = "No expiration date";
+            this.bunifuToolTip1.SetToolTip(this.label9, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.label9, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.label9, "");
+            this.label9.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label8.Location = new System.Drawing.Point(25, 222);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(115, 18);
+            this.label8.TabIndex = 69;
+            this.label8.Text = "Expiration date:";
+            this.bunifuToolTip1.SetToolTip(this.label8, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.label8, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.label8, "");
+            // 
+            // bunifuDatepicker1
+            // 
+            this.bunifuDatepicker1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
+            this.bunifuDatepicker1.BorderRadius = 0;
+            this.bunifuDatepicker1.ForeColor = System.Drawing.Color.White;
+            this.bunifuDatepicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.bunifuDatepicker1.FormatCustom = null;
+            this.bunifuDatepicker1.Location = new System.Drawing.Point(189, 221);
+            this.bunifuDatepicker1.Name = "bunifuDatepicker1";
+            this.bunifuDatepicker1.Size = new System.Drawing.Size(220, 31);
+            this.bunifuDatepicker1.TabIndex = 68;
+            this.bunifuToolTip1.SetToolTip(this.bunifuDatepicker1, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.bunifuDatepicker1, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.bunifuDatepicker1, "");
+            this.bunifuDatepicker1.Value = new System.DateTime(2020, 6, 3, 13, 43, 45, 796);
+            this.bunifuDatepicker1.Visible = false;
+            // 
+            // bunifuSeparator4
+            // 
+            this.bunifuSeparator4.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
+            this.bunifuSeparator4.LineThickness = 1;
+            this.bunifuSeparator4.Location = new System.Drawing.Point(25, 258);
+            this.bunifuSeparator4.Name = "bunifuSeparator4";
+            this.bunifuSeparator4.Size = new System.Drawing.Size(384, 8);
+            this.bunifuSeparator4.TabIndex = 67;
+            this.bunifuToolTip1.SetToolTip(this.bunifuSeparator4, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.bunifuSeparator4, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.bunifuSeparator4, "");
+            this.bunifuSeparator4.Transparency = 255;
+            this.bunifuSeparator4.Vertical = false;
+            // 
             // FrmAddStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            this.ClientSize = new System.Drawing.Size(368, 331);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
+            this.ClientSize = new System.Drawing.Size(422, 382);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmAddStock";
@@ -677,8 +709,11 @@ namespace APCPOS.Forms
         private Label label11;
         private NumericUpDown bunifuTextBox4;
         private Label label10;
-        private BunifuFlatButton bunifuFlatButton1;
         private BunifuSeparator bunifuSeparator3;
         private Panel panel2;
+        private Label label8;
+        private BunifuDatepicker bunifuDatepicker1;
+        private BunifuSeparator bunifuSeparator4;
+        private Label label9;
     }
 }

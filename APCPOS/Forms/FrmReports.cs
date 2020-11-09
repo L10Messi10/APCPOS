@@ -34,9 +34,82 @@ namespace APCPOS.Forms
             splashScreenManager1.ShowWaitForm();
             switch (StrReport)
             {
+                case "ProdCritical":
+                    //Text = "Receipt Preview"();
+                    path = (@"..\Reports\Critical_Products.rpt");
+                    Mreport.Load(path);
+                    // new TableLogOnInfos();
+                    crConnectionInfo = new ConnectionInfo();
+
+                    crConnectionInfo.ServerName = "APC_POS";
+                    crConnectionInfo.DatabaseName = "DBAPC_POS";
+                    crConnectionInfo.UserID = "sa";
+                    crConnectionInfo.Password = "administrator01";
+                    crTables = Mreport.Database.Tables;
+                    foreach (Table crTable in crTables)
+                    {
+                        crtableLogoninfo = crTable.LogOnInfo;
+                        crtableLogoninfo.ConnectionInfo = crConnectionInfo;
+                        crTable.ApplyLogOnInfo(crtableLogoninfo);
+                    }
+                    crystalReportViewer1.ReportSource = Mreport;
+                    crystalReportViewer1.Zoom(200);
+                    crystalReportViewer1.RefreshReport();
+                    splashScreenManager1.CloseWaitForm();
+                    crystalReportViewer1.PrintReport();
+                    break;
+                case "ProdNearExpr":
+                    //Text = "Receipt Preview"();
+                    path = (@"..\Reports\ProductsnearExpr.rpt");
+                    Mreport.Load(path);
+                    // new TableLogOnInfos();
+                    crConnectionInfo = new ConnectionInfo();
+
+                    crConnectionInfo.ServerName = "APC_POS";
+                    crConnectionInfo.DatabaseName = "DBAPC_POS";
+                    crConnectionInfo.UserID = "sa";
+                    crConnectionInfo.Password = "administrator01";
+                    crTables = Mreport.Database.Tables;
+                    foreach (Table crTable in crTables)
+                    {
+                        crtableLogoninfo = crTable.LogOnInfo;
+                        crtableLogoninfo.ConnectionInfo = crConnectionInfo;
+                        crTable.ApplyLogOnInfo(crtableLogoninfo);
+                    }
+                    Mreport.RecordSelectionFormula = PrintWhere;
+                    crystalReportViewer1.Zoom(200);
+                    crystalReportViewer1.RefreshReport();
+                    splashScreenManager1.CloseWaitForm();
+                    crystalReportViewer1.PrintReport();
+                    break;
                 case "Receipt":
                     //Text = "Receipt Preview"();
                     path = (@"..\Reports\Receipt.rpt");
+                    Mreport.Load(path);
+                    // new TableLogOnInfos();
+                    crConnectionInfo = new ConnectionInfo();
+
+                    crConnectionInfo.ServerName = "APC_POS";
+                    crConnectionInfo.DatabaseName = "DBAPC_POS";
+                    crConnectionInfo.UserID = "sa";
+                    crConnectionInfo.Password = "administrator01";
+                    crTables = Mreport.Database.Tables;
+                    foreach (Table crTable in crTables)
+                    {
+                        crtableLogoninfo = crTable.LogOnInfo;
+                        crtableLogoninfo.ConnectionInfo = crConnectionInfo;
+                        crTable.ApplyLogOnInfo(crtableLogoninfo);
+                    }
+                    Mreport.RecordSelectionFormula = PrintWhere;
+                    crystalReportViewer1.ReportSource = Mreport;
+                    crystalReportViewer1.Zoom(200);
+                    crystalReportViewer1.RefreshReport();
+                    splashScreenManager1.CloseWaitForm();
+                    crystalReportViewer1.PrintReport();
+                    break;
+                case "Receipt_Customer":
+                    //Text = "Receipt Preview"();
+                    path = (@"..\Reports\Receipt_Customer.rpt");
                     Mreport.Load(path);
                     // new TableLogOnInfos();
                     crConnectionInfo = new ConnectionInfo();
@@ -142,6 +215,52 @@ namespace APCPOS.Forms
             splashScreenManager1.ShowWaitForm();
             switch (StrReport)
             {
+                case "ProdCritical":
+                    //Text = "Receipt Preview"();
+                    path = (@"..\Reports\Critical_Products.rpt");
+                    Mreport.Load(path);
+                    // new TableLogOnInfos();
+                    crConnectionInfo = new ConnectionInfo();
+
+                    crConnectionInfo.ServerName = "APC_POS";
+                    crConnectionInfo.DatabaseName = "DBAPC_POS";
+                    crConnectionInfo.UserID = "sa";
+                    crConnectionInfo.Password = "administrator01";
+                    crTables = Mreport.Database.Tables;
+                    foreach (Table crTable in crTables)
+                    {
+                        crtableLogoninfo = crTable.LogOnInfo;
+                        crtableLogoninfo.ConnectionInfo = crConnectionInfo;
+                        crTable.ApplyLogOnInfo(crtableLogoninfo);
+                    }
+                    crystalReportViewer1.ReportSource = Mreport;
+                    crystalReportViewer1.Zoom(200);
+                    crystalReportViewer1.RefreshReport();
+                    splashScreenManager1.CloseWaitForm();
+                    break;
+                case "ProdNearExpr":
+                    //Text = "Receipt Preview"();
+                    path = (@"..\Reports\ProductsnearExpr.rpt");
+                    Mreport.Load(path);
+                    // new TableLogOnInfos();
+                    crConnectionInfo = new ConnectionInfo();
+
+                    crConnectionInfo.ServerName = "APC_POS";
+                    crConnectionInfo.DatabaseName = "DBAPC_POS";
+                    crConnectionInfo.UserID = "sa";
+                    crConnectionInfo.Password = "administrator01";
+                    crTables = Mreport.Database.Tables;
+                    foreach (Table crTable in crTables)
+                    {
+                        crtableLogoninfo = crTable.LogOnInfo;
+                        crtableLogoninfo.ConnectionInfo = crConnectionInfo;
+                        crTable.ApplyLogOnInfo(crtableLogoninfo);
+                    }
+                    crystalReportViewer1.ReportSource = Mreport;
+                    crystalReportViewer1.Zoom(200);
+                    crystalReportViewer1.RefreshReport();
+                    splashScreenManager1.CloseWaitForm();
+                    break;
                 case "Receipt":
                     //Text = "Receipt Preview"();
                     path = (@"..\Reports\Receipt.rpt");
@@ -163,6 +282,30 @@ namespace APCPOS.Forms
                     Mreport.RecordSelectionFormula = PrintWhere;
                     crystalReportViewer1.ReportSource = Mreport;
                     crystalReportViewer1.Zoom(100);
+                    crystalReportViewer1.RefreshReport();
+                    splashScreenManager1.CloseWaitForm();
+                    break;
+                case "Receipt_Customer":
+                    //Text = "Receipt Preview"();
+                    path = (@"..\Reports\Receipt_Customer.rpt");
+                    Mreport.Load(path);
+                    // new TableLogOnInfos();
+                    crConnectionInfo = new ConnectionInfo();
+
+                    crConnectionInfo.ServerName = "APC_POS";
+                    crConnectionInfo.DatabaseName = "DBAPC_POS";
+                    crConnectionInfo.UserID = "sa";
+                    crConnectionInfo.Password = "administrator01";
+                    crTables = Mreport.Database.Tables;
+                    foreach (Table crTable in crTables)
+                    {
+                        crtableLogoninfo = crTable.LogOnInfo;
+                        crtableLogoninfo.ConnectionInfo = crConnectionInfo;
+                        crTable.ApplyLogOnInfo(crtableLogoninfo);
+                    }
+                    Mreport.RecordSelectionFormula = PrintWhere;
+                    crystalReportViewer1.ReportSource = Mreport;
+                    crystalReportViewer1.Zoom(200);
                     crystalReportViewer1.RefreshReport();
                     splashScreenManager1.CloseWaitForm();
                     break;

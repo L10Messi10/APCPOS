@@ -15,12 +15,22 @@ namespace APCPOS.Forms
 {
     public partial class FrmAccountSettings : Form
     {
-        private string _updatedinfo = @"" + username + " have updated his/her Personal info";
-        private string _updatedsecurity = @"" + username + " have updated his/her security info";
-        private bool xinfoupdated;
+        private readonly string _updatedinfo = @"" + username + " have updated his/her Personal info";
+        private readonly string _updatedsecurity = @"" + username + " have updated his/her security info";
+        private bool _xinfoupdated;
         public FrmAccountSettings()
         {
             InitializeComponent();
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                const int CS_DROPSHADOW = 0x20000;
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
+            }
         }
 
         private void bunifuImageButton2_Click(object sender, EventArgs e)
@@ -211,13 +221,13 @@ namespace APCPOS.Forms
             Image temp = new Bitmap(bunifuPictureBox1.Image);
             var strm = new MemoryStream();
             temp.Save(strm, System.Drawing.Imaging.ImageFormat.Jpeg);
-            var _imagebytearray = strm.ToArray();
+            var imagebytearray = strm.ToArray();
             Strsql =
                 "Update tbl_Users set u_Fname=@u_Fname, u_address=@u_address, u_c_num=@u_c_num, u_img=@u_img Where u_name=@u_name";
             Sqlcmd.Parameters.AddWithValue("@u_Fname", txtfname.Text);
             Sqlcmd.Parameters.AddWithValue("@u_address", textBox1.Text);
             Sqlcmd.Parameters.AddWithValue("@u_c_num", textBox2.Text);
-            Sqlcmd.Parameters.AddWithValue("@u_img", _imagebytearray);
+            Sqlcmd.Parameters.AddWithValue("@u_img", imagebytearray);
             Sqlcmd.Parameters.AddWithValue("@u_name", username);
             Sqlcmd.Connection = Cnn;
             Sqlcmd.CommandText = Strsql;
@@ -225,7 +235,7 @@ namespace APCPOS.Forms
             Sqlcmd.Dispose();
             Strsql = "";
             Cnn.Close();
-            xinfoupdated = true;
+            _xinfoupdated = true;
             await XSaveTransactionLog();
             popup.Delay = 5000;
             popup.TitleText = @"Info updated";
@@ -243,7 +253,7 @@ namespace APCPOS.Forms
             Sqlcmd.Parameters.AddWithValue("@u_name",
                 username);
             Sqlcmd.Parameters.AddWithValue("@action",
-                xinfoupdated ? _updatedinfo : _updatedsecurity);
+                _xinfoupdated ? _updatedinfo : _updatedsecurity);
             Sqlcmd.Parameters.AddWithValue("@log_date",
                 Today);
             Sqlcmd.Parameters.AddWithValue("@log_time",
@@ -325,7 +335,7 @@ namespace APCPOS.Forms
                 username = textBox4.Text;
                 userpassword = textBox7.Text;
                 Cnn.Close();
-                xinfoupdated = false;
+                _xinfoupdated = false;
                 await XSaveTransactionLog();
                 popup.TitleText = @"Security updated";
                 popup.ContentText = @"Your security information has been successfully updated!";

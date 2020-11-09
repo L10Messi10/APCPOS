@@ -33,16 +33,16 @@ namespace APCPOS.UserControl
             question.msgtxt.Text = @"Do you want to load this customer?";
             tQuestion.Show(this);
             question.ShowDialog();
-            
             if (question.DialogResult == DialogResult.Yes)
             {
+                Hascustomer = true;
                 CustomerRetrieve = true;
                 CustomerId = lblid.Text;
                 question.Hide();
                 tQuestion.Close();
                 popup.TitleText = @"Information";
                 popup.Image = Properties.Resources.information;
-                popup.ContentText = @""+ lblfullname.Text + " has been loaded in this this transaction";
+                popup.ContentText = @"" + lblfullname.Text + " has been loaded in this this transaction";
                 popup.Popup();
                 Focus();
             }
@@ -50,6 +50,7 @@ namespace APCPOS.UserControl
             tQuestion.Close();
             Focus();
         }
+            
 
         private void ListCustomer_Load(object sender, EventArgs e)
         {

@@ -17,12 +17,32 @@ namespace APCPOS.Forms
         private Single _sellprice;
         private Int32 _currStock;
         private double stock;
-        public static string inv_num;
+        private static string inv_num;
         public FrmAddToCart()
         {
             InitializeComponent();
         }
-
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                const int CS_DROPSHADOW = 0x20000;
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
+            }
+        }
+        protected override bool ProcessCmdKey(ref Message _message, Keys keyData)
+        {
+            // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
+            switch (keyData)
+            {
+                case Keys.Escape:
+                    Dispose();
+                    break;
+            }
+            return false;
+        }
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
             Close();
@@ -35,8 +55,6 @@ namespace APCPOS.Forms
 
         private async void FrmAddToCart_Load(object sender, EventArgs e)
         {
-            
-            //await XGenInvoice();
             Sqlcmd.Parameters.Clear();
             await Conopen();
             Strsql = "Select * from tbl_Products where Prod_Number = '" + lblprodID.Text + "'";
@@ -146,10 +164,10 @@ namespace APCPOS.Forms
                 frmok.OkDescription = "Success";
                 frmok.ShowDialog(this);
                 a.Hide();
-                popup.TitleText = @"Success";
-                popup.Image = Properties.Resources.check;
-                popup.ContentText = @"The product "+ lblprodname.Text + " has been successfully added to cart!";
-                popup.Popup();
+                //popup.TitleText = @"Success";
+                //popup.Image = Properties.Resources.check;
+                //popup.ContentText = @"The product "+ lblprodname.Text + " has been successfully added to cart!";
+                //popup.Popup();
                 Sqlcmd.Dispose();
                 Strsql = "";
                 Cnn.Close();
@@ -235,6 +253,11 @@ namespace APCPOS.Forms
                     await XTransaction();
                 }
             }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

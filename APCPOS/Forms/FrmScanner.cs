@@ -27,22 +27,73 @@ namespace APCPOS.Forms
         {
             InitializeComponent();
         }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                const int CS_DROPSHADOW = 0x20000;
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
+            }
+        }
+        protected override bool ProcessCmdKey(ref Message _message, Keys keyData)
+        {
+            // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
+            switch (keyData)
+            {
+                case Keys.Escape:
+                    try
+                    {
+                        if (captureDevice.IsRunning)
+                        {
+                            captureDevice.Stop();
+                            timer1.Stop();
+                            Dispose();
+                        }
 
+                        if (loggedin == false)
+                        {
+                            var a = new FrmLogin();
+                            a.Show();
+                            Dispose();
+                        }
+                        Dispose();
+                    }
+                    catch
+                    {
+                        timer1.Stop();
+                        Dispose();
+                    }
+                    
+                    //
+                    break;
+            }
+            return false;
+        }
         private FilterInfoCollection filterInfoCollection;
         private VideoCaptureDevice captureDevice;
 
         private void FrmScanner_Load(object sender, EventArgs e)
         {
-            filterInfoCollection=new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            foreach (FilterInfo filter in filterInfoCollection)
+            try
             {
-                metroComboBox1.Items.Add(filter.Name);
-                metroComboBox1.SelectedIndex = 0;
+                filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+                foreach (FilterInfo filter in filterInfoCollection)
+                {
+                    metroComboBox1.Items.Add(filter.Name);
+                    metroComboBox1.SelectedIndex = 0;
+                }
+                captureDevice = new VideoCaptureDevice(filterInfoCollection[metroComboBox1.SelectedIndex].MonikerString);
+                captureDevice.NewFrame += CaptureDevice_NewFrame;
+                captureDevice.Start();
+                timer1.Start();
             }
-            captureDevice = new VideoCaptureDevice(filterInfoCollection[metroComboBox1.SelectedIndex].MonikerString);
-            captureDevice.NewFrame += CaptureDevice_NewFrame;
-            captureDevice.Start();
-            timer1.Start();
+            catch
+            {
+                MessageBox.Show(@"No camera detected!", @"Camera", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
 
         }
 
@@ -53,20 +104,28 @@ namespace APCPOS.Forms
 
         private void bunifuImageButton2_Click(object sender, EventArgs e)
         {
-            if (captureDevice.IsRunning)
+            try
             {
-                captureDevice.Stop();
+                if (captureDevice.IsRunning)
+                {
+                    captureDevice.Stop();
+                    timer1.Stop();
+                    Dispose();
+                }
+
+                if (loggedin == false)
+                {
+                    var a = new FrmLogin();
+                    a.Show();
+                    Dispose();
+                }
+                Dispose();
+            }
+            catch
+            {
                 timer1.Stop();
                 Dispose();
             }
-
-            if (loggedin == false)
-            {
-                var a= new FrmLogin();
-                a.Show();
-                Dispose();
-            }
-            Dispose();
         }
 
         private void FrmScanner_FormClosing(object sender, FormClosingEventArgs e)

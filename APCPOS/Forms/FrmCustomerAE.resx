@@ -118,21 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bunifuImageButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAAkpJREFUeF7t
-        3V1Kw0AYRuEuSHAxXuoGvFS3oa6wiVGzChE1KfPS2pqapvP/nQcGShqYMochbSFkBQAAAAAAAFjQt+2l
-        ewkn2Zr0XfM8jK/+pbl1h8wb12KzJl3z5A7F0Xfrx2HSbzeIMtiJ4dZl/ejeCuvtbX0xTPi5nXgzPt+7
-        5tqdYs77a3vz15qMa+VOCWtY/Kthwo+9D2BypxzujM34GNfInRIHUTKKIZajZBdDLEbJNoZYipJ9DLEQ
-        pZgYUnOU4mJIjVGKjSE1RSk+htQQpZoYUnKU6mJIiVGqjSElRak+hpQQxUwMyTmKuRiSYxSzMSSnKOZj
-        SA5RiLEnZRRiTEgRhRj/iBmFGDPFiEKME4WMQoyFQkQhxpl8RiGGJz6iEMOzc6IQI5AlUYgR2ClRiBHJ
-        nCjEiOxYFGIkMnUvxl/Hhhhm71mJamKn7A52RmwTO2Uc7IwUJq4Z45j1OwUeHYmhQZRYuKhn5NhX24kL
-        PTsllGMx3CmL/mbBAnNiCFECOyWGECWQJTGEKJ6dE0OI4omPGEKUM/mMIURZKEQMIcqJQsYQoswUI4YQ
-        5R8xYwhRJqSIIUTZkzKGEMXJIYaYj5JTDDEbJccYYi5KzjHETJQSYkj1UUqKIdVGKTGGVBel5BhSTZQa
-        YkjxUWqKIcVGqTGGFBel5hhSTBQLMST7KJZiSLZRLMaQ7KJYjiHZRCHGVvIoPBTsUPKHgg2T3e9MbHJn
-        7DvYKS/NnXsrjr5rH4jx2zZK++AOxcWjVw+xJgAAAAAAALBhtfoBDXBS1qtwjukAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="bunifuPictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAMAAADDpiTIAAAABGdBTUEAALGPC/xhBQAAAjpQTFRFxtr8
@@ -202,16 +187,31 @@
         fyerrQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="metroStyleManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="bunifuImageButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAAkpJREFUeF7t
+        3V1Kw0AYRuEuSHAxXuoGvFS3oa6wiVGzChE1KfPS2pqapvP/nQcGShqYMochbSFkBQAAAAAAAFjQt+2l
+        ewkn2Zr0XfM8jK/+pbl1h8wb12KzJl3z5A7F0Xfrx2HSbzeIMtiJ4dZl/ejeCuvtbX0xTPi5nXgzPt+7
+        5tqdYs77a3vz15qMa+VOCWtY/Kthwo+9D2BypxzujM34GNfInRIHUTKKIZajZBdDLEbJNoZYipJ9DLEQ
+        pZgYUnOU4mJIjVGKjSE1RSk+htQQpZoYUnKU6mJIiVGqjSElRak+hpQQxUwMyTmKuRiSYxSzMSSnKOZj
+        SA5RiLEnZRRiTEgRhRj/iBmFGDPFiEKME4WMQoyFQkQhxpl8RiGGJz6iEMOzc6IQI5AlUYgR2ClRiBHJ
+        nCjEiOxYFGIkMnUvxl/Hhhhm71mJamKn7A52RmwTO2Uc7IwUJq4Z45j1OwUeHYmhQZRYuKhn5NhX24kL
+        PTsllGMx3CmL/mbBAnNiCFECOyWGECWQJTGEKJ6dE0OI4omPGEKUM/mMIURZKEQMIcqJQsYQoswUI4YQ
+        5R8xYwhRJqSIIUTZkzKGEMXJIYaYj5JTDDEbJccYYi5KzjHETJQSYkj1UUqKIdVGKTGGVBel5BhSTZQa
+        YkjxUWqKIcVGqTGGFBel5hhSTBQLMST7KJZiSLZRLMaQ7KJYjiHZRCHGVvIoPBTsUPKHgg2T3e9MbHJn
+        7DvYKS/NnXsrjr5rH4jx2zZK++AOxcWjVw+xJgAAAAAAALBhtfoBDXBS1qtwjukAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>167, 18</value>
+    <value>37, 27</value>
   </metadata>
   <metadata name="bunifuDragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>286, 20</value>
+    <value>167, 27</value>
   </metadata>
   <metadata name="bunifuDragControl2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>446, 20</value>
+    <value>327, 27</value>
+  </metadata>
+  <metadata name="metroStyleManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>487, 27</value>
   </metadata>
 </root>

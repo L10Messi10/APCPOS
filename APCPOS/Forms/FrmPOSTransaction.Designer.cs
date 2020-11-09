@@ -40,6 +40,10 @@ namespace APCPOS.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             Bunifu.UI.WinForms.BunifuAnimatorNS.Animation animation1 = new Bunifu.UI.WinForms.BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPOSTransaction));
             this.panel1 = new System.Windows.Forms.Panel();
@@ -53,6 +57,8 @@ namespace APCPOS.Forms
             this.lbltime = new System.Windows.Forms.Label();
             this.lbldate = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.bunifuSeparator6 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.networkimg = new Bunifu.Framework.UI.BunifuImageButton();
             this.panel24 = new System.Windows.Forms.Panel();
             this.bunifuImageButton10 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuSeparator4 = new Bunifu.Framework.UI.BunifuSeparator();
@@ -63,6 +69,15 @@ namespace APCPOS.Forms
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.panelaction = new System.Windows.Forms.Panel();
+            this.metroTile10 = new MetroFramework.Controls.MetroTile();
+            this.metroTile8 = new MetroFramework.Controls.MetroTile();
+            this.metroTile7 = new MetroFramework.Controls.MetroTile();
+            this.metroTile3 = new MetroFramework.Controls.MetroTile();
+            this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.panelorder = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
             this.panelvatsettings = new System.Windows.Forms.Panel();
             this.bunifuDropdown2 = new Bunifu.UI.WinForms.BunifuDropdown();
             this.bunifuImageButton3 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -86,15 +101,6 @@ namespace APCPOS.Forms
             this.metroTile15 = new MetroFramework.Controls.MetroTile();
             this.metroTile14 = new MetroFramework.Controls.MetroTile();
             this.metroTile16 = new MetroFramework.Controls.MetroTile();
-            this.panelaction = new System.Windows.Forms.Panel();
-            this.metroTile10 = new MetroFramework.Controls.MetroTile();
-            this.metroTile8 = new MetroFramework.Controls.MetroTile();
-            this.metroTile7 = new MetroFramework.Controls.MetroTile();
-            this.metroTile3 = new MetroFramework.Controls.MetroTile();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.panelorder = new System.Windows.Forms.Panel();
-            this.label25 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btncustomers = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btndiscounts = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -152,6 +158,12 @@ namespace APCPOS.Forms
             this.panel17 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.flowpaneldebt = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowpanelcart = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -159,9 +171,9 @@ namespace APCPOS.Forms
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label20 = new System.Windows.Forms.Label();
             this.flowpanelcustomer = new System.Windows.Forms.FlowLayoutPanel();
             this.flowpanelproducts = new System.Windows.Forms.FlowLayoutPanel();
-            this.label20 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bunifuTransition1 = new Bunifu.UI.WinForms.BunifuTransition(this.components);
             this.flowpanelproductsearch = new System.Windows.Forms.FlowLayoutPanel();
@@ -179,17 +191,18 @@ namespace APCPOS.Forms
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.networkimg)).BeginInit();
             this.panel24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userpic)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel12.SuspendLayout();
+            this.panelaction.SuspendLayout();
+            this.panelorder.SuspendLayout();
             this.panelvatsettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             this.panelcustomer.SuspendLayout();
-            this.panelaction.SuspendLayout();
-            this.panelorder.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -207,6 +220,7 @@ namespace APCPOS.Forms
             this.panel20.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flowpaneldebt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flowpanelcart)).BeginInit();
             this.panel2.SuspendLayout();
             this.metroContextMenu1.SuspendLayout();
@@ -215,7 +229,7 @@ namespace APCPOS.Forms
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
             this.panel1.Controls.Add(this.panel23);
             this.panel1.Controls.Add(this.bunifuImageButton9);
             this.panel1.Controls.Add(this.lbltitle);
@@ -237,7 +251,7 @@ namespace APCPOS.Forms
             this.panel23.Controls.Add(this.bunifuTextBox1);
             this.bunifuTransition1.SetDecoration(this.panel23, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel23.Location = new System.Drawing.Point(603, 0);
+            this.panel23.Location = new System.Drawing.Point(531, 0);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(526, 60);
             this.panel23.TabIndex = 14;
@@ -256,7 +270,7 @@ namespace APCPOS.Forms
             this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bunifuImageButton1.TabIndex = 13;
             this.bunifuImageButton1.TabStop = false;
-            this.bunifuToolTip1.SetToolTip(this.bunifuImageButton1, "");
+            this.bunifuToolTip1.SetToolTip(this.bunifuImageButton1, "Refresh [F5]");
             this.bunifuToolTip1.SetToolTipIcon(this.bunifuImageButton1, null);
             this.bunifuToolTip1.SetToolTipTitle(this.bunifuImageButton1, "");
             this.bunifuImageButton1.Zoom = 10;
@@ -268,26 +282,26 @@ namespace APCPOS.Forms
             this.bunifuTextBox1.AcceptsTab = false;
             this.bunifuTextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.bunifuTextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.bunifuTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(164)))), ((int)(((byte)(120)))));
+            this.bunifuTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(41)))));
             this.bunifuTextBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuTextBox1.BackgroundImage")));
-            this.bunifuTextBox1.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.bunifuTextBox1.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
             this.bunifuTextBox1.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(161)))), ((int)(((byte)(161)))));
-            this.bunifuTextBox1.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(164)))), ((int)(((byte)(120)))));
-            this.bunifuTextBox1.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(152)))), ((int)(((byte)(14)))));
-            this.bunifuTextBox1.BorderRadius = 1;
+            this.bunifuTextBox1.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
+            this.bunifuTextBox1.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
+            this.bunifuTextBox1.BorderRadius = 5;
             this.bunifuTextBox1.BorderThickness = 6;
             this.bunifuTextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.bunifuTransition1.SetDecoration(this.bunifuTextBox1, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.bunifuTextBox1.DefaultFont = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuTextBox1.DefaultText = "";
-            this.bunifuTextBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(164)))), ((int)(((byte)(120)))));
+            this.bunifuTextBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(41)))));
             this.bunifuTextBox1.ForeColor = System.Drawing.Color.White;
             this.bunifuTextBox1.HideSelection = true;
             this.bunifuTextBox1.IconLeft = null;
             this.bunifuTextBox1.IconLeftCursor = System.Windows.Forms.Cursors.Default;
             this.bunifuTextBox1.IconPadding = 10;
-            this.bunifuTextBox1.IconRight = ((System.Drawing.Image)(resources.GetObject("bunifuTextBox1.IconRight")));
-            this.bunifuTextBox1.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.bunifuTextBox1.IconRight = global::APCPOS.Properties.Resources.search;
+            this.bunifuTextBox1.IconRightCursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTextBox1.Location = new System.Drawing.Point(1, 12);
             this.bunifuTextBox1.MaxLength = 32767;
             this.bunifuTextBox1.MinimumSize = new System.Drawing.Size(100, 35);
@@ -309,8 +323,10 @@ namespace APCPOS.Forms
             this.bunifuToolTip1.SetToolTipIcon(this.bunifuTextBox1, null);
             this.bunifuToolTip1.SetToolTipTitle(this.bunifuTextBox1, "");
             this.bunifuTextBox1.UseSystemPasswordChar = false;
+            this.bunifuTextBox1.TextChange += new System.EventHandler(this.bunifuTextBox1_TextChange);
             this.bunifuTextBox1.OnIconRightClick += new System.EventHandler(this.bunifuTextBox1_OnIconRightClick);
             this.bunifuTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.bunifuTextBox1_KeyDown);
+            this.bunifuTextBox1.Enter += new System.EventHandler(this.bunifuTextBox1_Enter);
             this.bunifuTextBox1.Leave += new System.EventHandler(this.bunifuTextBox1_Leave);
             // 
             // bunifuImageButton9
@@ -351,7 +367,7 @@ namespace APCPOS.Forms
             this.panel6.Controls.Add(this.lbldate);
             this.bunifuTransition1.SetDecoration(this.panel6, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(1129, 0);
+            this.panel6.Location = new System.Drawing.Point(1057, 0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(221, 60);
             this.panel6.TabIndex = 15;
@@ -396,7 +412,7 @@ namespace APCPOS.Forms
             this.bunifuTransition1.SetDecoration(this.lbldate, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lbldate.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbldate.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldate.ForeColor = System.Drawing.Color.Snow;
+            this.lbldate.ForeColor = System.Drawing.Color.DimGray;
             this.lbldate.Location = new System.Drawing.Point(0, 0);
             this.lbldate.Name = "lbldate";
             this.lbldate.Size = new System.Drawing.Size(221, 26);
@@ -409,6 +425,8 @@ namespace APCPOS.Forms
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.bunifuSeparator6);
+            this.panel4.Controls.Add(this.networkimg);
             this.panel4.Controls.Add(this.panel24);
             this.panel4.Controls.Add(this.bunifuSeparator4);
             this.panel4.Controls.Add(this.userpic);
@@ -416,20 +434,52 @@ namespace APCPOS.Forms
             this.panel4.Controls.Add(this.lblfullname);
             this.bunifuTransition1.SetDecoration(this.panel4, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1350, 0);
+            this.panel4.Location = new System.Drawing.Point(1278, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(355, 60);
+            this.panel4.Size = new System.Drawing.Size(427, 60);
             this.panel4.TabIndex = 13;
             this.bunifuToolTip1.SetToolTip(this.panel4, "");
             this.bunifuToolTip1.SetToolTipIcon(this.panel4, null);
             this.bunifuToolTip1.SetToolTipTitle(this.panel4, "");
+            // 
+            // bunifuSeparator6
+            // 
+            this.bunifuSeparator6.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuTransition1.SetDecoration(this.bunifuSeparator6, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.bunifuSeparator6.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.bunifuSeparator6.LineThickness = 1;
+            this.bunifuSeparator6.Location = new System.Drawing.Point(3, 8);
+            this.bunifuSeparator6.Name = "bunifuSeparator6";
+            this.bunifuSeparator6.Size = new System.Drawing.Size(8, 46);
+            this.bunifuSeparator6.TabIndex = 22;
+            this.bunifuToolTip1.SetToolTip(this.bunifuSeparator6, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.bunifuSeparator6, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.bunifuSeparator6, "");
+            this.bunifuSeparator6.Transparency = 255;
+            this.bunifuSeparator6.Vertical = true;
+            // 
+            // networkimg
+            // 
+            this.bunifuTransition1.SetDecoration(this.networkimg, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.networkimg.Image = ((System.Drawing.Image)(resources.GetObject("networkimg.Image")));
+            this.networkimg.ImageActive = null;
+            this.networkimg.Location = new System.Drawing.Point(16, 8);
+            this.networkimg.Name = "networkimg";
+            this.networkimg.Size = new System.Drawing.Size(49, 47);
+            this.networkimg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.networkimg.TabIndex = 21;
+            this.networkimg.TabStop = false;
+            this.bunifuToolTip1.SetToolTip(this.networkimg, "Server status");
+            this.bunifuToolTip1.SetToolTipIcon(this.networkimg, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.networkimg, "");
+            this.networkimg.Zoom = 10;
             // 
             // panel24
             // 
             this.panel24.Controls.Add(this.bunifuImageButton10);
             this.bunifuTransition1.SetDecoration(this.panel24, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.panel24.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel24.Location = new System.Drawing.Point(328, 0);
+            this.panel24.Location = new System.Drawing.Point(400, 0);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(27, 60);
             this.panel24.TabIndex = 15;
@@ -460,7 +510,7 @@ namespace APCPOS.Forms
             this.bunifuTransition1.SetDecoration(this.bunifuSeparator4, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.bunifuSeparator4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.bunifuSeparator4.LineThickness = 1;
-            this.bunifuSeparator4.Location = new System.Drawing.Point(2, 7);
+            this.bunifuSeparator4.Location = new System.Drawing.Point(71, 8);
             this.bunifuSeparator4.Name = "bunifuSeparator4";
             this.bunifuSeparator4.Size = new System.Drawing.Size(8, 46);
             this.bunifuSeparator4.TabIndex = 14;
@@ -478,7 +528,7 @@ namespace APCPOS.Forms
             this.bunifuTransition1.SetDecoration(this.userpic, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.userpic.Image = ((System.Drawing.Image)(resources.GetObject("userpic.Image")));
             this.userpic.IsCircle = true;
-            this.userpic.Location = new System.Drawing.Point(271, 2);
+            this.userpic.Location = new System.Drawing.Point(339, 5);
             this.userpic.Name = "userpic";
             this.userpic.Size = new System.Drawing.Size(55, 55);
             this.userpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -495,8 +545,8 @@ namespace APCPOS.Forms
             this.lbldesignation.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.bunifuTransition1.SetDecoration(this.lbldesignation, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lbldesignation.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldesignation.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbldesignation.Location = new System.Drawing.Point(17, 30);
+            this.lbldesignation.ForeColor = System.Drawing.Color.DimGray;
+            this.lbldesignation.Location = new System.Drawing.Point(85, 33);
             this.lbldesignation.Name = "lbldesignation";
             this.lbldesignation.Size = new System.Drawing.Size(248, 15);
             this.lbldesignation.TabIndex = 11;
@@ -513,7 +563,7 @@ namespace APCPOS.Forms
             this.bunifuTransition1.SetDecoration(this.lblfullname, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblfullname.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblfullname.ForeColor = System.Drawing.Color.Snow;
-            this.lblfullname.Location = new System.Drawing.Point(17, 14);
+            this.lblfullname.Location = new System.Drawing.Point(85, 17);
             this.lblfullname.Name = "lblfullname";
             this.lblfullname.Size = new System.Drawing.Size(248, 18);
             this.lblfullname.TabIndex = 12;
@@ -576,6 +626,204 @@ namespace APCPOS.Forms
             this.bunifuToolTip1.SetToolTipIcon(this.panel12, null);
             this.bunifuToolTip1.SetToolTipTitle(this.panel12, "");
             // 
+            // panelaction
+            // 
+            this.panelaction.Controls.Add(this.metroTile10);
+            this.panelaction.Controls.Add(this.metroTile8);
+            this.panelaction.Controls.Add(this.metroTile7);
+            this.panelaction.Controls.Add(this.metroTile3);
+            this.panelaction.Controls.Add(this.metroTile2);
+            this.panelaction.Controls.Add(this.metroTile1);
+            this.bunifuTransition1.SetDecoration(this.panelaction, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.panelaction.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelaction.Location = new System.Drawing.Point(0, 0);
+            this.panelaction.Name = "panelaction";
+            this.panelaction.Size = new System.Drawing.Size(246, 597);
+            this.panelaction.TabIndex = 18;
+            this.bunifuToolTip1.SetToolTip(this.panelaction, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.panelaction, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.panelaction, "");
+            this.panelaction.Visible = false;
+            // 
+            // metroTile10
+            // 
+            this.metroTile10.ActiveControl = null;
+            this.metroTile10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(43)))));
+            this.bunifuTransition1.SetDecoration(this.metroTile10, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.metroTile10.Location = new System.Drawing.Point(8, 285);
+            this.metroTile10.Name = "metroTile10";
+            this.metroTile10.Size = new System.Drawing.Size(230, 87);
+            this.metroTile10.Style = MetroFramework.MetroColorStyle.Orange;
+            this.metroTile10.TabIndex = 6;
+            this.metroTile10.Text = "Override tax";
+            this.metroTile10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.metroTile10.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTile10.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile10.TileImage")));
+            this.metroTile10.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.metroTile10.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile10.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.bunifuToolTip1.SetToolTip(this.metroTile10, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.metroTile10, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.metroTile10, "");
+            this.metroTile10.UseCustomBackColor = true;
+            this.metroTile10.UseSelectable = true;
+            this.metroTile10.UseTileImage = true;
+            // 
+            // metroTile8
+            // 
+            this.metroTile8.ActiveControl = null;
+            this.metroTile8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(43)))));
+            this.bunifuTransition1.SetDecoration(this.metroTile8, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.metroTile8.Location = new System.Drawing.Point(8, 192);
+            this.metroTile8.Name = "metroTile8";
+            this.metroTile8.Size = new System.Drawing.Size(230, 87);
+            this.metroTile8.Style = MetroFramework.MetroColorStyle.Orange;
+            this.metroTile8.TabIndex = 4;
+            this.metroTile8.Text = "Return line";
+            this.metroTile8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.metroTile8.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTile8.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile8.TileImage")));
+            this.metroTile8.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.metroTile8.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile8.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.bunifuToolTip1.SetToolTip(this.metroTile8, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.metroTile8, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.metroTile8, "");
+            this.metroTile8.UseCustomBackColor = true;
+            this.metroTile8.UseSelectable = true;
+            this.metroTile8.UseTileImage = true;
+            this.metroTile8.Click += new System.EventHandler(this.metroTile8_Click);
+            // 
+            // metroTile7
+            // 
+            this.metroTile7.ActiveControl = null;
+            this.metroTile7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(43)))));
+            this.bunifuTransition1.SetDecoration(this.metroTile7, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.metroTile7.Location = new System.Drawing.Point(8, 99);
+            this.metroTile7.Name = "metroTile7";
+            this.metroTile7.Size = new System.Drawing.Size(110, 87);
+            this.metroTile7.Style = MetroFramework.MetroColorStyle.Orange;
+            this.metroTile7.TabIndex = 3;
+            this.metroTile7.Text = "Set line discount";
+            this.metroTile7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.metroTile7.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTile7.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile7.TileImage")));
+            this.metroTile7.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.metroTile7.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile7.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.bunifuToolTip1.SetToolTip(this.metroTile7, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.metroTile7, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.metroTile7, "");
+            this.metroTile7.UseCustomBackColor = true;
+            this.metroTile7.UseSelectable = true;
+            this.metroTile7.UseTileImage = true;
+            this.metroTile7.Click += new System.EventHandler(this.metroTile7_Click);
+            // 
+            // metroTile3
+            // 
+            this.metroTile3.ActiveControl = null;
+            this.metroTile3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(110)))), ((int)(((byte)(201)))));
+            this.bunifuTransition1.SetDecoration(this.metroTile3, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.metroTile3.Enabled = false;
+            this.metroTile3.Location = new System.Drawing.Point(128, 99);
+            this.metroTile3.Name = "metroTile3";
+            this.metroTile3.Size = new System.Drawing.Size(110, 87);
+            this.metroTile3.Style = MetroFramework.MetroColorStyle.Orange;
+            this.metroTile3.TabIndex = 2;
+            this.metroTile3.Text = "Issue loyalty card";
+            this.metroTile3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.metroTile3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTile3.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile3.TileImage")));
+            this.metroTile3.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.metroTile3.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile3.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.bunifuToolTip1.SetToolTip(this.metroTile3, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.metroTile3, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.metroTile3, "");
+            this.metroTile3.UseCustomBackColor = true;
+            this.metroTile3.UseSelectable = true;
+            this.metroTile3.UseTileImage = true;
+            // 
+            // metroTile2
+            // 
+            this.metroTile2.ActiveControl = null;
+            this.metroTile2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(110)))), ((int)(((byte)(201)))));
+            this.bunifuTransition1.SetDecoration(this.metroTile2, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.metroTile2.Enabled = false;
+            this.metroTile2.Location = new System.Drawing.Point(128, 6);
+            this.metroTile2.Name = "metroTile2";
+            this.metroTile2.Size = new System.Drawing.Size(110, 87);
+            this.metroTile2.Style = MetroFramework.MetroColorStyle.Orange;
+            this.metroTile2.TabIndex = 1;
+            this.metroTile2.Text = "Scan loyalty card";
+            this.metroTile2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.metroTile2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTile2.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile2.TileImage")));
+            this.metroTile2.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.metroTile2.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.bunifuToolTip1.SetToolTip(this.metroTile2, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.metroTile2, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.metroTile2, "");
+            this.metroTile2.UseCustomBackColor = true;
+            this.metroTile2.UseSelectable = true;
+            this.metroTile2.UseTileImage = true;
+            this.metroTile2.Click += new System.EventHandler(this.metroTile2_Click);
+            // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(43)))));
+            this.bunifuTransition1.SetDecoration(this.metroTile1, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.metroTile1.Location = new System.Drawing.Point(8, 6);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(110, 87);
+            this.metroTile1.Style = MetroFramework.MetroColorStyle.Orange;
+            this.metroTile1.TabIndex = 0;
+            this.metroTile1.Text = "Set line quantity";
+            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.metroTile1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTile1.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile1.TileImage")));
+            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.bunifuToolTip1.SetToolTip(this.metroTile1, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.metroTile1, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.metroTile1, "");
+            this.metroTile1.UseCustomBackColor = true;
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.UseTileImage = true;
+            // 
+            // panelorder
+            // 
+            this.panelorder.Controls.Add(this.label25);
+            this.bunifuTransition1.SetDecoration(this.panelorder, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.panelorder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelorder.Location = new System.Drawing.Point(0, 0);
+            this.panelorder.Name = "panelorder";
+            this.panelorder.Size = new System.Drawing.Size(246, 597);
+            this.panelorder.TabIndex = 19;
+            this.bunifuToolTip1.SetToolTip(this.panelorder, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.panelorder, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.panelorder, "");
+            // 
+            // label25
+            // 
+            this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
+            this.bunifuTransition1.SetDecoration(this.label25, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.label25.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label25.Font = new System.Drawing.Font("Roboto Lt", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.DarkGray;
+            this.label25.Location = new System.Drawing.Point(0, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(246, 62);
+            this.label25.TabIndex = 88;
+            this.label25.Text = "Order";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.bunifuToolTip1.SetToolTip(this.label25, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.label25, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.label25, "");
+            // 
             // panelvatsettings
             // 
             this.panelvatsettings.Controls.Add(this.bunifuDropdown2);
@@ -632,12 +880,10 @@ namespace APCPOS.Forms
             this.bunifuDropdown2.ItemHeight = 20;
             this.bunifuDropdown2.ItemHighLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
             this.bunifuDropdown2.Items.AddRange(new object[] {
-            "Weekly",
-            "2 Months",
-            "3 Months",
-            "6 Months",
-            "Yearly",
-            "Custom"});
+            "10",
+            "15",
+            "20",
+            "25"});
             this.bunifuDropdown2.Location = new System.Drawing.Point(117, 264);
             this.bunifuDropdown2.Name = "bunifuDropdown2";
             this.bunifuDropdown2.Size = new System.Drawing.Size(119, 26);
@@ -646,6 +892,7 @@ namespace APCPOS.Forms
             this.bunifuToolTip1.SetToolTip(this.bunifuDropdown2, "");
             this.bunifuToolTip1.SetToolTipIcon(this.bunifuDropdown2, null);
             this.bunifuToolTip1.SetToolTipTitle(this.bunifuDropdown2, "");
+            this.bunifuDropdown2.SelectedIndexChanged += new System.EventHandler(this.bunifuDropdown2_SelectedIndexChanged);
             // 
             // bunifuImageButton3
             // 
@@ -658,7 +905,8 @@ namespace APCPOS.Forms
             this.bunifuImageButton3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bunifuImageButton3.TabIndex = 100;
             this.bunifuImageButton3.TabStop = false;
-            this.bunifuToolTip1.SetToolTip(this.bunifuImageButton3, "Default window view. The first windows that will appear.");
+            this.bunifuToolTip1.SetToolTip(this.bunifuImageButton3, "The amount of data to be loaded in the view. Remember, the lower\r\nthe number, the" +
+        " faster the data will be loaded.");
             this.bunifuToolTip1.SetToolTipIcon(this.bunifuImageButton3, null);
             this.bunifuToolTip1.SetToolTipTitle(this.bunifuImageButton3, "");
             this.bunifuImageButton3.Zoom = 10;
@@ -671,9 +919,9 @@ namespace APCPOS.Forms
             this.label26.ForeColor = System.Drawing.Color.Gainsboro;
             this.label26.Location = new System.Drawing.Point(5, 272);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(80, 14);
+            this.label26.Size = new System.Drawing.Size(76, 14);
             this.label26.TabIndex = 99;
-            this.label26.Text = "Def. Win View";
+            this.label26.Text = "Data Display";
             this.bunifuToolTip1.SetToolTip(this.label26, "");
             this.bunifuToolTip1.SetToolTipIcon(this.label26, null);
             this.bunifuToolTip1.SetToolTipTitle(this.label26, "");
@@ -936,6 +1184,7 @@ namespace APCPOS.Forms
             this.metroTile18.UseCustomBackColor = true;
             this.metroTile18.UseSelectable = true;
             this.metroTile18.UseTileImage = true;
+            this.metroTile18.Click += new System.EventHandler(this.metroTile18_Click);
             // 
             // metroTile17
             // 
@@ -1036,201 +1285,6 @@ namespace APCPOS.Forms
             this.metroTile16.UseSelectable = true;
             this.metroTile16.UseTileImage = true;
             this.metroTile16.Click += new System.EventHandler(this.metroTile16_Click);
-            // 
-            // panelaction
-            // 
-            this.panelaction.Controls.Add(this.metroTile10);
-            this.panelaction.Controls.Add(this.metroTile8);
-            this.panelaction.Controls.Add(this.metroTile7);
-            this.panelaction.Controls.Add(this.metroTile3);
-            this.panelaction.Controls.Add(this.metroTile2);
-            this.panelaction.Controls.Add(this.metroTile1);
-            this.bunifuTransition1.SetDecoration(this.panelaction, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.panelaction.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelaction.Location = new System.Drawing.Point(0, 0);
-            this.panelaction.Name = "panelaction";
-            this.panelaction.Size = new System.Drawing.Size(246, 597);
-            this.panelaction.TabIndex = 18;
-            this.bunifuToolTip1.SetToolTip(this.panelaction, "");
-            this.bunifuToolTip1.SetToolTipIcon(this.panelaction, null);
-            this.bunifuToolTip1.SetToolTipTitle(this.panelaction, "");
-            this.panelaction.Visible = false;
-            // 
-            // metroTile10
-            // 
-            this.metroTile10.ActiveControl = null;
-            this.metroTile10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(43)))));
-            this.bunifuTransition1.SetDecoration(this.metroTile10, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.metroTile10.Location = new System.Drawing.Point(8, 285);
-            this.metroTile10.Name = "metroTile10";
-            this.metroTile10.Size = new System.Drawing.Size(230, 87);
-            this.metroTile10.Style = MetroFramework.MetroColorStyle.Orange;
-            this.metroTile10.TabIndex = 6;
-            this.metroTile10.Text = "Override tax";
-            this.metroTile10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.metroTile10.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTile10.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile10.TileImage")));
-            this.metroTile10.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.metroTile10.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
-            this.metroTile10.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.bunifuToolTip1.SetToolTip(this.metroTile10, "");
-            this.bunifuToolTip1.SetToolTipIcon(this.metroTile10, null);
-            this.bunifuToolTip1.SetToolTipTitle(this.metroTile10, "");
-            this.metroTile10.UseCustomBackColor = true;
-            this.metroTile10.UseSelectable = true;
-            this.metroTile10.UseTileImage = true;
-            // 
-            // metroTile8
-            // 
-            this.metroTile8.ActiveControl = null;
-            this.metroTile8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(43)))));
-            this.bunifuTransition1.SetDecoration(this.metroTile8, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.metroTile8.Location = new System.Drawing.Point(8, 192);
-            this.metroTile8.Name = "metroTile8";
-            this.metroTile8.Size = new System.Drawing.Size(230, 87);
-            this.metroTile8.Style = MetroFramework.MetroColorStyle.Orange;
-            this.metroTile8.TabIndex = 4;
-            this.metroTile8.Text = "Return line";
-            this.metroTile8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.metroTile8.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTile8.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile8.TileImage")));
-            this.metroTile8.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.metroTile8.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
-            this.metroTile8.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.bunifuToolTip1.SetToolTip(this.metroTile8, "");
-            this.bunifuToolTip1.SetToolTipIcon(this.metroTile8, null);
-            this.bunifuToolTip1.SetToolTipTitle(this.metroTile8, "");
-            this.metroTile8.UseCustomBackColor = true;
-            this.metroTile8.UseSelectable = true;
-            this.metroTile8.UseTileImage = true;
-            this.metroTile8.Click += new System.EventHandler(this.metroTile8_Click);
-            // 
-            // metroTile7
-            // 
-            this.metroTile7.ActiveControl = null;
-            this.metroTile7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(43)))));
-            this.bunifuTransition1.SetDecoration(this.metroTile7, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.metroTile7.Location = new System.Drawing.Point(8, 99);
-            this.metroTile7.Name = "metroTile7";
-            this.metroTile7.Size = new System.Drawing.Size(110, 87);
-            this.metroTile7.Style = MetroFramework.MetroColorStyle.Orange;
-            this.metroTile7.TabIndex = 3;
-            this.metroTile7.Text = "Set line discount";
-            this.metroTile7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.metroTile7.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTile7.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile7.TileImage")));
-            this.metroTile7.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.metroTile7.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
-            this.metroTile7.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.bunifuToolTip1.SetToolTip(this.metroTile7, "");
-            this.bunifuToolTip1.SetToolTipIcon(this.metroTile7, null);
-            this.bunifuToolTip1.SetToolTipTitle(this.metroTile7, "");
-            this.metroTile7.UseCustomBackColor = true;
-            this.metroTile7.UseSelectable = true;
-            this.metroTile7.UseTileImage = true;
-            // 
-            // metroTile3
-            // 
-            this.metroTile3.ActiveControl = null;
-            this.metroTile3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(110)))), ((int)(((byte)(201)))));
-            this.bunifuTransition1.SetDecoration(this.metroTile3, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.metroTile3.Location = new System.Drawing.Point(128, 99);
-            this.metroTile3.Name = "metroTile3";
-            this.metroTile3.Size = new System.Drawing.Size(110, 87);
-            this.metroTile3.Style = MetroFramework.MetroColorStyle.Orange;
-            this.metroTile3.TabIndex = 2;
-            this.metroTile3.Text = "Issue loyalty card";
-            this.metroTile3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.metroTile3.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTile3.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile3.TileImage")));
-            this.metroTile3.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.metroTile3.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
-            this.metroTile3.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.bunifuToolTip1.SetToolTip(this.metroTile3, "");
-            this.bunifuToolTip1.SetToolTipIcon(this.metroTile3, null);
-            this.bunifuToolTip1.SetToolTipTitle(this.metroTile3, "");
-            this.metroTile3.UseCustomBackColor = true;
-            this.metroTile3.UseSelectable = true;
-            this.metroTile3.UseTileImage = true;
-            // 
-            // metroTile2
-            // 
-            this.metroTile2.ActiveControl = null;
-            this.metroTile2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(110)))), ((int)(((byte)(201)))));
-            this.bunifuTransition1.SetDecoration(this.metroTile2, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.metroTile2.Location = new System.Drawing.Point(128, 6);
-            this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(110, 87);
-            this.metroTile2.Style = MetroFramework.MetroColorStyle.Orange;
-            this.metroTile2.TabIndex = 1;
-            this.metroTile2.Text = "Scan loyalty card";
-            this.metroTile2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.metroTile2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTile2.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile2.TileImage")));
-            this.metroTile2.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.metroTile2.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
-            this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.bunifuToolTip1.SetToolTip(this.metroTile2, "");
-            this.bunifuToolTip1.SetToolTipIcon(this.metroTile2, null);
-            this.bunifuToolTip1.SetToolTipTitle(this.metroTile2, "");
-            this.metroTile2.UseCustomBackColor = true;
-            this.metroTile2.UseSelectable = true;
-            this.metroTile2.UseTileImage = true;
-            this.metroTile2.Click += new System.EventHandler(this.metroTile2_Click);
-            // 
-            // metroTile1
-            // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(43)))));
-            this.bunifuTransition1.SetDecoration(this.metroTile1, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.metroTile1.Location = new System.Drawing.Point(8, 6);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(110, 87);
-            this.metroTile1.Style = MetroFramework.MetroColorStyle.Orange;
-            this.metroTile1.TabIndex = 0;
-            this.metroTile1.Text = "Set line quantity";
-            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.metroTile1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTile1.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile1.TileImage")));
-            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
-            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.bunifuToolTip1.SetToolTip(this.metroTile1, "");
-            this.bunifuToolTip1.SetToolTipIcon(this.metroTile1, null);
-            this.bunifuToolTip1.SetToolTipTitle(this.metroTile1, "");
-            this.metroTile1.UseCustomBackColor = true;
-            this.metroTile1.UseSelectable = true;
-            this.metroTile1.UseTileImage = true;
-            // 
-            // panelorder
-            // 
-            this.panelorder.Controls.Add(this.label25);
-            this.bunifuTransition1.SetDecoration(this.panelorder, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.panelorder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelorder.Location = new System.Drawing.Point(0, 0);
-            this.panelorder.Name = "panelorder";
-            this.panelorder.Size = new System.Drawing.Size(246, 597);
-            this.panelorder.TabIndex = 19;
-            this.bunifuToolTip1.SetToolTip(this.panelorder, "");
-            this.bunifuToolTip1.SetToolTipIcon(this.panelorder, null);
-            this.bunifuToolTip1.SetToolTipTitle(this.panelorder, "");
-            // 
-            // label25
-            // 
-            this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
-            this.bunifuTransition1.SetDecoration(this.label25, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.label25.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label25.Font = new System.Drawing.Font("Roboto Lt", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.DarkGray;
-            this.label25.Location = new System.Drawing.Point(0, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(246, 62);
-            this.label25.TabIndex = 88;
-            this.label25.Text = "Order";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.bunifuToolTip1.SetToolTip(this.label25, "");
-            this.bunifuToolTip1.SetToolTipIcon(this.label25, null);
-            this.bunifuToolTip1.SetToolTipTitle(this.label25, "");
             // 
             // panel7
             // 
@@ -1778,7 +1832,7 @@ namespace APCPOS.Forms
             this.bunifuTransition1.SetDecoration(this.label2, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.label2.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.label2.Location = new System.Drawing.Point(91, 29);
+            this.label2.Location = new System.Drawing.Point(92, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 15);
             this.label2.TabIndex = 10;
@@ -2231,10 +2285,11 @@ namespace APCPOS.Forms
             // 
             // panel11
             // 
+            this.panel11.Controls.Add(this.flowpaneldebt);
             this.panel11.Controls.Add(this.flowpanelcart);
+            this.panel11.Controls.Add(this.label20);
             this.panel11.Controls.Add(this.flowpanelcustomer);
             this.panel11.Controls.Add(this.flowpanelproducts);
-            this.panel11.Controls.Add(this.label20);
             this.bunifuTransition1.SetDecoration(this.panel11, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel11.Location = new System.Drawing.Point(0, 0);
@@ -2245,22 +2300,22 @@ namespace APCPOS.Forms
             this.bunifuToolTip1.SetToolTipIcon(this.panel11, null);
             this.bunifuToolTip1.SetToolTipTitle(this.panel11, "");
             // 
-            // flowpanelcart
+            // flowpaneldebt
             // 
-            this.flowpanelcart.AllowUserToAddRows = false;
-            this.flowpanelcart.AllowUserToDeleteRows = false;
-            this.flowpanelcart.AllowUserToOrderColumns = true;
-            this.flowpanelcart.AllowUserToResizeRows = false;
+            this.flowpaneldebt.AllowUserToAddRows = false;
+            this.flowpaneldebt.AllowUserToDeleteRows = false;
+            this.flowpaneldebt.AllowUserToOrderColumns = true;
+            this.flowpaneldebt.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Snow;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.flowpanelcart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.flowpanelcart.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
-            this.flowpanelcart.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.flowpanelcart.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.flowpanelcart.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.flowpaneldebt.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.flowpaneldebt.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
+            this.flowpaneldebt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.flowpaneldebt.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.flowpaneldebt.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2268,7 +2323,111 @@ namespace APCPOS.Forms
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.flowpanelcart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.flowpaneldebt.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.flowpaneldebt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.flowpaneldebt.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.bunifuTransition1.SetDecoration(this.flowpaneldebt, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.flowpaneldebt.DefaultCellStyle = dataGridViewCellStyle3;
+            this.flowpaneldebt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpaneldebt.DoubleBuffered = true;
+            this.flowpaneldebt.EnableHeadersVisualStyles = false;
+            this.flowpaneldebt.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.flowpaneldebt.HeaderForeColor = System.Drawing.SystemColors.HighlightText;
+            this.flowpaneldebt.Location = new System.Drawing.Point(0, 62);
+            this.flowpaneldebt.MultiSelect = false;
+            this.flowpaneldebt.Name = "flowpaneldebt";
+            this.flowpaneldebt.ReadOnly = true;
+            this.flowpaneldebt.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.flowpaneldebt.RowHeadersVisible = false;
+            this.flowpaneldebt.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Snow;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.flowpaneldebt.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.flowpaneldebt.RowTemplate.Height = 39;
+            this.flowpaneldebt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.flowpaneldebt.Size = new System.Drawing.Size(1365, 532);
+            this.flowpaneldebt.TabIndex = 89;
+            this.bunifuToolTip1.SetToolTip(this.flowpaneldebt, "Double click on an item to view it\'s details");
+            this.bunifuToolTip1.SetToolTipIcon(this.flowpaneldebt, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.flowpaneldebt, "");
+            this.flowpaneldebt.Visible = false;
+            this.flowpaneldebt.Leave += new System.EventHandler(this.flowpaneldebt_Leave);
+            this.flowpaneldebt.MouseLeave += new System.EventHandler(this.flowpaneldebt_MouseLeave);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Inv No.";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Time";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Amount Due";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 140;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "No. of Itms";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 140;
+            // 
+            // flowpanelcart
+            // 
+            this.flowpanelcart.AllowUserToAddRows = false;
+            this.flowpanelcart.AllowUserToDeleteRows = false;
+            this.flowpanelcart.AllowUserToOrderColumns = true;
+            this.flowpanelcart.AllowUserToResizeRows = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Snow;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.flowpanelcart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.flowpanelcart.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
+            this.flowpanelcart.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.flowpanelcart.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.flowpanelcart.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.flowpanelcart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.flowpanelcart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.flowpanelcart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column6,
@@ -2278,14 +2437,14 @@ namespace APCPOS.Forms
             this.Column4,
             this.Column5});
             this.bunifuTransition1.SetDecoration(this.flowpanelcart, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.flowpanelcart.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.flowpanelcart.DefaultCellStyle = dataGridViewCellStyle7;
             this.flowpanelcart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelcart.DoubleBuffered = true;
             this.flowpanelcart.EnableHeadersVisualStyles = false;
@@ -2298,12 +2457,12 @@ namespace APCPOS.Forms
             this.flowpanelcart.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.flowpanelcart.RowHeadersVisible = false;
             this.flowpanelcart.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Snow;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.flowpanelcart.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Snow;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.flowpanelcart.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.flowpanelcart.RowTemplate.Height = 39;
             this.flowpanelcart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.flowpanelcart.Size = new System.Drawing.Size(1365, 532);
@@ -2358,36 +2517,6 @@ namespace APCPOS.Forms
             this.Column5.ReadOnly = true;
             this.Column5.Width = 120;
             // 
-            // flowpanelcustomer
-            // 
-            this.flowpanelcustomer.AutoScroll = true;
-            this.flowpanelcustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
-            this.bunifuTransition1.SetDecoration(this.flowpanelcustomer, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.flowpanelcustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowpanelcustomer.Location = new System.Drawing.Point(0, 62);
-            this.flowpanelcustomer.Name = "flowpanelcustomer";
-            this.flowpanelcustomer.Size = new System.Drawing.Size(1365, 532);
-            this.flowpanelcustomer.TabIndex = 3;
-            this.bunifuToolTip1.SetToolTip(this.flowpanelcustomer, "");
-            this.bunifuToolTip1.SetToolTipIcon(this.flowpanelcustomer, null);
-            this.bunifuToolTip1.SetToolTipTitle(this.flowpanelcustomer, "");
-            this.flowpanelcustomer.Visible = false;
-            // 
-            // flowpanelproducts
-            // 
-            this.flowpanelproducts.AutoScroll = true;
-            this.flowpanelproducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
-            this.bunifuTransition1.SetDecoration(this.flowpanelproducts, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.flowpanelproducts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowpanelproducts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowpanelproducts.Location = new System.Drawing.Point(0, 62);
-            this.flowpanelproducts.Name = "flowpanelproducts";
-            this.flowpanelproducts.Size = new System.Drawing.Size(1365, 532);
-            this.flowpanelproducts.TabIndex = 1;
-            this.bunifuToolTip1.SetToolTip(this.flowpanelproducts, "");
-            this.bunifuToolTip1.SetToolTipIcon(this.flowpanelproducts, null);
-            this.bunifuToolTip1.SetToolTipTitle(this.flowpanelproducts, "");
-            // 
             // label20
             // 
             this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
@@ -2405,6 +2534,36 @@ namespace APCPOS.Forms
             this.bunifuToolTip1.SetToolTipIcon(this.label20, null);
             this.bunifuToolTip1.SetToolTipTitle(this.label20, "");
             this.label20.Visible = false;
+            // 
+            // flowpanelcustomer
+            // 
+            this.flowpanelcustomer.AutoScroll = true;
+            this.flowpanelcustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
+            this.bunifuTransition1.SetDecoration(this.flowpanelcustomer, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.flowpanelcustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpanelcustomer.Location = new System.Drawing.Point(0, 0);
+            this.flowpanelcustomer.Name = "flowpanelcustomer";
+            this.flowpanelcustomer.Size = new System.Drawing.Size(1365, 594);
+            this.flowpanelcustomer.TabIndex = 3;
+            this.bunifuToolTip1.SetToolTip(this.flowpanelcustomer, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.flowpanelcustomer, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.flowpanelcustomer, "");
+            this.flowpanelcustomer.Visible = false;
+            // 
+            // flowpanelproducts
+            // 
+            this.flowpanelproducts.AutoScroll = true;
+            this.flowpanelproducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
+            this.bunifuTransition1.SetDecoration(this.flowpanelproducts, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.flowpanelproducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpanelproducts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowpanelproducts.Location = new System.Drawing.Point(0, 0);
+            this.flowpanelproducts.Name = "flowpanelproducts";
+            this.flowpanelproducts.Size = new System.Drawing.Size(1365, 594);
+            this.flowpanelproducts.TabIndex = 1;
+            this.bunifuToolTip1.SetToolTip(this.flowpanelproducts, "");
+            this.bunifuToolTip1.SetToolTipIcon(this.flowpanelproducts, null);
+            this.bunifuToolTip1.SetToolTipTitle(this.flowpanelproducts, "");
             // 
             // panel2
             // 
@@ -2447,7 +2606,7 @@ namespace APCPOS.Forms
             this.flowpanelproductsearch.AutoScroll = true;
             this.flowpanelproductsearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(57)))));
             this.bunifuTransition1.SetDecoration(this.flowpanelproductsearch, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.flowpanelproductsearch.Location = new System.Drawing.Point(604, 54);
+            this.flowpanelproductsearch.Location = new System.Drawing.Point(532, 54);
             this.flowpanelproductsearch.Name = "flowpanelproductsearch";
             this.flowpanelproductsearch.Size = new System.Drawing.Size(461, 472);
             this.flowpanelproductsearch.TabIndex = 6;
@@ -2555,6 +2714,7 @@ namespace APCPOS.Forms
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel1);
             this.bunifuTransition1.SetDecoration(this, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1347, 827);
@@ -2572,18 +2732,19 @@ namespace APCPOS.Forms
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.networkimg)).EndInit();
             this.panel24.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userpic)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
+            this.panelaction.ResumeLayout(false);
+            this.panelorder.ResumeLayout(false);
             this.panelvatsettings.ResumeLayout(false);
             this.panelvatsettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).EndInit();
             this.panelcustomer.ResumeLayout(false);
-            this.panelaction.ResumeLayout(false);
-            this.panelorder.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -2605,6 +2766,7 @@ namespace APCPOS.Forms
             this.panel16.ResumeLayout(false);
             this.panel16.PerformLayout();
             this.panel11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.flowpaneldebt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.flowpanelcart)).EndInit();
             this.panel2.ResumeLayout(false);
             this.metroContextMenu1.ResumeLayout(false);
@@ -2622,7 +2784,6 @@ namespace APCPOS.Forms
         private Panel panel4;
         private Panel panel9;
         private Panel panel23;
-        private BunifuTextBox bunifuTextBox1;
         private BunifuImageButton bunifuImageButton1;
         private BunifuTransition bunifuTransition1;
         private Panel panel3;
@@ -2746,5 +2907,14 @@ namespace APCPOS.Forms
         private BunifuImageButton bunifuImageButton3;
         private Label label26;
         private Bunifu.UI.WinForms.BunifuDropdown bunifuDropdown2;
+        private BunifuTextBox bunifuTextBox1;
+        private BunifuImageButton networkimg;
+        private BunifuSeparator bunifuSeparator6;
+        private BunifuCustomDataGrid flowpaneldebt;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }

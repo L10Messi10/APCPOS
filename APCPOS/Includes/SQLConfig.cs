@@ -1,5 +1,8 @@
-﻿using System.Data.SqlClient;
+﻿using System.Data;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
+using System.Windows;
+using APCPOS.Forms;
 
 namespace APCPOS.Includes
 {
@@ -14,7 +17,8 @@ namespace APCPOS.Includes
         public static string userpassword;
         public static string userfullname;
         public static string logaction;
-        public static bool en_vat, en_debt, direct_print;
+        public static bool en_vat, en_debt, direct_print, Connected;
+        public static string IP_Add, user_id, user_pass;
 
         public static async Task Conopen()
         {
@@ -23,9 +27,12 @@ namespace APCPOS.Includes
             //ipaddress = Properties.Settings.Default.ipadd;
             //uid = Properties.Settings.Default.uid;
             //upass = Properties.Settings.Default.pass;
-            string cstring = null;
+            IP_Add = Properties.Settings.Default.ip_add;
+            user_id = Properties.Settings.Default.user_id;
+            user_pass = Properties.Settings.Default.user_pass;
+            string cstring;
             cstring =
-                "Data Source = 25.37.196.40;Network Library=DBMSSOCN;Initial Catalog=DBAPC_POS;User ID=sa;Password=administrator01;";
+                "Data Source = "+ IP_Add +";Network Library=DBMSSOCN;Initial Catalog=DBAPC_POS;User ID=" + user_id +";Password=" + user_pass +";";
             Cnn = new SqlConnection(cstring);
             await Cnn.OpenAsync();
             //}
@@ -37,8 +44,24 @@ namespace APCPOS.Includes
             //}
 
         }
-       
-
+        public static async Task TestConnection()
+        {
+            var cstring = "Data Source = " + IP_Add + ";Network Library=DBMSSOCN;Initial Catalog=DBAPC_POS;User ID=" + user_id + ";Password=" + user_pass + ";";
+            Cnn = new SqlConnection(cstring);
+            await Cnn.OpenAsync();
+            Connected = Cnn.State == ConnectionState.Open;
+            if (Connected)
+            {
+                MessageBox.Show("Server connection and credentials were successfully established!", "Server settings", MessageBoxButton.OK, MessageBoxImage.Information);
+                var server = new FrmServerSettings();
+                server.Dispose();
+                Cnn.Close();
+            }
+            else
+            {
+                MessageBox.Show("Server connection and credentials were not successfully established!", "Server settings", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 
 }
